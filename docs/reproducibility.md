@@ -8,10 +8,12 @@ checkpoint fingerprint, model/source revisions, seed, generation settings,
 training schedule, optimizer-state policy and selection metric. Preserve the
 actual environment (`pip freeze`), config and output manifests externally.
 
-`configs/reproduction/` contains exact archived experiment configurations moved
-from the research branch. Some depend on historical checkpoint filenames and
-prior score exports that are deliberately not in the release. They are reference
-protocols, not self-contained runnable downloads. Use `configure_experiment.py`
+The four GRID tokenizer files in `configs/reproduction/` are refreshed from the
+saved complete-metadata configurations behind the completed comparison tables:
+12 original cases and 84 FairDiverse training recipes. Their case inventory is
+`complete_metadata_manifest.json`. Other files preserve supporting configurations.
+Some depend on historical checkpoint filenames and prior score exports that are
+deliberately not in the release. Use `configure_experiment.py`
 for a new run, or resolve all archived paths before reproducing a specific entry.
 The release also retains GRID's original-RQ-VAE architecture/schedule presets.
 

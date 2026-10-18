@@ -5,6 +5,11 @@ portable execution workflows. It includes GRID source, classic recommenders,
 CPFair/P-MMF reranking, IFairLRS RR/RW, SPRINT, validation-only continuation tuning,
 batched generation parity checks, deadline pilots and paired activity analyses.
 
+The released GRID cohort uses complete metadata exclusively. Its 12 original and
+84 FairDiverse training configurations are refreshed from the completed
+comparison's saved run records. See `complete-metadata.md` for scope and refresh
+instructions; description-only artifacts are excluded.
+
 Both Python packages and their configuration assets are installable from this
 source checkout. GRID is an ordinary directory, so the same code is available in
 a Git clone and an anonymous repository ZIP. Its upstream license and all third-party

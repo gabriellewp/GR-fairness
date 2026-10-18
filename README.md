@@ -6,6 +6,11 @@ packages reusable implementations, continuation tuning, generation parity checks
 and paired activity analyses. GRID is included as ordinary source files. The original
 FairDiverse recommendation and search implementations remain available.
 
+The released GRID experiments use **complete_metadata only**: title, categories,
+brand/store and description. The recipes cover all four datasets and three
+tokenizers; description-only checkpoints and results are excluded. See the
+[complete-metadata protocol](docs/complete-metadata.md).
+
 ## Install
 
 Use Linux and Python 3.10. Train GRID on a CUDA GPU; artifact evaluation and most

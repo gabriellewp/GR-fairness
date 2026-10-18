@@ -1,0 +1,201 @@
+{
+  "metadata_text_mode": "complete_metadata",
+  "source": "Completed comparison and saved per-run configurations",
+  "cases": [
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rkmeans",
+      "experiment_ids": {
+        "original": 57,
+        "APR": 58,
+        "FairDual": 59,
+        "IPS": 60,
+        "Minmax_SGD": 61,
+        "SDRO": 62,
+        "FOCF": 63,
+        "Reg": 64
+      },
+      "checkpoint": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rkmeans/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003700.ckpt",
+      "sid_mapping": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rkmeans/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt"
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rqvae",
+      "experiment_ids": {
+        "original": 65,
+        "APR": 66,
+        "FairDual": 67,
+        "IPS": 68,
+        "Minmax_SGD": 69,
+        "SDRO": 70,
+        "FOCF": 71,
+        "Reg": 72
+      },
+      "checkpoint": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rqvae/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003800.ckpt",
+      "sid_mapping": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rqvae/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt"
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rvq",
+      "experiment_ids": {
+        "original": 73,
+        "APR": 74,
+        "FairDual": 75,
+        "IPS": 76,
+        "Minmax_SGD": 77,
+        "SDRO": 78,
+        "FOCF": 79,
+        "Reg": 80
+      },
+      "checkpoint": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rvq/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=004400.ckpt",
+      "sid_mapping": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rvq/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt"
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rkmeans",
+      "experiment_ids": {
+        "original": 57,
+        "APR": 58,
+        "FairDual": 59,
+        "IPS": 60,
+        "Minmax_SGD": 61,
+        "SDRO": 62,
+        "FOCF": 63,
+        "Reg": 64
+      },
+      "checkpoint": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rkmeans/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003600-v1.ckpt",
+      "sid_mapping": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rkmeans/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt"
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rqvae",
+      "experiment_ids": {
+        "original": 65,
+        "APR": 66,
+        "FairDual": 67,
+        "IPS": 68,
+        "Minmax_SGD": 69,
+        "SDRO": 70,
+        "FOCF": 71,
+        "Reg": 72
+      },
+      "checkpoint": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rqvae/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003600.ckpt",
+      "sid_mapping": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rqvae/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt"
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rvq",
+      "experiment_ids": {
+        "original": 73,
+        "APR": 74,
+        "FairDual": 75,
+        "IPS": 76,
+        "Minmax_SGD": 77,
+        "SDRO": 78,
+        "FOCF": 79,
+        "Reg": 80
+      },
+      "checkpoint": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rvq/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003500.ckpt",
+      "sid_mapping": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rvq/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt"
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rkmeans",
+      "experiment_ids": {
+        "original": 57,
+        "APR": 58,
+        "FairDual": 59,
+        "IPS": 60,
+        "Minmax_SGD": 61,
+        "SDRO": 62,
+        "FOCF": 63,
+        "Reg": 64
+      },
+      "checkpoint": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rkmeans/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=006300.ckpt",
+      "sid_mapping": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rkmeans/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt"
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rqvae",
+      "experiment_ids": {
+        "original": 65,
+        "APR": 66,
+        "FairDual": 67,
+        "IPS": 68,
+        "Minmax_SGD": 69,
+        "SDRO": 70,
+        "FOCF": 71,
+        "Reg": 72
+      },
+      "checkpoint": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rqvae/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=005100.ckpt",
+      "sid_mapping": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rqvae/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt"
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rvq",
+      "experiment_ids": {
+        "original": 73,
+        "APR": 74,
+        "FairDual": 75,
+        "IPS": 76,
+        "Minmax_SGD": 77,
+        "SDRO": 78,
+        "FOCF": 79,
+        "Reg": 80
+      },
+      "checkpoint": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rvq/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=007400.ckpt",
+      "sid_mapping": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rvq/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt"
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rkmeans",
+      "experiment_ids": {
+        "original": 57,
+        "APR": 58,
+        "FairDual": 59,
+        "IPS": 60,
+        "Minmax_SGD": 61,
+        "SDRO": 62,
+        "FOCF": 63,
+        "Reg": 64
+      },
+      "checkpoint": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rkmeans/step3_training_suffix4_continue10k_ndcg/checkpoints/checkpoint_epoch=000_step=010000.ckpt",
+      "sid_mapping": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rkmeans/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt"
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rqvae",
+      "experiment_ids": {
+        "original": 65,
+        "APR": 66,
+        "FairDual": 67,
+        "IPS": 68,
+        "Minmax_SGD": 69,
+        "SDRO": 70,
+        "FOCF": 71,
+        "Reg": 72
+      },
+      "checkpoint": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rqvae/step3_training_suffix4_resume10k/checkpoints/checkpoint_epoch=000_step=008000.ckpt",
+      "sid_mapping": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rqvae/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt"
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rvq",
+      "experiment_ids": {
+        "original": 73,
+        "APR": 74,
+        "FairDual": 75,
+        "IPS": 76,
+        "Minmax_SGD": 77,
+        "SDRO": 78,
+        "FOCF": 79,
+        "Reg": 80
+      },
+      "checkpoint": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rvq/step3_training_suffix4_resume10k/checkpoints/checkpoint_epoch=000_step=008000.ckpt",
+      "sid_mapping": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rvq/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt"
+    }
+  ],
+  "training_configurations": 84,
+  "original_configurations": 12,
+  "artifact_policy": "External checkpoints/data are required; only complete_metadata namespaces are eligible."
+}

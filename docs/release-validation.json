@@ -45,5 +45,23 @@
     "Some optional report and analysis helpers require locally generated research artifact inventories.",
     "Upstream source formatting is retained, including existing trailing whitespace.",
     "Anonymous mirror publication and its final anonymization review remain separate steps."
-  ]
+  ],
+  "complete_metadata_update": {
+    "date": "2026-10-18",
+    "source_configs": "12 original and 84 training configurations selected from completed comparison provenance",
+    "training_config_fingerprints_verified": 84,
+    "metadata_namespace_scan": "No description-only recipe or artifact references remain in configs/reproduction",
+    "metadata_workflow_tests": {
+      "passed": 64,
+      "failed": 0
+    },
+    "original_workspace": "Read only; no checkpoint or result artifacts altered",
+    "limits": "No training, dataset conversion or Slurm jobs rerun",
+    "native_and_artifact_regressions": {
+      "passed": 36,
+      "notes": "Two outdated selection-test fixtures were updated for the current report schema; native SPRINT/continuation behavior was unchanged."
+    },
+    "broader_test_attempt": "A broader run in a shared dependency environment timed out after test progress; focused checks were rerun in the lightweight runtime.",
+    "pmmf_solver_check": "The optional PMMF check requires CVXPY, absent from the lightweight runtime; its retry in the shared scientific environment timed out. Reranking code was not changed."
+  }
 }

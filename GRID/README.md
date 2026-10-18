@@ -30,7 +30,8 @@ W&B is disabled by default; enable it with `GRID_USE_WANDB=true` after authentic
 The pipeline performs preprocessing, text embedding, tokenizer training, SID
 inference, TIGER training, and TIGER inference. It uses temporal leave-one-out
 splits, three learned SID levels plus a collision suffix, and 40 history items
-encoded as 160 SID tokens. Metadata modes have separate data/output namespaces.
+encoded as 160 SID tokens. This release uses the `complete_metadata` namespace
+and rejects description-only preprocessing and artifacts.
 
 Default outputs are `data/amazon_<dataset>_5core_tfrecords/temporal_loo/<mode>` and
 `outputs/<dataset>_5core/temporal_loo/<mode>/<tokenizer>`. Set `GRID_DATA_ROOT`,

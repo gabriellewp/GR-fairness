@@ -38,9 +38,7 @@ fi
 
 TOKENIZER="${GRID_TOKENIZER:-rkmeans}"
 DATASET="${GRID_DATASET:-beauty}"
-# Complete metadata is the canonical text representation for new standalone
-# runs. Description-only data remains available as an explicit compatibility
-# mode and receives its own namespace below.
+# The release uses complete metadata for every dataset and tokenizer.
 METADATA_TEXT_MODE="${GRID_METADATA_TEXT_MODE:-complete_metadata}"
 EMBEDDING_PATH_OVERRIDE="${GRID_EMBEDDING_PATH:-}"
 EMBEDDING_NAME="${GRID_EMBEDDING_NAME:-}"
@@ -76,7 +74,7 @@ while [[ $# -gt 0 ]]; do
             ;;
         --metadata-text-mode)
             if [[ $# -lt 2 ]]; then
-                echo "ERROR: --metadata-text-mode requires description or complete_metadata" >&2
+                echo "ERROR: --metadata-text-mode requires complete_metadata" >&2
                 exit 2
             fi
             METADATA_TEXT_MODE="$2"
@@ -176,7 +174,7 @@ while [[ $# -gt 0 ]]; do
             ;;
         --help|-h)
             echo "Usage: sbatch $0 [--dataset beauty|toys|sports|pet-supplies] [--tokenizer rkmeans|rvq|rqvae]"
-            echo "                [--metadata-text-mode description|complete_metadata] [--preprocess-only]"
+            echo "                [--metadata-text-mode complete_metadata] [--preprocess-only]"
             echo "                [--embedding-path FILE --embedding-name NAME] [--data-dir DIR]"
             echo "                [--output-run-name NAME]"
             echo "                [--tiger-ckpt FILE] [--tiger-max-steps STEPS]"
@@ -225,9 +223,9 @@ if [[ "${METADATA_TEXT_MODE}" == "complete" ]]; then
     METADATA_TEXT_MODE="complete_metadata"
 fi
 case "${METADATA_TEXT_MODE}" in
-    description|complete_metadata) ;;
+    complete_metadata) ;;
     *)
-        echo "ERROR: Unsupported metadata text mode '${METADATA_TEXT_MODE}'. Choose description or complete_metadata." >&2
+        echo "ERROR: This release requires complete_metadata; got '${METADATA_TEXT_MODE}'." >&2
         exit 2
         ;;
 esac
@@ -278,13 +276,6 @@ if [[ -n "${DATA_DIR_OVERRIDE}" ]]; then
     fi
 else
     DATA_DIR="${DATA_ROOT}/${SPLIT_STRATEGY}/${RUN_NAME}"
-    # Only description mode may reuse the legacy unscoped dataset. A complete
-    # metadata request must create/use its own complete_metadata directory.
-    if [[ "${METADATA_TEXT_MODE}" == "description" && \
-          ! -d "${DATA_DIR}/training" && \
-          -d "${DATA_ROOT}/${SPLIT_STRATEGY}/training" ]]; then
-        DATA_DIR="${DATA_ROOT}/${SPLIT_STRATEGY}"
-    fi
 fi
 if [[ -n "${EMBEDDING_PATH_OVERRIDE}" && -z "${EMBEDDING_NAME}" ]]; then
     echo "ERROR: --embedding-name is required with --embedding-path." >&2
@@ -294,6 +285,12 @@ ARTIFACT_RUN_NAME="${OUTPUT_RUN_NAME:-${RUN_NAME}}"
 RUN_OUTPUT_ROOT="${OUTPUT_ROOT}/${SPLIT_STRATEGY}/${ARTIFACT_RUN_NAME}"
 COMMON_OUTPUT_DIR="${RUN_OUTPUT_ROOT}/common"
 OUTPUT_DIR="${RUN_OUTPUT_ROOT}/${TOKENIZER}"
+case "/${DATA_DIR}/${OUTPUT_DIR}/${EMBEDDING_PATH_OVERRIDE}/${TIGER_CKPT_OVERRIDE}/" in
+    */description/*)
+        echo "ERROR: This release requires complete_metadata artifacts; description-only paths are excluded." >&2
+        exit 2
+        ;;
+esac
 LOG_DIR="${GRID_LOG_DIR:-${GRID_ROOT}/logs/${DATASET_SLUG}_5core/${SPLIT_STRATEGY}/${ARTIFACT_RUN_NAME}/${TOKENIZER}}"
 # The offline tokenizer learns three semantic levels. TIGER predicts those
 # levels plus the deterministic collision-disambiguation suffix emitted by SID

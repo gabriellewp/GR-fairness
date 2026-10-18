@@ -35,7 +35,9 @@ bash GRID/run_independent_pipeline.sh --dataset beauty --tokenizer rkmeans \
 Use the other selectors in the table for additional datasets. The default split
 is `temporal_loo`: final item is test, preceding item is validation, earlier
 items form training. Default complete metadata text combines title, categories,
-brand and description. `description` is a separate explicit compatibility mode.
+brand and description. Description-only inputs are rejected by the released
+pipeline. Existing GRID split metadata must confirm `complete_metadata` before
+the FairDiverse bridge reuses it.
 Do not reuse its outputs for complete-metadata experiments.
 
 TFRecords, `item_id_mapping.json`, `split_config.json`, and preprocessing stats

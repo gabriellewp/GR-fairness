@@ -66,17 +66,18 @@
         10,
         20
       ],
-      "store_scores": false,
+      "store_scores": true,
       "fairness_type": "Exposure",
       "mmf_eval_ratio": 0.5,
       "decimals": 4,
       "fair-rank": false,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
-      "log_name": "auto",
-      "metadata_text_mode": "complete_metadata"
+      "log_name": "paper-amazon-toys-rkmeans-base-complete-metadata",
+      "metadata_text_mode": "complete_metadata",
+      "group_aggregation_threshold": 10
     },
     "exp_id": 57
   },
@@ -154,11 +155,17 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "APR",
-      "log_name": "auto"
+      "log_name": "paper-amazon-toys-rkmeans-APR-complete-metadata",
+      "eta": 0.1,
+      "beta": 0.5,
+      "alpha": 0.1,
+      "use_8bit": true,
+      "update_epoch": 1,
+      "group_aggregation_threshold": 10
     },
     "exp_id": 58
   },
@@ -236,12 +243,19 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "FairDual",
-      "log_name": "auto",
-      "exposure_sample_num": 200
+      "log_name": "paper-amazon-toys-rkmeans-FairDual-complete-metadata",
+      "exposure_sample_num": 200,
+      "eta": 0.01,
+      "s_k": 10,
+      "alpha": 0.2,
+      "use_8bit": true,
+      "update_epoch": 1,
+      "group_aggregation_threshold": 10,
+      "lambd": 2
     },
     "exp_id": 59
   },
@@ -319,11 +333,15 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "IPS",
-      "log_name": "auto"
+      "log_name": "paper-amazon-toys-rkmeans-IPS-complete-metadata",
+      "M": 0.1,
+      "use_8bit": true,
+      "update_epoch": 1,
+      "group_aggregation_threshold": 10
     },
     "exp_id": 60
   },
@@ -401,11 +419,15 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "Minmax_SGD",
-      "log_name": "auto"
+      "log_name": "paper-amazon-toys-rkmeans-Minmax_SGD-complete-metadata",
+      "use_8bit": true,
+      "update_epoch": 1,
+      "group_aggregation_threshold": 10,
+      "p": 0.02
     },
     "exp_id": 61
   },
@@ -483,11 +505,15 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "SDRO",
-      "log_name": "auto"
+      "log_name": "paper-amazon-toys-rkmeans-SDRO-complete-metadata",
+      "eta": 1,
+      "use_8bit": true,
+      "update_epoch": 1,
+      "group_aggregation_threshold": 10
     },
     "exp_id": 62
   },
@@ -565,11 +591,14 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "FOCF",
-      "log_name": "auto"
+      "log_name": "paper-amazon-toys-rkmeans-FOCF-complete-metadata",
+      "fair_lambda": 2,
+      "use_8bit": true,
+      "group_aggregation_threshold": 10
     },
     "exp_id": 63
   },
@@ -647,11 +676,14 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "Reg",
-      "log_name": "auto"
+      "log_name": "paper-amazon-toys-rkmeans-Reg-complete-metadata",
+      "fair_lambda": 5,
+      "use_8bit": true,
+      "group_aggregation_threshold": 10
     },
     "exp_id": 64
   },
@@ -722,17 +754,18 @@
         10,
         20
       ],
-      "store_scores": false,
+      "store_scores": true,
       "fairness_type": "Exposure",
       "mmf_eval_ratio": 0.5,
       "decimals": 4,
       "fair-rank": false,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
-      "log_name": "auto",
-      "metadata_text_mode": "complete_metadata"
+      "log_name": "paper-amazon-toys-rqvae-base-complete-metadata",
+      "metadata_text_mode": "complete_metadata",
+      "group_aggregation_threshold": 10
     },
     "exp_id": 65
   },
@@ -810,11 +843,17 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "APR",
-      "log_name": "auto"
+      "log_name": "paper-amazon-toys-rqvae-APR-complete-metadata",
+      "eta": 0.1,
+      "beta": 0.5,
+      "alpha": 0.1,
+      "use_8bit": true,
+      "update_epoch": 1,
+      "group_aggregation_threshold": 10
     },
     "exp_id": 66
   },
@@ -892,12 +931,19 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "FairDual",
-      "log_name": "auto",
-      "exposure_sample_num": 200
+      "log_name": "paper-amazon-toys-rqvae-FairDual-complete-metadata",
+      "exposure_sample_num": 200,
+      "eta": 0.01,
+      "s_k": 10,
+      "alpha": 0.2,
+      "use_8bit": true,
+      "update_epoch": 1,
+      "group_aggregation_threshold": 10,
+      "lambd": 2
     },
     "exp_id": 67
   },
@@ -975,11 +1021,15 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "IPS",
-      "log_name": "auto"
+      "log_name": "paper-amazon-toys-rqvae-IPS-complete-metadata",
+      "M": 0.1,
+      "use_8bit": true,
+      "update_epoch": 1,
+      "group_aggregation_threshold": 10
     },
     "exp_id": 68
   },
@@ -1057,11 +1107,15 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "Minmax_SGD",
-      "log_name": "auto"
+      "log_name": "paper-amazon-toys-rqvae-Minmax_SGD-complete-metadata",
+      "use_8bit": true,
+      "update_epoch": 1,
+      "group_aggregation_threshold": 10,
+      "p": 0.02
     },
     "exp_id": 69
   },
@@ -1139,11 +1193,15 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "SDRO",
-      "log_name": "auto"
+      "log_name": "paper-amazon-toys-rqvae-SDRO-complete-metadata",
+      "eta": 1,
+      "use_8bit": true,
+      "update_epoch": 1,
+      "group_aggregation_threshold": 10
     },
     "exp_id": 70
   },
@@ -1221,11 +1279,14 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "FOCF",
-      "log_name": "auto"
+      "log_name": "paper-amazon-toys-rqvae-FOCF-complete-metadata",
+      "fair_lambda": 2,
+      "use_8bit": true,
+      "group_aggregation_threshold": 10
     },
     "exp_id": 71
   },
@@ -1303,11 +1364,14 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "Reg",
-      "log_name": "auto"
+      "log_name": "paper-amazon-toys-rqvae-Reg-complete-metadata",
+      "fair_lambda": 5,
+      "use_8bit": true,
+      "group_aggregation_threshold": 10
     },
     "exp_id": 72
   },
@@ -1384,11 +1448,12 @@
       "decimals": 4,
       "fair-rank": false,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
-      "log_name": "auto",
-      "metadata_text_mode": "complete_metadata"
+      "log_name": "paper-amazon-toys-rvq-base-complete-metadata",
+      "metadata_text_mode": "complete_metadata",
+      "group_aggregation_threshold": 10
     },
     "exp_id": 73
   },
@@ -1466,11 +1531,17 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "APR",
-      "log_name": "auto"
+      "log_name": "paper-amazon-toys-rvq-APR-complete-metadata",
+      "eta": 0.1,
+      "beta": 0.5,
+      "alpha": 0.1,
+      "use_8bit": true,
+      "update_epoch": 1,
+      "group_aggregation_threshold": 10
     },
     "exp_id": 74
   },
@@ -1548,12 +1619,19 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "FairDual",
-      "log_name": "auto",
-      "exposure_sample_num": 200
+      "log_name": "paper-amazon-toys-rvq-FairDual-complete-metadata",
+      "exposure_sample_num": 200,
+      "eta": 0.01,
+      "s_k": 10,
+      "alpha": 0.2,
+      "use_8bit": true,
+      "update_epoch": 1,
+      "group_aggregation_threshold": 10,
+      "lambd": 2
     },
     "exp_id": 75
   },
@@ -1631,11 +1709,15 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "IPS",
-      "log_name": "auto"
+      "log_name": "paper-amazon-toys-rvq-IPS-complete-metadata",
+      "M": 0.1,
+      "use_8bit": true,
+      "update_epoch": 1,
+      "group_aggregation_threshold": 10
     },
     "exp_id": 76
   },
@@ -1713,11 +1795,15 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "Minmax_SGD",
-      "log_name": "auto"
+      "log_name": "paper-amazon-toys-rvq-Minmax_SGD-complete-metadata",
+      "use_8bit": true,
+      "update_epoch": 1,
+      "group_aggregation_threshold": 10,
+      "p": 0.02
     },
     "exp_id": 77
   },
@@ -1795,11 +1881,15 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "SDRO",
-      "log_name": "auto"
+      "log_name": "paper-amazon-toys-rvq-SDRO-complete-metadata",
+      "eta": 1,
+      "use_8bit": true,
+      "update_epoch": 1,
+      "group_aggregation_threshold": 10
     },
     "exp_id": 78
   },
@@ -1877,11 +1967,14 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "FOCF",
-      "log_name": "auto"
+      "log_name": "paper-amazon-toys-rvq-FOCF-complete-metadata",
+      "fair_lambda": 2,
+      "use_8bit": true,
+      "group_aggregation_threshold": 10
     },
     "exp_id": 79
   },
@@ -1959,11 +2052,14 @@
       "decimals": 4,
       "fair-rank": true,
       "use_llm": false,
-      "use_wandb": true,
+      "use_wandb": false,
       "device": "cuda",
       "seed": 42,
       "rank_model": "Reg",
-      "log_name": "auto"
+      "log_name": "paper-amazon-toys-rvq-Reg-complete-metadata",
+      "fair_lambda": 5,
+      "use_8bit": true,
+      "group_aggregation_threshold": 10
     },
     "exp_id": 80
   }

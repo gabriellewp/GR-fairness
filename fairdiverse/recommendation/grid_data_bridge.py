@@ -18,7 +18,7 @@ import yaml
 from google.protobuf import descriptor_pb2, descriptor_pool, message_factory
 
 
-BRIDGE_VERSION = 3
+BRIDGE_VERSION = 4
 def _required_outputs(dataset: str) -> tuple[str, ...]:
     return (
         f"{dataset}.train",
@@ -228,6 +228,8 @@ def _ensure_grid_tfrecords(
             "4",
             "--split-strategy",
             "temporal_loo",
+            "--metadata-text-mode",
+            "complete_metadata",
             "--train-ratio",
             "0.8",
             "--val-ratio",
@@ -340,6 +342,9 @@ def _merged_process_config(run_config: dict) -> dict:
     with dataset_config.open() as stream:
         config.update(yaml.safe_load(stream))
     config.update(run_config)
+    if config.get("metadata_text_mode", "complete_metadata") != "complete_metadata":
+        raise ValueError("This release requires complete_metadata GRID data")
+    config["metadata_text_mode"] = "complete_metadata"
     config.update(
         {
             "history_field": "history_behaviors",
@@ -503,6 +508,8 @@ def ensure_grid_fairdiverse_data(run_config: dict) -> str:
     split_config = json.loads((source_dir / "split_config.json").read_text())
     if split_config.get("strategy") != "temporal_loo":
         raise ValueError(f"Expected temporal_loo GRID data, got {split_config}")
+    if split_config.get("metadata_text_mode") != "complete_metadata":
+        raise ValueError("GRID split_config.json must confirm complete_metadata; regenerate mismatched data")
 
     output_dir = repository_root / "recommendation" / "processed_dataset" / dataset
     required_outputs = _required_outputs(dataset)
@@ -529,6 +536,7 @@ def ensure_grid_fairdiverse_data(run_config: dict) -> str:
             "source_dir": str(source_dir.relative_to(repository_root)),
             "source_fingerprint": source_fingerprint,
             "split_strategy": "temporal_loo",
+            "metadata_text_mode": "complete_metadata",
             "item_num": config["item_num"],
             "user_num": config["user_num"],
             "group_num": config["group_num"],

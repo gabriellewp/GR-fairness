@@ -19,6 +19,8 @@ def build(args):
     config = result["config"]
     slug = DATASETS[dataset]
     source = args.grid_data_dir or f"GRID/data/amazon_{slug}_5core_tfrecords/temporal_loo/complete_metadata"
+    if "description" in Path(source).parts:
+        raise ValueError("Description-only data is excluded; use complete_metadata artifacts")
     config.update(metadata_text_mode="complete_metadata", grid_data_dir=source, grid_item_mapping_path=source+"/item_id_mapping.json",
                   use_wandb=False, reprocess=False, seed=args.seed, device=args.device,
                   log_name=f"{dataset}-{args.model.lower()}-{args.tokenizer}-complete-metadata-s{args.seed}",
@@ -27,6 +29,8 @@ def build(args):
         if not args.checkpoint:
             raise ValueError("GRID requires --checkpoint (the validation-selected native checkpoint)")
         for name, value in (("checkpoint", args.checkpoint), ("sid-path", args.sid_path)):
+            if value and "description" in Path(value).parts:
+                raise ValueError(f"--{name} must use complete_metadata artifacts")
             if value and not (ROOT / value).resolve().is_relative_to((ROOT / "GRID").resolve()):
                 raise ValueError(f"--{name} must live under the embedded GRID directory")
         config.update(grid_checkpoint_path=args.checkpoint,

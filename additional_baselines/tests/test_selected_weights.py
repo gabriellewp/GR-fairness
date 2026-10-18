@@ -55,6 +55,8 @@ class SelectedWeightsTest(unittest.TestCase):
                             (torch.optim.SGD(model.grid.parameters(), lr=.1), {"resumed": True}))
 
         class Regularizer:
+            enabled = False
+
             def __init__(self, model, **kw):
                 self.model = model
 
@@ -62,7 +64,7 @@ class SelectedWeightsTest(unittest.TestCase):
                 return self.model.grid.weight.sum()
 
             def settings(self):
-                return {}
+                return {"variant": "fixture_sprint"}
 
         monkeypatch.setattr(sprint_grid, "GridEncoderSPRINT", Regularizer)
         captured = []
@@ -83,6 +85,7 @@ class SelectedWeightsTest(unittest.TestCase):
                         learning_rate=.001, optimizer_state="require", generation_beam_width=20, train_users=None)
         control = tmp_path / "control.json"
         control.write_text(json.dumps(dict(mode="ordinary", identity=identity, selected_update=1,
+                                          selected_validation_metrics={"at_k": {"5": {"recall": .5}}},
                                           optimizer_audit={"resumed": True})))
         report = runner.run_continuation(mode="sprint", output_dir=tmp_path / "run", control_report=control,
             device="cpu", max_updates=2, validation_interval=1, export_dir=export, data_dir=tmp_path, dataset="toy")

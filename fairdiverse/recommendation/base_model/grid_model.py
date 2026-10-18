@@ -43,6 +43,8 @@ def _local_grid_artifact(path_value: str, *, must_exist: bool = True) -> Path:
     if not path.is_absolute():
         path = _REPOSITORY_ROOT / path
     path = path.resolve()
+    if "description" in path.parts:
+        raise ValueError("Description-only GRID artifacts are excluded; use complete_metadata")
     if not path.is_relative_to(_GRID_ROOT):
         raise ValueError(
             f"GRID artifact must live below embedded {_GRID_ROOT}, got {path}"
@@ -68,6 +70,8 @@ class GRIDBaseModel(nn.Module):
 
     def __init__(self, config: dict) -> None:
         super().__init__()
+        if config.get("metadata_text_mode", "complete_metadata") != "complete_metadata":
+            raise ValueError("This release requires complete_metadata GRID checkpoints")
         self.config = config
         self.num_hierarchies = int(config["num_hierarchies"])
         self.codebook_size = int(config["codebook_size"])

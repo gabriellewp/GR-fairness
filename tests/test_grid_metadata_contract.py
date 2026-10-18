@@ -3,6 +3,8 @@ import importlib.util
 import json
 from pathlib import Path
 
+import pytest
+
 
 MODULE_PATH = Path(__file__).parents[1] / "GRID" / "preprocess_amazon_beauty.py"
 
@@ -28,13 +30,10 @@ def _metadata_file(tmp_path):
     return path
 
 
-def test_description_mode_uses_only_description(tmp_path):
+def test_description_only_metadata_is_rejected(tmp_path):
     module = _load_preprocessor()
-    item = module.load_item_metadata(
-        str(_metadata_file(tmp_path)), "description"
-    )["item-1"]
-
-    assert item["text"] == "Example description"
+    with pytest.raises(ValueError, match="requires complete_metadata"):
+        module.load_item_metadata(str(_metadata_file(tmp_path)), "description")
 
 
 def test_complete_metadata_mode_uses_all_declared_fields(tmp_path):
@@ -68,9 +67,11 @@ def test_amazon_2023_parent_asin_metadata_is_supported(tmp_path):
             "description": ["Pet description", "Second sentence"],
         }) + "\n")
 
-    items = module.load_item_metadata(str(path), "description")
+    items = module.load_item_metadata(str(path))
 
-    assert items["pet-item-1"]["text"] == "Pet description Second sentence"
+    assert items["pet-item-1"]["text"] == (
+        "Title: Pet item; Categories: ; Brand: ; Description: Pet description Second sentence"
+    )
 
 
 def test_amazon_2023_compressed_interaction_csv_is_supported(tmp_path):

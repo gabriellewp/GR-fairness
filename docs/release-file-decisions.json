@@ -10,5 +10,6 @@
   ],
   "configuration_location": "configs/reproduction/",
   "upstream_licenses": "Preserved; GRID notices are split into ordered parts below 8 MB.",
-  "grid_layout": "Ordinary source directory; no submodule or second clone is required."
+  "grid_layout": "Ordinary source directory; no submodule or second clone is required.",
+  "metadata_scope": "GRID experiments use complete_metadata only; description-only checkpoints, results and recipes are excluded."
 }

@@ -51,20 +51,20 @@ def _metadata_text(value) -> str:
 
 def load_item_metadata(
     metadata_path: str,
-    text_mode: str = "description",
+    text_mode: str = "complete_metadata",
 ) -> Dict[str, Dict]:
     """Load item metadata and construct the text used for item embeddings.
 
-    ``description`` uses only the description field. ``complete_metadata``
-    combines title, categories, brand, and description into labelled text.
+    ``complete_metadata`` combines title, categories, brand, and description
+    into labelled text. Description-only experiments are outside this release.
     ``complete`` is accepted as a backwards-compatible CLI alias.
     """
     if text_mode == "complete":
         text_mode = "complete_metadata"
-    if text_mode not in {"description", "complete_metadata"}:
+    if text_mode != "complete_metadata":
         raise ValueError(
             "Unknown metadata text mode "
-            f"{text_mode!r}; expected description or complete_metadata"
+            f"{text_mode!r}; this release requires complete_metadata"
         )
 
     logger.info(
@@ -83,16 +83,13 @@ def load_item_metadata(
                     title = _metadata_text(item.get('title'))
                     description = _metadata_text(item.get('description'))[:1000]
 
-                    if text_mode == "description":
-                        text = description
-                    else:
-                        # Amazon 2023 calls the brand/store field ``store``.
-                        brand = _metadata_text(item.get('brand') or item.get('store'))
-                        categories = str(item.get('categories') or '')
-                        text = (
-                            f"Title: {title}; Categories: {categories}; "
-                            f"Brand: {brand}; Description: {description}"
-                        )
+                    # Amazon 2023 calls the brand/store field ``store``.
+                    brand = _metadata_text(item.get('brand') or item.get('store'))
+                    categories = str(item.get('categories') or '')
+                    text = (
+                        f"Title: {title}; Categories: {categories}; "
+                        f"Brand: {brand}; Description: {description}"
+                    )
                     
                     items[item_id] = {
                         'title': title,
@@ -475,11 +472,7 @@ def main(args):
     split_config = {
         "strategy": args.split_strategy,
         "metadata_text_mode": args.metadata_text_mode,
-        "metadata_text_fields": (
-            ["description"]
-            if args.metadata_text_mode == "description"
-            else ["title", "categories", "brand", "description"]
-        ),
+        "metadata_text_fields": ["title", "categories", "brand", "description"],
         "metadata_text_format_version": 1,
         "seed": args.seed,
         "train_ratio": args.train_ratio if args.split_strategy == "random_split" else None,
@@ -641,11 +634,10 @@ if __name__ == '__main__':
     parser.add_argument(
         '--metadata-text-mode',
         type=str,
-        default='description',
-        choices=['description', 'complete_metadata', 'complete'],
+        default='complete_metadata',
+        choices=['complete_metadata', 'complete'],
         help=(
-            "Text used for item embeddings: description uses only the description "
-            "field; complete_metadata combines title, categories, brand, and "
+            "Text used for item embeddings: complete_metadata combines title, categories, brand, and "
             "description (complete is a compatibility alias)"
         ),
     )
