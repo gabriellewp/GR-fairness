@@ -1,0 +1,2 @@
+# Editable source installation with bundled GRID.
+-e .[grid,rerank,analysis,test]

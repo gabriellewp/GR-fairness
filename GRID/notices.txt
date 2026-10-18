@@ -1,0 +1,12 @@
+Third-party license notices
+
+All notice content is preserved in these ordered parts:
+  third_party_notices/NOTICE-001.txt
+  third_party_notices/NOTICE-002.txt
+  third_party_notices/NOTICE-003.txt
+  third_party_notices/NOTICE-004.txt
+  third_party_notices/NOTICE-005.txt
+  third_party_notices/NOTICE-006.txt
+  third_party_notices/NOTICE-007.txt
+
+Concatenating the parts in order reproduces the original notice content.

@@ -1,0 +1,13 @@
+{
+  "method": "cpfair_fairdiverse",
+  "topk": [
+    1,
+    2
+  ],
+  "trace": false,
+  "parameters": {
+    "group": "brand",
+    "fairness_lambda": 1.0,
+    "order_seed": null
+  }
+}

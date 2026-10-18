@@ -1,0 +1,6 @@
+{dataset_path: data/raw/amazon-mcauley-2014/meta_Beauty_5core.json.gz,
+  eval_split_method: leave_one_out, group_id: 'brand:token', group_val: 0, history_length: 20,
+  item_domain: beauty product, item_id: 'item_id:token', item_val: 1, label_id: 'rating:float',
+  label_threshold: 1, reviews_path: data/raw/amazon-mcauley-2014/reviews_Beauty_5.json.gz,
+  sample_num: 12101, text_id: 'title:token', timestamp: 'timestamp:float', user_id: 'user_id:token',
+  user_val: 1}

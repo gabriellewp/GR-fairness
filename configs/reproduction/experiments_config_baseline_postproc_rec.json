@@ -1,0 +1,440 @@
+[
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "clueweb09",
+    "config": {
+      "model": "CPFair",
+      "log_name": "clueweb09-CPFair-postproc",
+      "topk": [
+        10,
+        20
+      ],
+      "use_llm": false,
+      "rerank_model": "CPFair",
+      "evaluate": {
+        "metrics": [
+          "ndcg",
+          "utility_loss",
+          "mmf",
+          "gini",
+          "entropy",
+          "mmr"
+        ],
+        "k_list": [
+          10,
+          20
+        ]
+      }
+    },
+    "exp_id": 0
+  },
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "clueweb09",
+    "config": {
+      "model": "min_regularizer",
+      "log_name": "clueweb09-min_regularizer-postproc",
+      "topk": [
+        10,
+        20
+      ],
+      "use_llm": false,
+      "rerank_model": "min_regularizer",
+      "evaluate": {
+        "metrics": [
+          "ndcg",
+          "utility_loss",
+          "mmf",
+          "gini",
+          "entropy",
+          "mmr"
+        ],
+        "k_list": [
+          10,
+          20
+        ]
+      }
+    },
+    "exp_id": 1
+  },
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "clueweb09",
+    "config": {
+      "model": "RAIF",
+      "log_name": "clueweb09-RAIF-postproc",
+      "topk": [
+        10,
+        20
+      ],
+      "use_llm": false,
+      "rerank_model": "RAIF",
+      "evaluate": {
+        "metrics": [
+          "ndcg",
+          "utility_loss",
+          "mmf",
+          "gini",
+          "entropy",
+          "mmr"
+        ],
+        "k_list": [
+          10,
+          20
+        ]
+      }
+    },
+    "exp_id": 2
+  },
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "clueweb09",
+    "config": {
+      "model": "P-MMF",
+      "log_name": "clueweb09-P-MMF-postproc",
+      "topk": [
+        10,
+        20
+      ],
+      "use_llm": false,
+      "rerank_model": "P-MMF",
+      "evaluate": {
+        "metrics": [
+          "ndcg",
+          "utility_loss",
+          "mmf",
+          "gini",
+          "entropy",
+          "mmr"
+        ],
+        "k_list": [
+          10,
+          20
+        ]
+      }
+    },
+    "exp_id": 3
+  },
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "clueweb09",
+    "config": {
+      "model": "FairRec",
+      "log_name": "clueweb09-FairRec-postproc",
+      "topk": [
+        10,
+        20
+      ],
+      "use_llm": false,
+      "rerank_model": "FairRec",
+      "evaluate": {
+        "metrics": [
+          "ndcg",
+          "utility_loss",
+          "mmf",
+          "gini",
+          "entropy",
+          "mmr"
+        ],
+        "k_list": [
+          10,
+          20
+        ]
+      }
+    },
+    "exp_id": 4
+  },
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "clueweb09",
+    "config": {
+      "model": "FairRecPlus",
+      "log_name": "clueweb09-FairRecPlus-postproc",
+      "topk": [
+        10,
+        20
+      ],
+      "use_llm": false,
+      "rerank_model": "FairRecPlus",
+      "evaluate": {
+        "metrics": [
+          "ndcg",
+          "utility_loss",
+          "mmf",
+          "gini",
+          "entropy",
+          "mmr"
+        ],
+        "k_list": [
+          10,
+          20
+        ]
+      }
+    },
+    "exp_id": 5
+  },
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "clueweb09",
+    "config": {
+      "model": "FairSync",
+      "log_name": "clueweb09-FairSync-postproc",
+      "topk": [
+        10,
+        20
+      ],
+      "use_llm": false,
+      "rerank_model": "FairSync",
+      "evaluate": {
+        "metrics": [
+          "ndcg",
+          "utility_loss",
+          "mmf",
+          "gini",
+          "entropy",
+          "mmr"
+        ],
+        "k_list": [
+          10,
+          20
+        ]
+      }
+    },
+    "exp_id": 6
+  },
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "clueweb09",
+    "config": {
+      "model": "TaxRank",
+      "log_name": "clueweb09-TaxRank-postproc",
+      "topk": [
+        10,
+        20
+      ],
+      "use_llm": false,
+      "rerank_model": "TaxRank",
+      "evaluate": {
+        "metrics": [
+          "ndcg",
+          "utility_loss",
+          "mmf",
+          "gini",
+          "entropy",
+          "mmr"
+        ],
+        "k_list": [
+          10,
+          20
+        ]
+      }
+    },
+    "exp_id": 7
+  },
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "clueweb09",
+    "config": {
+      "model": "Welf",
+      "log_name": "clueweb09-Welf-postproc",
+      "topk": [
+        10,
+        20
+      ],
+      "use_llm": false,
+      "rerank_model": "Welf",
+      "evaluate": {
+        "metrics": [
+          "ndcg",
+          "utility_loss",
+          "mmf",
+          "gini",
+          "entropy",
+          "mmr"
+        ],
+        "k_list": [
+          10,
+          20
+        ]
+      }
+    },
+    "exp_id": 8
+  },
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "amazon-beauty",
+    "config": {
+      "ranking_store_path": "amazon-beauty-BPR-base",
+      "model": "CPFair",
+      "fair-rank": true,
+      "log_name": "amazon-beauty-base-CPFair",
+      "topk": [
+        10,
+        20
+      ],
+      "fairness_metrics": [
+        "MinMaxRatio",
+        "MMF",
+        "GINI",
+        "Entropy",
+        "EF"
+      ],
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 9
+  },
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "amazon-beauty",
+    "config": {
+      "ranking_store_path": "amazon-beauty-BPR-base",
+      "model": "FairRec",
+      "fair-rank": true,
+      "log_name": "amazon-beauty-base-FairRec",
+      "topk": [
+        10,
+        20
+      ],
+      "fairness_metrics": [
+        "MinMaxRatio",
+        "MMF",
+        "GINI",
+        "Entropy",
+        "EF"
+      ],
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 10
+  },
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "amazon-beauty",
+    "config": {
+      "ranking_store_path": "amazon-beauty-BPR-base",
+      "model": "FairRecPlus",
+      "fair-rank": true,
+      "log_name": "amazon-beauty-base-FairRecPlus",
+      "topk": [
+        10,
+        20
+      ],
+      "fairness_metrics": [
+        "MinMaxRatio",
+        "MMF",
+        "GINI",
+        "Entropy",
+        "EF"
+      ],
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 11
+  },
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "amazon-beauty",
+    "config": {
+      "ranking_store_path": "amazon-beauty-BPR-base",
+      "model": "min_regularizer",
+      "fair-rank": true,
+      "log_name": "amazon-beauty-base-min_regularizer",
+      "topk": [
+        10,
+        20
+      ],
+      "fairness_metrics": [
+        "MinMaxRatio",
+        "MMF",
+        "GINI",
+        "Entropy",
+        "EF"
+      ],
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 12
+  },
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "amazon-beauty",
+    "config": {
+      "ranking_store_path": "amazon-beauty-BPR-base",
+      "model": "RAIF",
+      "fair-rank": true,
+      "log_name": "amazon-beauty-base-RAIF",
+      "topk": [
+        10,
+        20
+      ],
+      "fairness_metrics": [
+        "MinMaxRatio",
+        "MMF",
+        "GINI",
+        "Entropy",
+        "EF"
+      ],
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 13
+  },
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "amazon-beauty",
+    "config": {
+      "ranking_store_path": "amazon-beauty-BPR-base",
+      "model": "TaxRank",
+      "fair-rank": true,
+      "log_name": "amazon-beauty-base-TaxRank",
+      "topk": [
+        10,
+        20
+      ],
+      "fairness_metrics": [
+        "MinMaxRatio",
+        "MMF",
+        "GINI",
+        "Entropy",
+        "EF"
+      ],
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 14
+  },
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "amazon-beauty",
+    "config": {
+      "ranking_store_path": "amazon-beauty-BPR-base",
+      "model": "Welf",
+      "fair-rank": true,
+      "log_name": "amazon-beauty-base-Welf",
+      "topk": [
+        10,
+        20
+      ],
+      "fairness_metrics": [
+        "MinMaxRatio",
+        "MMF",
+        "GINI",
+        "Entropy",
+        "EF"
+      ],
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 15
+  }
+]

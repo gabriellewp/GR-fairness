@@ -1,0 +1,266 @@
+# Configuration for LLM-Reranker Module
+# From Mathematical to Semantic Fairness
+
+# ==========================================
+# LLM Configuration
+# ==========================================
+
+llm:
+  # Type of LLM backend: 'api', 'local', or 'vllm'
+  type: 'api'
+  
+  # LLM model name
+  name: 'gpt-4'
+  
+  # API configuration (for type='api')
+  api:
+    key: 'your-api-key-here'
+    base: 'https://api.openai.com/v1'
+  
+  # Local model paths (for type='local' or type='vllm')
+  local_paths:
+    'llama3-8b': '/path/to/llama3-8b'
+    'llama3-70b': '/path/to/llama3-70b'
+    'mistral-7b': '/path/to/mistral-7b-instruct'
+    'mixtral-8x7b': '/path/to/mixtral-8x7b'
+  
+  # Generation parameters
+  generation:
+    max_tokens: 512
+    temperature: 0.7
+    top_p: 0.9
+  
+  # Optimization settings
+  optimization:
+    use_8bit: false          # Use 8-bit quantization (for local models)
+    use_batch: false         # Batch process multiple users/queries
+    device_map: 'auto'       # Device allocation strategy
+    device: 'cuda'           # 'cuda' or 'cpu'
+
+# ==========================================
+# Fairness Configuration
+# ==========================================
+
+fairness:
+  # Enable fairness-hallucination guardrail
+  use_guardrail: true
+  
+  # Fairness metric thresholds
+  thresholds:
+    gini_max: 0.4            # Maximum acceptable Gini coefficient (0 = perfect equality)
+    mmf_min: 0.3             # Minimum acceptable Max-Min Fairness score
+  
+  # Retry strategy
+  max_retries: 3             # Maximum LLM retry attempts if guardrail fails
+  
+  # MMF calculation
+  mmf_ratio: 0.5             # Ratio of minimum groups to consider
+  
+  # Group weighting (optional)
+  group_weights: null        # null for equal weights, or [w1, w2, w3, ...]
+
+# ==========================================
+# Recommendation Settings
+# ==========================================
+
+recommendation:
+  # Number of items to rerank per user
+  k: 20
+  
+  # Dataset configuration
+  dataset:
+    name: 'steam'
+    data_dir: './fairdiverse/recommendation/processed_dataset/steam'
+    item_metadata_file: 'item_metadata.json'
+  
+  # Model settings
+  model:
+    item_num: 5000
+    group_num: 5             # Number of item groups/categories
+    user_num: 2000
+  
+  # Evaluation metrics
+  evaluation:
+    metrics: ['NDCG@10', 'HR@10', 'MRR', 'Gini', 'MMF', 'Entropy']
+    
+  # Logging
+  logging:
+    save_logs: true
+    log_dir: './logs/llm_reranker/recommendation'
+    log_file: 'reranking_logs.json'
+
+# ==========================================
+# Search Settings
+# ==========================================
+
+search:
+  # Number of documents to return
+  top_k: 20
+  
+  # Dataset configuration
+  dataset:
+    name: 'clueweb09'
+    data_dir: './fairdiverse/search/datasets/clueweb09'
+    doc_metadata_file: 'doc_metadata.json'
+  
+  # Base ranker
+  base_ranker:
+    name: 'bm25'             # 'bm25', 'lambdamart', etc.
+    score_file: 'bm25_scores.pkl'
+  
+  # Query configuration
+  queries:
+    query_file: 'queries.json'
+    # Or specify directly:
+    # direct:
+    #   '1': 'machine learning fairness'
+    #   '2': 'climate change solutions'
+  
+  # Output settings
+  output:
+    tmp_dir: './output/search'
+    result_format: 'trec'    # TREC format for evaluation
+  
+  # Evaluation
+  evaluation:
+    metrics: ['alpha-nDCG@20', 'ERR-IA@20', 'NRBP', 'S-recall@20']
+    qrels_file: './fairdiverse/search/eval/clueweb09/qrels.txt'
+  
+  # Logging
+  logging:
+    save_logs: true
+    log_dir: './logs/llm_reranker/search'
+    log_file: 'reranking_logs.json'
+
+# ==========================================
+# Chain-of-Thought Prompt Templates
+# ==========================================
+
+prompts:
+  # Recommendation prompt
+  recommendation: |
+    You are an expert recommendation system focused on fairness and diversity.
+
+    **Task**: Re-rank the following items to maximize both relevance and fairness.
+
+    **User Context**: {user_context}
+
+    **Current Ranking** (Top {k} items):
+    {current_ranking}
+
+    **Group Distribution**:
+    {group_distribution}
+
+    **Instructions**:
+    1. **Analyze**: Examine the current ranking for potential biases. Consider:
+       - Are certain groups (categories/demographics) over-represented?
+       - Is there semantic diversity in perspectives and content?
+       - Are minority groups getting fair exposure?
+
+    2. **Reason**: Explain step-by-step:
+       - What fairness issues do you observe?
+       - Which items should be promoted/demoted and why?
+       - How does your reranking improve semantic diversity?
+
+    3. **Rerank**: Provide a new ranking that balances relevance with fairness.
+       Output format: A JSON list of item IDs in the new order.
+
+    **Think step-by-step and explain your reasoning:**
+  
+  # Search prompt
+  search: |
+    You are an expert search engine focused on fairness and diversity in information retrieval.
+
+    **User Query**: {query}
+
+    **Current Top {k} Results**:
+    {current_ranking}
+
+    **Group/Category Distribution**:
+    {group_distribution}
+
+    **Task**: Re-rank these search results to provide:
+    1. **Relevance**: Results should still be relevant to the user's query
+    2. **Diversity**: Results should cover multiple perspectives, viewpoints, and subtopics
+    3. **Fairness**: No single group/category should dominate; minority perspectives deserve representation
+
+    **Instructions**:
+    1. **Analyze**: 
+       - What topics/perspectives are currently over-represented?
+       - Which viewpoints are missing or under-represented?
+       - Are there semantic redundancies (similar content)?
+
+    2. **Reason** (think step-by-step):
+       - Why is the current ranking potentially unfair or not diverse?
+       - Which documents provide unique perspectives?
+       - How can we balance relevance with diversity?
+
+    3. **Rerank**: 
+       - Provide a new ranking as a JSON list of document IDs
+       - Balance relevance with semantic diversity
+       - Ensure fair group representation
+
+    **Output Format**: 
+    First explain your reasoning, then provide the reranked list as JSON: ["doc_id_1", "doc_id_2", ...]
+
+    **Your response**:
+
+# ==========================================
+# Experiment Configurations
+# ==========================================
+
+experiments:
+  # Experiment 1: Baseline comparison
+  baseline_comparison:
+    enabled: true
+    methods: ['CPFair', 'PMMF', 'FairRec', 'MMR', 'xQuAD', 'LLM-Reranker']
+    dataset: 'steam'
+    metrics: ['NDCG@10', 'Gini', 'MMF']
+  
+  # Experiment 2: Ablation study
+  ablation:
+    enabled: false
+    variants:
+      - name: 'no_guardrail'
+        use_guardrail: false
+      - name: 'no_cot'
+        use_simple_prompt: true
+      - name: 'strict_fairness'
+        gini_max: 0.3
+        mmf_min: 0.4
+  
+  # Experiment 3: LLM comparison
+  llm_comparison:
+    enabled: false
+    models: ['gpt-4', 'llama3-70b', 'mistral-7b', 'mixtral-8x7b']
+    metric: 'fairness_pass_rate'
+  
+  # Experiment 4: Computational cost
+  efficiency:
+    enabled: false
+    measure: ['latency', 'tokens_used', 'api_cost']
+    baseline: 'CPFair'
+
+# ==========================================
+# Advanced Settings
+# ==========================================
+
+advanced:
+  # Caching
+  cache:
+    enable_llm_cache: true
+    cache_dir: './cache/llm_responses'
+  
+  # Parallel processing
+  parallel:
+    enable: false
+    num_workers: 4
+  
+  # Debug mode
+  debug:
+    verbose: true
+    save_intermediate: false
+    save_prompts: true
+  
+  # Reproducibility
+  seed: 42

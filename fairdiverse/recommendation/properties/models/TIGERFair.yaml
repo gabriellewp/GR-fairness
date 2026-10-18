@@ -1,0 +1,13 @@
+{
+  # Relevance/exposure trade-off. Sweep this for the utility-fairness frontier.
+  lambda: 0.5,
+  # Only non-sentinel TIGER/GRID candidates can be selected.
+  # GRID adds 1 to beam probabilities; unmatched catalogue items equal 1.
+  invalid_score_threshold: 1.0,
+  candidate: 100,
+  relevance_normalization: minmax,
+  fairness_mode: normalized_debt,
+  target_distribution: uniform,
+  historical_exposure_weight: 1.0,
+  position_aware_exposure: true,
+}

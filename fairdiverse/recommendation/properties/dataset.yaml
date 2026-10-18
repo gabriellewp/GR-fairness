@@ -1,0 +1,3 @@
+{item_val: 5, user_val: 5, group_val: 5, group_aggregation_threshold: 10,
+  sample_size: 1.0, valid_ratio: 0.1, test_ratio: 0.1, reprocess: True,
+  sample_num: 200, history_length: 5}

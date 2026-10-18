@@ -1,0 +1,16 @@
+{
+    n_layers: 2,
+    n_heads: 4,
+    embedding_size: 256,
+    inner_size: 1024,
+    hidden_dropout_prob: 0.2,
+    attn_dropout_prob: 0.2,
+    hidden_act: 'gelu',
+    layer_norm_eps: 1e-12,
+    initializer_range: 0.02,
+    sprint_attention_weight: 1.0,
+    sprint_ffn_weight: 0.001,
+    sprint_embedding_weight: 0.1,
+    sprint_attention_temperature: 4.0,
+    sprint_spectral_norm_iters: 1,
+}

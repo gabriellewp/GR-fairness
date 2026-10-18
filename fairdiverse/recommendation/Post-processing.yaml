@@ -1,0 +1,18 @@
+{
+   ###############the ranking score stored path for the post-processing##################
+   ##########If you do not have it, please run the in-processing stage, firstly############
+   ranking_store_path: "2026-1-26_test-bert-llama3",
+   #######################################################################################
+
+
+   ##################Post-processing model and log path############################
+   fair-rank: True, ##if you want to run a fair-rank module on the base models, you should set the value as True
+   model: "CPFair",
+   log_name: "test_post",
+
+   #########################Evaluation parameters#########################################
+   topk: [5, 10, 20],
+   fairness_metrics: ['MinMaxRatio', "MMF", "GINI", "Entropy", "EF"],
+   fairness_type: "Exposure", # ["Exposure", "Utility"], where Exposure only computes the exposure of item group while utility computes the ranking score of item groups
+   #####################################################################################
+}

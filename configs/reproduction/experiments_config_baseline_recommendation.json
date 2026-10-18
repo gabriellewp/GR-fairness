@@ -1,0 +1,2176 @@
+[
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "BPR",
+      "data_type": "pair",
+      "fair-rank": true,
+      "rank_model": "APR",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-BPR-APR",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 0
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "BPR_Seq",
+      "data_type": "pair",
+      "fair-rank": true,
+      "rank_model": "APR",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-BPR_Seq-APR",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 1
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "gru4rec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "APR",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-gru4rec-APR",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 2
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "SASRec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "APR",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-SASRec-APR",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 3
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Llama3",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "APR",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Llama3-APR",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 4
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Qwen2",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "APR",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Qwen2-APR",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 5
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Mistral",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "APR",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Mistral-APR",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 6
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "BPR",
+      "data_type": "pair",
+      "fair-rank": true,
+      "rank_model": "FairDual",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-BPR-FairDual",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 7
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "BPR_Seq",
+      "data_type": "pair",
+      "fair-rank": true,
+      "rank_model": "FairDual",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-BPR_Seq-FairDual",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 8
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "gru4rec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "FairDual",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-gru4rec-FairDual",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 9
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "SASRec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "FairDual",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-SASRec-FairDual",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 10
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Llama3",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "FairDual",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Llama3-FairDual",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 11
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Qwen2",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "FairDual",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Qwen2-FairDual",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 12
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Mistral",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "FairDual",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Mistral-FairDual",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 13
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "BPR",
+      "data_type": "pair",
+      "fair-rank": true,
+      "rank_model": "IPS",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-BPR-IPS",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 14
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "BPR_Seq",
+      "data_type": "pair",
+      "fair-rank": true,
+      "rank_model": "IPS",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-BPR_Seq-IPS",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 15
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "gru4rec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "IPS",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-gru4rec-IPS",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 16
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "SASRec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "IPS",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-SASRec-IPS",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 17
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Llama3",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "IPS",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Llama3-IPS",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 18
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Qwen2",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "IPS",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Qwen2-IPS",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 19
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Mistral",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "IPS",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Mistral-IPS",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 20
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "BPR",
+      "data_type": "pair",
+      "fair-rank": true,
+      "rank_model": "Minmax_SGD",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-BPR-Minmax_SGD",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 21
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "BPR_Seq",
+      "data_type": "pair",
+      "fair-rank": true,
+      "rank_model": "Minmax_SGD",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-BPR_Seq-Minmax_SGD",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 22
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "gru4rec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "Minmax_SGD",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-gru4rec-Minmax_SGD",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 23
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "SASRec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "Minmax_SGD",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-SASRec-Minmax_SGD",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 24
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Llama3",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "Minmax_SGD",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Llama3-Minmax_SGD",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 25
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Qwen2",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "Minmax_SGD",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Qwen2-Minmax_SGD",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 26
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Mistral",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "Minmax_SGD",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Mistral-Minmax_SGD",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 27
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "BPR",
+      "data_type": "pair",
+      "fair-rank": true,
+      "rank_model": "SDRO",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-BPR-SDRO",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 28
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "BPR_Seq",
+      "data_type": "pair",
+      "fair-rank": true,
+      "rank_model": "SDRO",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-BPR_Seq-SDRO",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 29
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "gru4rec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "SDRO",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-gru4rec-SDRO",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 30
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "SASRec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "SDRO",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-SASRec-SDRO",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 31
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Llama3",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "SDRO",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Llama3-SDRO",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 32
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Qwen2",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "SDRO",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Qwen2-SDRO",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 33
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Mistral",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "SDRO",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Mistral-SDRO",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 34
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "BPR",
+      "data_type": "pair",
+      "fair-rank": true,
+      "rank_model": "FairNeg",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-BPR-FairNeg",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 35
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "BPR_Seq",
+      "data_type": "pair",
+      "fair-rank": true,
+      "rank_model": "FairNeg",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-BPR_Seq-FairNeg",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 36
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "BPR",
+      "data_type": "pair",
+      "fair-rank": true,
+      "rank_model": "FOCF",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-BPR-FOCF",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 37
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "BPR_Seq",
+      "data_type": "pair",
+      "fair-rank": true,
+      "rank_model": "FOCF",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-BPR_Seq-FOCF",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 38
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "gru4rec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "FOCF",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-gru4rec-FOCF",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 39
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "SASRec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "FOCF",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-SASRec-FOCF",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 40
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Llama3",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "FOCF",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Llama3-FOCF",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 41
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Qwen2",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "FOCF",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Qwen2-FOCF",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 42
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Mistral",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "FOCF",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Mistral-FOCF",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 43
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "BPR",
+      "data_type": "pair",
+      "fair-rank": true,
+      "rank_model": "Reg",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-BPR-Reg",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 44
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "BPR_Seq",
+      "data_type": "pair",
+      "fair-rank": true,
+      "rank_model": "Reg",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-BPR_Seq-Reg",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 45
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "gru4rec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "Reg",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-gru4rec-Reg",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 46
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "SASRec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "Reg",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-SASRec-Reg",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 47
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Llama3",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "Reg",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Llama3-Reg",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 48
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Qwen2",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "Reg",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Qwen2-Reg",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 49
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Mistral",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "Reg",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Mistral-Reg",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 50
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Llama3",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "FairPrompts",
+      "use_llm": true,
+      "reprocess": true,
+      "log_name": "steam-Llama3-FairPrompts",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 51
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Qwen2",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "FairPrompts",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Qwen2-FairPrompts",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 52
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "Mistral",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "FairPrompts",
+      "use_llm": true,
+      "reprocess": false,
+      "log_name": "steam-Mistral-FairPrompts",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 53
+  },
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "steam",
+    "config": {
+      "ranking_store_path": "steam-base-mf",
+      "model": "CPFair",
+      "fair-rank": false,
+      "log_name": "steam-base-mf-CPFair",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "fairness_metrics": [
+        "MinMaxRatio",
+        "MMF",
+        "GINI",
+        "Entropy",
+        "EF"
+      ],
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 54
+  },
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "steam",
+    "config": {
+      "ranking_store_path": "steam-base-mf",
+      "model": "FairRec",
+      "fair-rank": false,
+      "log_name": "steam-base-mf-FairRec",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "fairness_metrics": [
+        "MinMaxRatio",
+        "MMF",
+        "GINI",
+        "Entropy",
+        "EF"
+      ],
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 55
+  },
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "steam",
+    "config": {
+      "ranking_store_path": "steam-base-mf",
+      "model": "PMMF",
+      "fair-rank": false,
+      "log_name": "steam-base-mf-PMMF",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "fairness_metrics": [
+        "MinMaxRatio",
+        "MMF",
+        "GINI",
+        "Entropy",
+        "EF"
+      ],
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 56
+  },
+  {
+    "task": "recommendation",
+    "stage": "post-processing",
+    "dataset": "steam",
+    "config": {
+      "ranking_store_path": "steam-base-mf",
+      "model": "Welf",
+      "fair-rank": false,
+      "log_name": "steam-base-mf-Welf",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "fairness_metrics": [
+        "MinMaxRatio",
+        "MMF",
+        "GINI",
+        "Entropy",
+        "EF"
+      ],
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 57
+  },
+  {
+    "task": "search",
+    "stage": "post-processing",
+    "dataset": "clueweb09",
+    "config": {
+      "model": "xquad",
+      "log_name": "ClueWeb09-xquad",
+      "device": "cpu",
+      "mode": "train"
+    },
+    "exp_id": 58
+  },
+  {
+    "task": "search",
+    "stage": "post-processing",
+    "dataset": "clueweb09",
+    "config": {
+      "model": "pm2",
+      "log_name": "ClueWeb09-pm2",
+      "device": "cpu",
+      "mode": "train"
+    },
+    "exp_id": 59
+  },
+  {
+    "task": "search",
+    "stage": "pre-processing",
+    "dataset": "compas",
+    "config": {
+      "model": "LFR",
+      "log_name": "compas-LFR-train_original-test_original",
+      "train_ranker_config": {
+        "preprocessing_model": "LFR",
+        "name": "Ranklib",
+        "ranker_path": "fairdiverse/search/ranker_model/modules/ranklib",
+        "rel_max": 500,
+        "ranker": "RankNet",
+        "ranker_id": 1,
+        "metric": "NDCG",
+        "top_k": 10,
+        "lr": 0.0001,
+        "epochs": 10,
+        "train_data": [
+          "original"
+        ],
+        "test_data": [
+          "original"
+        ],
+        "evaluate": {
+          "metrics": [
+            "diversity",
+            "exposure",
+            "individual",
+            "igf"
+          ],
+          "rankings": [
+            "Y",
+            "Y_fair",
+            "Y__Y"
+          ],
+          "k_list": [
+            "100",
+            "200",
+            "300",
+            "500"
+          ]
+        }
+      }
+    },
+    "exp_id": 60
+  },
+  {
+    "task": "search",
+    "stage": "pre-processing",
+    "dataset": "compas",
+    "config": {
+      "model": "LFR",
+      "log_name": "compas-LFR-train_original-test_fair",
+      "train_ranker_config": {
+        "preprocessing_model": "LFR",
+        "name": "Ranklib",
+        "ranker_path": "fairdiverse/search/ranker_model/modules/ranklib",
+        "rel_max": 500,
+        "ranker": "RankNet",
+        "ranker_id": 1,
+        "metric": "NDCG",
+        "top_k": 10,
+        "lr": 0.0001,
+        "epochs": 10,
+        "train_data": [
+          "original"
+        ],
+        "test_data": [
+          "fair"
+        ],
+        "evaluate": {
+          "metrics": [
+            "diversity",
+            "exposure",
+            "individual",
+            "igf"
+          ],
+          "rankings": [
+            "Y",
+            "Y_fair",
+            "Y__Y_fair"
+          ],
+          "k_list": [
+            "100",
+            "200",
+            "300",
+            "500"
+          ]
+        }
+      }
+    },
+    "exp_id": 61
+  },
+  {
+    "task": "search",
+    "stage": "pre-processing",
+    "dataset": "compas",
+    "config": {
+      "model": "LFR",
+      "log_name": "compas-LFR-train_fair-test_original",
+      "train_ranker_config": {
+        "preprocessing_model": "LFR",
+        "name": "Ranklib",
+        "ranker_path": "fairdiverse/search/ranker_model/modules/ranklib",
+        "rel_max": 500,
+        "ranker": "RankNet",
+        "ranker_id": 1,
+        "metric": "NDCG",
+        "top_k": 10,
+        "lr": 0.0001,
+        "epochs": 10,
+        "train_data": [
+          "fair"
+        ],
+        "test_data": [
+          "original"
+        ],
+        "evaluate": {
+          "metrics": [
+            "diversity",
+            "exposure",
+            "individual",
+            "igf"
+          ],
+          "rankings": [
+            "Y",
+            "Y_fair",
+            "Y_fair__Y"
+          ],
+          "k_list": [
+            "100",
+            "200",
+            "300",
+            "500"
+          ]
+        }
+      }
+    },
+    "exp_id": 62
+  },
+  {
+    "task": "search",
+    "stage": "pre-processing",
+    "dataset": "compas",
+    "config": {
+      "model": "LFR",
+      "log_name": "compas-LFR-train_fair-test_fair",
+      "train_ranker_config": {
+        "preprocessing_model": "LFR",
+        "name": "Ranklib",
+        "ranker_path": "fairdiverse/search/ranker_model/modules/ranklib",
+        "rel_max": 500,
+        "ranker": "RankNet",
+        "ranker_id": 1,
+        "metric": "NDCG",
+        "top_k": 10,
+        "lr": 0.0001,
+        "epochs": 10,
+        "train_data": [
+          "fair"
+        ],
+        "test_data": [
+          "fair"
+        ],
+        "evaluate": {
+          "metrics": [
+            "diversity",
+            "exposure",
+            "individual",
+            "igf"
+          ],
+          "rankings": [
+            "Y",
+            "Y_fair",
+            "Y_fair__Y_fair"
+          ],
+          "k_list": [
+            "100",
+            "200",
+            "300",
+            "500"
+          ]
+        }
+      }
+    },
+    "exp_id": 63
+  },
+  {
+    "task": "search",
+    "stage": "pre-processing",
+    "dataset": "compas",
+    "config": {
+      "model": "CIFRank",
+      "log_name": "compas-CIFRank-train_original-test_original",
+      "train_ranker_config": {
+        "preprocessing_model": "CIFRank",
+        "name": "Ranklib",
+        "ranker_path": "fairdiverse/search/ranker_model/modules/ranklib",
+        "rel_max": 500,
+        "ranker": "RankNet",
+        "ranker_id": 1,
+        "metric": "NDCG",
+        "top_k": 10,
+        "lr": 0.0001,
+        "epochs": 10,
+        "train_data": [
+          "original"
+        ],
+        "test_data": [
+          "original"
+        ],
+        "evaluate": {
+          "metrics": [
+            "diversity",
+            "exposure",
+            "individual",
+            "igf"
+          ],
+          "rankings": [
+            "Y",
+            "Y_fair",
+            "Y__Y"
+          ],
+          "k_list": [
+            "100",
+            "200",
+            "300",
+            "500"
+          ]
+        }
+      }
+    },
+    "exp_id": 64
+  },
+  {
+    "task": "search",
+    "stage": "pre-processing",
+    "dataset": "compas",
+    "config": {
+      "model": "CIFRank",
+      "log_name": "compas-CIFRank-train_original-test_fair",
+      "train_ranker_config": {
+        "preprocessing_model": "CIFRank",
+        "name": "Ranklib",
+        "ranker_path": "fairdiverse/search/ranker_model/modules/ranklib",
+        "rel_max": 500,
+        "ranker": "RankNet",
+        "ranker_id": 1,
+        "metric": "NDCG",
+        "top_k": 10,
+        "lr": 0.0001,
+        "epochs": 10,
+        "train_data": [
+          "original"
+        ],
+        "test_data": [
+          "fair"
+        ],
+        "evaluate": {
+          "metrics": [
+            "diversity",
+            "exposure",
+            "individual",
+            "igf"
+          ],
+          "rankings": [
+            "Y",
+            "Y_fair",
+            "Y__Y_fair"
+          ],
+          "k_list": [
+            "100",
+            "200",
+            "300",
+            "500"
+          ]
+        }
+      }
+    },
+    "exp_id": 65
+  },
+  {
+    "task": "search",
+    "stage": "pre-processing",
+    "dataset": "compas",
+    "config": {
+      "model": "CIFRank",
+      "log_name": "compas-CIFRank-train_fair-test_original",
+      "train_ranker_config": {
+        "preprocessing_model": "CIFRank",
+        "name": "Ranklib",
+        "ranker_path": "fairdiverse/search/ranker_model/modules/ranklib",
+        "rel_max": 500,
+        "ranker": "RankNet",
+        "ranker_id": 1,
+        "metric": "NDCG",
+        "top_k": 10,
+        "lr": 0.0001,
+        "epochs": 10,
+        "train_data": [
+          "fair"
+        ],
+        "test_data": [
+          "original"
+        ],
+        "evaluate": {
+          "metrics": [
+            "diversity",
+            "exposure",
+            "individual",
+            "igf"
+          ],
+          "rankings": [
+            "Y",
+            "Y_fair",
+            "Y_fair__Y"
+          ],
+          "k_list": [
+            "100",
+            "200",
+            "300",
+            "500"
+          ]
+        }
+      }
+    },
+    "exp_id": 66
+  },
+  {
+    "task": "search",
+    "stage": "pre-processing",
+    "dataset": "compas",
+    "config": {
+      "model": "CIFRank",
+      "log_name": "compas-CIFRank-train_fair-test_fair",
+      "train_ranker_config": {
+        "preprocessing_model": "CIFRank",
+        "name": "Ranklib",
+        "ranker_path": "fairdiverse/search/ranker_model/modules/ranklib",
+        "rel_max": 500,
+        "ranker": "RankNet",
+        "ranker_id": 1,
+        "metric": "NDCG",
+        "top_k": 10,
+        "lr": 0.0001,
+        "epochs": 10,
+        "train_data": [
+          "fair"
+        ],
+        "test_data": [
+          "fair"
+        ],
+        "evaluate": {
+          "metrics": [
+            "diversity",
+            "exposure",
+            "individual",
+            "igf"
+          ],
+          "rankings": [
+            "Y",
+            "Y_fair",
+            "Y_fair__Y_fair"
+          ],
+          "k_list": [
+            "100",
+            "200",
+            "300",
+            "500"
+          ]
+        }
+      }
+    },
+    "exp_id": 67
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "amazon-beauty",
+    "config": {
+      "model": "SASRec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "APR",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "amazon-beauty-SASRec-APR",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 68
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "amazon-beauty",
+    "config": {
+      "model": "SASRec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "FairDual",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "amazon-beauty-SASRec-FairDual",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 69
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "amazon-beauty",
+    "config": {
+      "model": "SASRec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "IPS",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "amazon-beauty-SASRec-IPS",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 70
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "amazon-beauty",
+    "config": {
+      "model": "SASRec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "Minmax_SGD",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "amazon-beauty-SASRec-Minmax_SGD",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 71
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "amazon-beauty",
+    "config": {
+      "model": "SASRec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "SDRO",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "amazon-beauty-SASRec-SDRO",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 72
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "amazon-beauty",
+    "config": {
+      "model": "SASRec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "FOCF",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "amazon-beauty-SASRec-FOCF",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 73
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "amazon-beauty",
+    "config": {
+      "model": "SASRec",
+      "data_type": "sequential",
+      "fair-rank": true,
+      "rank_model": "Reg",
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "amazon-beauty-SASRec-Reg",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true,
+      "fairness_type": "Exposure"
+    },
+    "exp_id": 74
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "steam",
+    "config": {
+      "model": "SASRec",
+      "data_type": "sequential",
+      "fair-rank": false,
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "steam-SASRec-base",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true
+    },
+    "exp_id": 75
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "amazon-beauty",
+    "config": {
+      "model": "SASRec",
+      "data_type": "sequential",
+      "fair-rank": false,
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "amazon-beauty-SASRec-base",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true
+    },
+    "exp_id": 76
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "amazon-sports",
+    "config": {
+      "model": "SASRec",
+      "data_type": "sequential",
+      "fair-rank": false,
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "amazon-sports-SASRec-base",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true
+    },
+    "exp_id": 77
+  },
+  {
+    "task": "recommendation",
+    "stage": "in-processing",
+    "dataset": "amazon-toys",
+    "config": {
+      "model": "SASRec",
+      "data_type": "sequential",
+      "fair-rank": false,
+      "use_llm": false,
+      "reprocess": false,
+      "log_name": "amazon-toys-SASRec-base",
+      "epoch": 20,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "device": "cpu",
+      "topk": [
+        5,
+        10,
+        20
+      ],
+      "store_scores": true
+    },
+    "exp_id": 78
+  }
+]

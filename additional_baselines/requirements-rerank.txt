@@ -1,0 +1,3 @@
+# The local PMMF.py uses CVXPY's default QP solver. Its standard installation
+# includes CLARABEL, OSQP and SCS; no commercial solver is needed.
+cvxpy>=1.6,<2

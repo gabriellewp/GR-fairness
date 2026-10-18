@@ -1,0 +1,47 @@
+# @package _global_
+# RQ-VAE tokenizer settings from the original GRID baseline.
+# This inherits data/model wiring from rqvae_train_flat and overrides every
+# setting that differs in the original baseline.
+defaults:
+  - rqvae_train_flat
+  - _self_
+
+data_loading:
+  datamodule:
+    train_dataloader_config:
+      batch_size_per_device: 2048
+
+model:
+  encoder:
+    hidden_dim_list:
+      - 768
+      - 256
+      - 128
+    output_dim: 64
+  decoder:
+    hidden_dim_list:
+      - 128
+      - 256
+      - 768
+
+callbacks:
+  model_checkpoint:
+    monitor: train/loss
+    save_last: null
+    save_top_k: 1
+    mode: min
+    every_n_train_steps: ${trainer.max_steps}
+
+trainer:
+  max_steps: 3000
+  max_epochs: 10
+  precision: bf16-mixed
+
+optim:
+  optimizer:
+    lr: 0.001
+    weight_decay: 0.0
+  scheduler:
+    warmup_steps: 1000
+    min_ratio: 0.01
+    scheduler_steps: ${trainer.max_steps}

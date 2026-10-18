@@ -1,0 +1,15 @@
+{
+  "method": "pmmf_fairdiverse",
+  "topk": [5, 10],
+  "trace": false,
+  "parameters": {
+    "group": "brand",
+    "fairness_lambda": 30.0,
+    "learning_rate": 0.5,
+    "gamma": 0.2,
+    "weights": {"provider_a": 1.0, "provider_b": 1.0},
+    "horizon": null,
+    "order_seed": null,
+    "max_dense_bytes": 536870912
+  }
+}

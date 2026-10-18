@@ -1,0 +1,13 @@
+{
+   ####search result diversification model settings
+   model: "xquad",
+
+   log_name: "ClueWeb09-xQuAD",
+   model_save_dir: "model/",
+   tmp_dir: "tmp/",
+
+   mode: "train",
+   best_model_list: [],
+
+   device: "cpu",
+}

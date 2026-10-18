@@ -1,0 +1,6 @@
+{
+   eval_steps: 10,
+   eval_batch_size: 8,
+   tmp_dir: "tmp/",
+   best_model_list: [],
+}

@@ -1,0 +1,5 @@
+# RankNet baseline configuration (no preprocessing)
+# This is the base ranker without any fairness preprocessing applied
+# No pre_processing_config means this is a baseline without fairness preprocessing
+name: 'RankNet'
+description: 'Baseline RankNet ranker without preprocessing'

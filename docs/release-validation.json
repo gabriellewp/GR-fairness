@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-18",
+  "scope": "Clean source snapshot; CPU checks with existing local dependencies",
+  "focused_tests": {
+    "passed": 79,
+    "failed": 0,
+    "groups": [
+      "portable release workflows, bundled GRID independence and experiment naming",
+      "continuation selection and generation parity",
+      "continuation tuning, deadline pilots and joint fairness matrix",
+      "paired activity and popularity analysis"
+    ],
+    "notes": [
+      "Analysis test collection initially required ijson; rerun successfully with the existing local analysis dependency.",
+      "Bundled GRID independence checks passed again after removing a site-specific path from test assertions."
+    ]
+  },
+  "static_checks": {
+    "python_json_shell_syntax": "passed",
+    "markdown_links": "passed",
+    "credential_pattern_scan": "passed"
+  },
+  "installation": {
+    "editable_no_dependency_resolution": "passed",
+    "wheel_build_no_dependency_resolution": "passed",
+    "wheel_configuration_assets": "passed"
+  },
+  "synthetic_workflow": {
+    "candidate_artifact": "passed",
+    "evaluation": "passed",
+    "cpfair_reranking": "passed"
+  },
+  "distribution": {
+    "grid_is_bundled_source": true,
+    "git_submodules": false,
+    "imported_research_history": false,
+    "all_files_below_8_MB": true,
+    "third_party_notices_preserved_byte_for_byte": true,
+    "notice_parts": 7
+  },
+  "limitations": [
+    "No clean-environment dependency download/solver resolution was performed.",
+    "Full dataset preparation, GPU training and real Slurm submission were not rerun.",
+    "The complete scientific and optional upstream test suites were not rerun.",
+    "Some optional report and analysis helpers require locally generated research artifact inventories.",
+    "Upstream source formatting is retained, including existing trailing whitespace.",
+    "Anonymous mirror publication and its final anonymization review remain separate steps."
+  ]
+}

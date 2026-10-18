@@ -1,0 +1,19 @@
+# @package _global_
+# Inference counterpart of rqvae_train_original_flat. The architecture must
+# exactly match the checkpoint produced by the original GRID RQ-VAE settings.
+defaults:
+  - rqvae_inference_flat
+  - _self_
+
+model:
+  encoder:
+    hidden_dim_list:
+      - 768
+      - 256
+      - 128
+    output_dim: 64
+  decoder:
+    hidden_dim_list:
+      - 128
+      - 256
+      - 768

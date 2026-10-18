@@ -1,0 +1,13 @@
+{
+    user_id: user_id:token,
+    item_id: product_id:token,
+    group_id: publisher:token,
+    label_id: play_hours:float,
+    timestamp: timestamp:float,
+    text_id: title:token,
+    label_threshold: 10, #threshold means the label exceed the value will be regarded as 1, otherwise, it will be accounted into 0
+    #group_aggregation_threshold: 10, #threshold means the group less the value will be regarded as ''in-frequent group''
+    item_domain: game,
+    sample_num: 4308,  # full-catalog evaluation (all items as candidates)
+    eval_split_method: leave_one_out,  # leave-one-out matches TIGER/paper protocol (1 test positive per user)
+}

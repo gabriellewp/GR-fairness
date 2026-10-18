@@ -1,0 +1,6 @@
+{
+   model: "PM2",
+   device: "cpu",
+   lambda: 0.5,
+   model_save_dir: "fairdiverse/search/processed_dataset/clueweb09",
+}

@@ -1,0 +1,14 @@
+{
+  "policy": "Source, tests, portable launchers, configuration recipes, and maintained documentation are included.",
+  "excluded_categories": [
+    "Raw and processed datasets",
+    "Model checkpoints, embeddings and candidate exports",
+    "Per-user result files",
+    "Experiment logs and caches",
+    "Build outputs",
+    "Dated reports, slides, and intermediary audits"
+  ],
+  "configuration_location": "configs/reproduction/",
+  "upstream_licenses": "Preserved; GRID notices are split into ordered parts below 8 MB.",
+  "grid_layout": "Ordinary source directory; no submodule or second clone is required."
+}

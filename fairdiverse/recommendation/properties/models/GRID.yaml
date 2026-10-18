@@ -1,0 +1,126 @@
+# GRID model configuration
+# Reference: "Generative Recommendation with Semantic IDs" (GRID)
+#
+# Prerequisites
+# -------------
+# Before training, run the GRID offline pipeline to produce semantic IDs:
+#
+#   Step 1 — Generate LLM embeddings:
+#     cd GRID
+#     python -m src.inference experiment=sem_embeds_inference_flat \
+#         data_dir=<your_data_dir>
+#
+#   Step 2 — Learn RQ-KMeans codebook and assign SIDs:
+#     python -m src.train experiment=rkmeans_train_flat \
+#         data_dir=<your_data_dir> \
+#         embedding_path=<step1_output>/merged_predictions_tensor.pt \
+#         num_hierarchies=3 codebook_width=256
+#
+#     python -m src.inference experiment=rkmeans_inference_flat \
+#         data_dir=<your_data_dir> \
+#         embedding_path=<step1_output>/merged_predictions_tensor.pt \
+#         num_hierarchies=3 codebook_width=256 \
+#         ckpt_path=<step2_ckpt>
+#
+# The output pickle/pt file from Step 2 is your `sid_path`.
+# It should be a tensor of shape (num_items, num_hierarchies) or a
+# dict {item_id -> [sid_0, ..., sid_{H-1}]}.
+
+# --- SID parameters (must match your offline GRID run) ---
+grid_tokenizer: rkmeans
+sid_path: "GRID/outputs/beauty_5core/temporal_loo/rkmeans/step2b_sid_inference/pickle/merged_predictions_tensor_clean.pt"
+grid_item_mapping_path: null
+# Optional native Lightning checkpoint produced by GRID/run_independent_pipeline.sh.
+# Leave null only when intentionally training a fresh model in FairDiverse.
+grid_checkpoint_path: null
+# Set true to evaluate the local native checkpoint without retraining it in
+# FairDiverse. This is the first parity checkpoint before fair-rank experiments.
+grid_eval_only: false
+# Compute NDCG/HR/MRR directly from the target's position in GRID's generated
+# beam, rather than reranking FairDiverse's sampled candidate set.
+grid_native_metrics: false
+# Fine-tune a loaded native checkpoint with a FairDiverse in-processing
+# fairness objective. The experiment config must also set fair-rank=true.
+grid_fair_finetune: false
+grid_fair_finetune_steps: 0
+num_hierarchies: 3                   # number of RQ codebook levels (H)
+codebook_size: 256                   # centroids per level
+# Standalone GRID uses -1 as sequence padding. This avoids colliding with real
+# item id 0 in FairDiverse's item mapping.
+padding_item_id: -1
+
+# --- T5 architecture (matches tiger_inference_flat.yaml defaults) ---
+# embedding_size maps to T5 d_model
+embedding_size: 128
+# d_kv: key/value projection dim inside each attention head
+d_kv: 64
+# inner_size maps to T5 d_ff (feed-forward inner dim)
+inner_size: 1024
+# n_heads maps to T5 num_heads
+n_heads: 6
+# n_layers maps to T5 num_layers (applied to both encoder and decoder)
+n_layers: 4
+# hidden_dropout_prob maps to T5 dropout_rate
+hidden_dropout_prob: 0.15
+# top_k_for_generation: beam width used during evaluation (generate())
+top_k_for_generation: 10
+# Log target-in-beam and per-level target-prefix coverage during ranking eval.
+beam_diagnostics: false
+
+# --- causal sub-sequence data augmentation (mirrors original GRID training) ---
+# Set to true to enable collate_with_sid_causal_duplicate-style augmentation.
+# For each training sample (history, target), generates all causal sub-sequences
+# of the history (all starting positions), multiplying training diversity by
+# ~history_length.  Strongly recommended for matching original GRID performance.
+use_causal_augmentation: true
+# DataLoader batch size BEFORE augmentation.  The collate function expands
+# each pre-batch to up to batch_size augmented sequences.
+# In this integration, larger pre-batches are materially faster because they
+# reduce DataLoader/collate overhead while still capping the post-augmentation
+# batch at `batch_size`. Empirically, 512 reproduced the best speed/quality
+# tradeoff on amazon-beauty better than the earlier 32-sample setting.
+causal_pre_batch_size: 512
+
+# --- optimiser (can be overridden in In-processing.yaml) ---
+learning_rate: 1.0e-3
+weight_decay: 1.0e-4         # L2 regularisation — matches GRID's weight_decay=0.0001
+batch_size: 1024
+# Gradient accumulation. In this codebase, using 1 with the larger causal
+# pre-batch above has been substantially faster than the earlier 16-step setup.
+accumulate_grad_batches: 1
+# --- user ID conditioning (TIGER hashing trick) ---
+# Set to a value >= number of unique users to enable user token prepending.
+# Paper uses 2000; set null to disable (no user embedding created).
+num_user_bins: null
+
+# --- hierarchy level loss weights ---
+# Optional list of H weights, one per codebook level.
+# null = uniform summed CE over hierarchy levels, matching standalone GRID.
+# Optional explicit weights are used as provided, without normalization.
+level_loss_weights: null
+
+# --- sequence length (Fix #4) ---
+# Pad/trim the encoder input SID sequence to this fixed length after SEP
+# injection. Mirrors the four-token GRID/TIGER configuration: 40 * 4 = 160.
+# null = dynamic (current behaviour, sequence length = L*(H+1) per batch).
+sequence_length: 160
+
+# --- beam search prefix validation (Fix #3) ---
+# The verified standalone config leaves should_check_prefix at its native
+# default (false). Keep this false for parity; test constrained generation as a
+# later, explicit ablation.
+use_prefix_validation: false
+
+# --- TIGER architecture extras ---
+# mlp_layers: replace every T5LayerFF in encoder+decoder with a deeper MLP.
+# Original GRID uses a 2-layer FF replacement.
+mlp_layers: 2
+
+# weight_tying: in the original GRID, this only controls encoder/decoder *input*
+# embedding sharing (both already use item_sid_embedding_table_encoder).
+# The *output* projection is always a separate decoder_mlp (Linear, bias=False).
+weight_tying: true
+
+# --- ranking loss weight (BPR for training/inference alignment) ---
+# Set to 0 to run CE-only, matching standalone GRID.
+ranking_loss_weight: 0.0
