@@ -81,15 +81,6 @@ are excluded from the release tree. The curation policy is recorded in
 [release-file-decisions.json](docs/release-file-decisions.json).
 See [release notes](docs/release-notes.md) for migration and validation limits.
 
-## License
-
-The FairDiverse integration package and original contributions in this release
-are provided under the [MIT license](LICENSE), except where separate third-party
-terms apply. The upstream RUCAIBox copyright notice and existing source
-attributions are preserved.
-
-Bundled [GRID code](GRID/LICENSE) is licensed separately by Snap Inc. for
-**non-commercial research use only**, with its [third-party notices](GRID/notices.txt)
-retained. The root MIT license does not replace these terms or automatically
-license datasets, metadata, pretrained models, or checkpoints. See
-[license scope and artifact terms](docs/licensing.md) before redistributing them.
+The project retains the [MIT license](LICENSE). Upstream FairDiverse was authored
+by Chen Xu and contributors; existing source attribution is preserved. GRID has
+its own [license](GRID/LICENSE).
