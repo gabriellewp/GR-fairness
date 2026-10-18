@@ -84,7 +84,3 @@ See [release notes](docs/release-notes.md) for migration and validation limits.
 Regenerate the historical paper tables and plots from bundled aggregate results:
 `python -m scripts.paper.reproduce --output-dir artifacts/paper`.
 See [paper reproduction and archived audits](docs/reproducibility.md#regenerate-the-paper-outputs).
-
-The project retains the [MIT license](LICENSE). Upstream FairDiverse was authored
-by Chen Xu and contributors; existing source attribution is preserved. GRID has
-its own [license](GRID/LICENSE).
