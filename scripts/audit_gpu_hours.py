@@ -10,8 +10,9 @@ import re
 import subprocess
 
 
-ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "docs/compute_cost_audit_20261015"
+from scripts.paper.archive_paths import optional_source_root, optional_output_root
+ROOT = optional_source_root(Path(__file__).resolve().parents[1])
+OUT = optional_output_root(ROOT / "docs/compute_cost_audit_20261015")
 # Matched to the paths in the parameter inventory and successful output logs.
 CONTINUATION_JOBS = {
     "351446": ("amazon-beauty", "rkmeans", "ordinary"),

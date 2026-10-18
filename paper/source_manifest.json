@@ -1,0 +1,324 @@
+{
+  "source_repository": "FairDiverse",
+  "source_branch": "generative-fairness-baselines",
+  "source_commit": "69ffef5ee2068e781dac6295699e9cfef54f595b",
+  "source_files": [
+    {
+      "path": "docs/make_training_interventions.py",
+      "sha256": "284b45210332326ae8bd49c1f67fc3210104c7b1fa434ec210ce389a65a14ca5"
+    },
+    {
+      "path": "docs/make_training_interventions_combined.py",
+      "sha256": "5b821536e694f59e592cb73dd6c899f428f01b3ca12af29cc68c9f9ea2f3efcf"
+    },
+    {
+      "path": "docs/make_popularity_fairness.py",
+      "sha256": "f90b843a63f08564a115e913716c24178947d1033e96f1c3acadb0377583cde1"
+    },
+    {
+      "path": "docs/reranking_summary_audit_20261016/make_table.py",
+      "sha256": "34a468254987d9aafb9d3e06ef02b76a6e3586edfc4773f4c1aca2d3769c024a"
+    },
+    {
+      "path": "docs/rq2_comparison_draft_20261011/assemble_tables.py",
+      "sha256": "b39ccb5e44a51532063bb9044036400ec5b77db459658654b5aa5d316719d484"
+    },
+    {
+      "path": "docs/rkmeans_reranking_analysis_20261011/assemble_results.py",
+      "sha256": "85201c029070612c5986dc0d4e87e14b327b2355d7b138e91ba818c26af66ac8"
+    },
+    {
+      "path": "docs/reranking_summary_audit_20261016/audit.py",
+      "sha256": "7b6c7066d3288e356273407e7bf45474770697a53b31943a43fc4b9ca6e0ca86"
+    },
+    {
+      "path": "docs/training_protocol_audit_20261016/audit.py",
+      "sha256": "8c8c8a8c56a39b40866237607b05f11bd684345e45f3003175d24edacf1e5006"
+    },
+    {
+      "path": "docs/continuation_settings_audit_20261014/audit.py",
+      "sha256": "60e153b069484805990349bcdb42f0d14f7b72034df96b78762a55ee8af15587"
+    },
+    {
+      "path": "scripts/audit_dataset_preprocessing.py",
+      "sha256": "acff1a031043035a7f60e52969e1abeb4e96a8587d82ef3f521c29ebaee89d57"
+    },
+    {
+      "path": "scripts/audit_methodology_artifacts.py",
+      "sha256": "e9421a490c42b6a166700a2834aa1c16a291da53c7176b885934e51fb9d6e25b"
+    },
+    {
+      "path": "scripts/audit_rq1_grid.py",
+      "sha256": "b44e256f089083db94835717be083255c853fc37acf800abbf4acdfe94d52044"
+    },
+    {
+      "path": "docs/rq2_comparison_draft_20261011/comparison_results.csv",
+      "sha256": "97a0bf2327c78aa5d09f04ce808144878ddad08cf54b470468a5daac65c55a08"
+    },
+    {
+      "path": "docs/rq2_comparison_draft_20261011/comparison_tables.tex",
+      "sha256": "2884de88dd5c61e630efa9292a539abc9a23c73caf4de244845ffa4ecdbfd3b8"
+    },
+    {
+      "path": "docs/popularity_fairness_20261017/case_00_amazon-beauty_rkmeans/complete.json",
+      "sha256": "eb8ed22dca093e1c1e2228a8fb56bffbe23ce180d759a28f4f2bc989ef9df829"
+    },
+    {
+      "path": "docs/popularity_fairness_20261017/case_01_amazon-beauty_rvq/complete.json",
+      "sha256": "1383a8838d81ef23462b9822cf7bbbcef439577f538e3672645a62149a9bac4f"
+    },
+    {
+      "path": "docs/popularity_fairness_20261017/case_02_amazon-beauty_rqvae/complete.json",
+      "sha256": "2c30c4cefd3cd93dbcd6e491fdf2426793546afe4bdc46f7f896133eb21f8cc5"
+    },
+    {
+      "path": "docs/popularity_fairness_20261017/case_03_amazon-sports_rkmeans/complete.json",
+      "sha256": "73469078c87e2f59d20c6bf6ee01e18ab48eb8b00b2624257f90dfd2bb145ad6"
+    },
+    {
+      "path": "docs/popularity_fairness_20261017/case_04_amazon-sports_rvq/complete.json",
+      "sha256": "eebba048e8c8e94547ff8912f8883d52ee047335e78c973d7bd2246385c459f3"
+    },
+    {
+      "path": "docs/popularity_fairness_20261017/case_05_amazon-sports_rqvae/complete.json",
+      "sha256": "8686163782da6c20f956f3bcf4206bab9252a199eb6819a21023c65788f005a4"
+    },
+    {
+      "path": "docs/popularity_fairness_20261017/case_06_amazon-toys_rkmeans/complete.json",
+      "sha256": "898c26ca610fa1ad6306dcf132e5bc999d3043ac7b5e9f3b8e419b4b1f2e7756"
+    },
+    {
+      "path": "docs/popularity_fairness_20261017/case_07_amazon-toys_rvq/complete.json",
+      "sha256": "87dda26cbd70cffc92276e793a608eb7bd2992f7e583a32ab8c1dbb021e94ae1"
+    },
+    {
+      "path": "docs/popularity_fairness_20261017/case_08_amazon-toys_rqvae/complete.json",
+      "sha256": "cbe07b61c7f5731f92da458054d36e3b34db8637e9e01f78f2f58178f2959469"
+    },
+    {
+      "path": "docs/popularity_fairness_20261017/case_09_amazon-pet-supplies_rkmeans/complete.json",
+      "sha256": "c5665b0bd56e3059794f6a4b1bdb03a1c7542ac5186553a4de1a524281372a37"
+    },
+    {
+      "path": "docs/popularity_fairness_20261017/case_10_amazon-pet-supplies_rvq/complete.json",
+      "sha256": "fe7f812c5c8f7e2235018db4a62932966c7978eb99fa3a7d0f62d141ff67a359"
+    },
+    {
+      "path": "docs/popularity_fairness_20261017/case_11_amazon-pet-supplies_rqvae/complete.json",
+      "sha256": "013852267feb459bf6bd57242adce27a4cbd14965412601a8f63a08439252b63"
+    },
+    {
+      "path": "docs/paired_activity_all_methods_20261016/effects.csv",
+      "sha256": "e91d61455baf3201cca336111d7c4d4641c4372f12abd33d58b3381b32383032"
+    },
+    {
+      "path": "docs/paired_activity_all_methods_20261016/activity_contrasts.csv",
+      "sha256": "ab196c7519ea655661ef9ecd645330909471abd7e152ab4af30d4f72a21524e0"
+    },
+    {
+      "path": "docs/reranking_summary_audit_20261016/case_changes.csv",
+      "sha256": "e50313720d0fe0d136734dc2d1d658d62ce5830897f27f1d191af8a4b089420e"
+    },
+    {
+      "path": "docs/rq1_grid_analysis_20261011/paper_vs_fresh_local_results.csv",
+      "sha256": "5daed3fbec2e45d0eb083c11dea7873448a71a6c5e3ebb04ebbb5afdc3a9796f"
+    },
+    {
+      "path": "docs/rq2_comparison_draft_20261011/pet_published_reference.json",
+      "sha256": "6935f482a7a341a0d32c5e2ce0aa902a1796384cb864c89c025d5f072d667712"
+    },
+    {
+      "path": "docs/rq2_comparison_draft_20261011/comparison_results.csv",
+      "sha256": "97a0bf2327c78aa5d09f04ce808144878ddad08cf54b470468a5daac65c55a08"
+    },
+    {
+      "path": "output/rq2_classic_evaluation/356042/case_0/test_full/results.json",
+      "sha256": "6f4b83eb66cc64bfd361e8bf4484092867d171847b41e50eb0708bf7db39ef59",
+      "kind": "external_saved_record"
+    },
+    {
+      "path": "output/rq2_classic_evaluation/356042/case_1/test_full/results.json",
+      "sha256": "6133efe88bde4b06730df825efbd37c62f8dba7fbe9f818d4a67458898ecc113",
+      "kind": "external_saved_record"
+    },
+    {
+      "path": "output/rq2_classic_evaluation/356042/case_2/test_full/results.json",
+      "sha256": "ca99cf4ba6a4fda369aeb682045221993d1d1b6d1c45777f90b91de31f11b46c",
+      "kind": "external_saved_record"
+    },
+    {
+      "path": "output/rq2_classic_evaluation/356042/case_3/test_full/results.json",
+      "sha256": "ed3146f94a6ef16e4c704aa7ddfa9b2cfbd91f9f67ad9c74ca58a38648946fa4",
+      "kind": "external_saved_record"
+    },
+    {
+      "path": "output/rq2_classic_evaluation/356042/case_4/test_full/results.json",
+      "sha256": "7a663f3fd9a830b1d97930ec31f79bf3eb9bc770c2054216c05f358125500c2c",
+      "kind": "external_saved_record"
+    },
+    {
+      "path": "output/rq2_classic_evaluation/356042/case_5/test_full/results.json",
+      "sha256": "73f7c0bba408dcc0a2680ddc5b4dce0d2a504144c4133f2fd2bbf9cf8dbf66e6",
+      "kind": "external_saved_record"
+    },
+    {
+      "path": "output/rq2_classic_evaluation/pet_sasrec_358819/test_full/results.json",
+      "sha256": "0df3a460babfd05ed9cb0724dcdcddc1702e02a7da1a37088d0de7f318c3a3b8",
+      "kind": "external_saved_record"
+    },
+    {
+      "path": "output/rq2_classic_evaluation/356042/case_6/test_full/results.json",
+      "sha256": "48a0989fa213d21030222d74521e65a3fa63b8594807a60f2718a184e51e8b8a",
+      "kind": "external_saved_record"
+    },
+    {
+      "path": "recommendation/processed_dataset/amazon-beauty/dataset_stats.json",
+      "sha256": "8d1da0f0cc084512c3b7fa5d6269fcd16270e983b87d75eb338b3ecbd172d521",
+      "kind": "external_saved_record"
+    },
+    {
+      "path": "recommendation/processed_dataset/amazon-beauty/user_activity_metadata.json",
+      "sha256": "e808c950b89b88ef966175c52b21968f811d91c943f243bd8b0da7d481d96f43",
+      "kind": "external_saved_record"
+    },
+    {
+      "path": "recommendation/processed_dataset/amazon-sports/dataset_stats.json",
+      "sha256": "63d88559c914cd45585ba6c7a7fd93d7b2c65ef96f836c2b4bdf71d49e3df05a",
+      "kind": "external_saved_record"
+    },
+    {
+      "path": "recommendation/processed_dataset/amazon-sports/user_activity_metadata.json",
+      "sha256": "0c4e5fbc4974405e4b9d0b693971bfb9f725cd701bf68fac9fcdb85934b9489e",
+      "kind": "external_saved_record"
+    },
+    {
+      "path": "recommendation/processed_dataset/amazon-toys/dataset_stats.json",
+      "sha256": "3dc4265051a28e43071369efe08d7e387e266975ad076500ff8ccd3bfd819500",
+      "kind": "external_saved_record"
+    },
+    {
+      "path": "recommendation/processed_dataset/amazon-toys/user_activity_metadata.json",
+      "sha256": "e13e8101122084a8519a574c389a8391f6226e2e9a9a05437e4b0873c657bb30",
+      "kind": "external_saved_record"
+    },
+    {
+      "path": "recommendation/processed_dataset/amazon-pet-supplies/dataset_stats.json",
+      "sha256": "84386f66764ceab19a42d1c6dcafd8c5c45d42882c91e1ced6767ed86d151e50",
+      "kind": "external_saved_record"
+    },
+    {
+      "path": "recommendation/processed_dataset/amazon-pet-supplies/user_activity_metadata.json",
+      "sha256": "caaeec05c6ef68bc2a60bc2ea9c5d6a39595c206a29e32aace81656acf39054b",
+      "kind": "external_saved_record"
+    },
+    {
+      "path": "docs/experiment_parameters_20261014/parameter_inventory.json",
+      "sha256": "1c8c2e4414f971da2b78ce07a18e2119292558547aae67a7c0dbefc1985d089b"
+    }
+  ],
+  "sanitization": "Aggregate metrics only; source/W&B links, personal paths, artifact inventories and per-user records excluded. Scientific values preserved.",
+  "inputs": [
+    {
+      "path": "paper/inputs/activity/activity_contrasts.csv",
+      "sha256": "2bb81b46d0a9d3565b376509222f9391b3fa81e480f23ff6fbc47b4b4e6ab4de"
+    },
+    {
+      "path": "paper/inputs/activity/effects.csv",
+      "sha256": "e0277d8cf1b9b8adc358394c482e4e9a10e8f0cf6c49bf980dce84c9674ebcdd"
+    },
+    {
+      "path": "paper/inputs/classic_configuration_provenance.json",
+      "sha256": "5c728dc6a82b761f2e8ccb9241c0634ceedf7757f78d9a1966a0814ce87ed939"
+    },
+    {
+      "path": "paper/inputs/comparison_results.csv",
+      "sha256": "c4c0cae9e62917e0188353b7a94030e6fb5d7af1e424e1e971dcfa84ec0347bb"
+    },
+    {
+      "path": "paper/inputs/comparison_tables.tex",
+      "sha256": "2884de88dd5c61e630efa9292a539abc9a23c73caf4de244845ffa4ecdbfd3b8"
+    },
+    {
+      "path": "paper/inputs/dataset_statistics.json",
+      "sha256": "7666f858ad1dde7127e7cdb62b1f2015282528696853565b1fb873fb6cde0630"
+    },
+    {
+      "path": "paper/inputs/pet_published_reference.json",
+      "sha256": "42c251c9dad3a4d45baba73e8bf22931f7e8ae588546afd78ad5121660270e23"
+    },
+    {
+      "path": "paper/inputs/popularity/case_00_amazon-beauty_rkmeans/complete.json",
+      "sha256": "7eac4a74b84e7ed9f7cda3f91efa501f117f22aacf3579f3bff02d17bcd2ec4c"
+    },
+    {
+      "path": "paper/inputs/popularity/case_01_amazon-beauty_rvq/complete.json",
+      "sha256": "f95867304e8b98456a160f42f3d5e18aa3a2a163d9b99cc4b10787151fdffa97"
+    },
+    {
+      "path": "paper/inputs/popularity/case_02_amazon-beauty_rqvae/complete.json",
+      "sha256": "0238ee2caf1e3301bc6e2c3318b2fbd8da9de6ec0928b89b70d54b7b9ecd695d"
+    },
+    {
+      "path": "paper/inputs/popularity/case_03_amazon-sports_rkmeans/complete.json",
+      "sha256": "209714ab32996b797aa6661e65f2931e84925d29ab255ec983dd4132bb4b4a93"
+    },
+    {
+      "path": "paper/inputs/popularity/case_04_amazon-sports_rvq/complete.json",
+      "sha256": "363cc490b9c960a69297b6435a861b9038f40055e05ef185116a63944a700fcd"
+    },
+    {
+      "path": "paper/inputs/popularity/case_05_amazon-sports_rqvae/complete.json",
+      "sha256": "404bc2c0c73928f95c6bf00b75203672e06884f880ddf7543b69af1c45e1a044"
+    },
+    {
+      "path": "paper/inputs/popularity/case_06_amazon-toys_rkmeans/complete.json",
+      "sha256": "fd7c149eae778a805951de70f9a528900fe4220eb36cf5d99cfae1426542a2fe"
+    },
+    {
+      "path": "paper/inputs/popularity/case_07_amazon-toys_rvq/complete.json",
+      "sha256": "7d0e5bfe19ebf9d6d1f8371ba021814862aa45a6cc83329b8c069a0fc36adb2a"
+    },
+    {
+      "path": "paper/inputs/popularity/case_08_amazon-toys_rqvae/complete.json",
+      "sha256": "3bf8a1e9d43d6877947c35bcf5351c54af3e56c25bb9e0743dbc70f6cfbe99d9"
+    },
+    {
+      "path": "paper/inputs/popularity/case_09_amazon-pet-supplies_rkmeans/complete.json",
+      "sha256": "61e813171b453a205bbc988f0ece621753a01c6286372d66c17355f22321b722"
+    },
+    {
+      "path": "paper/inputs/popularity/case_10_amazon-pet-supplies_rvq/complete.json",
+      "sha256": "6d068e5ebbc52768e9b7258a47bdc50cd77408fa312927d966b7ebeb2749094d"
+    },
+    {
+      "path": "paper/inputs/popularity/case_11_amazon-pet-supplies_rqvae/complete.json",
+      "sha256": "cf04c642a43ecaaf4d27f691e55d12b2ee01740497e8f9f86d696965397a6255"
+    },
+    {
+      "path": "paper/inputs/published_grid_reference.csv",
+      "sha256": "b7058914f09901a07f6855ec7896b407802e6bf491201d078701d40a6451f5ac"
+    },
+    {
+      "path": "paper/inputs/reranking/case_changes.csv",
+      "sha256": "17dab0a518da8ae338af2703247090f8d6ad085fbc8ca55a1f386b9f6f868c13"
+    }
+  ],
+  "restored_programs": [
+    "scripts/paper/__init__.py",
+    "scripts/paper/archive/assemble_rkmeans_results.py",
+    "scripts/paper/archive/assemble_tables.py",
+    "scripts/paper/archive/audit_continuation_settings.py",
+    "scripts/paper/archive/audit_dataset_preprocessing.py",
+    "scripts/paper/archive/audit_methodology_artifacts.py",
+    "scripts/paper/archive/audit_reranking.py",
+    "scripts/paper/archive/audit_rq1_grid.py",
+    "scripts/paper/archive/audit_training_protocol.py",
+    "scripts/paper/archive_paths.py",
+    "scripts/paper/make_popularity_fairness.py",
+    "scripts/paper/make_reranking_table.py",
+    "scripts/paper/make_training_interventions.py",
+    "scripts/paper/make_training_interventions_combined.py",
+    "scripts/paper/reproduce.py",
+    "scripts/paper/run_archive.py"
+  ]
+}

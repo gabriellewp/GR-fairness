@@ -8,6 +8,7 @@ def evaluate(inputs, cutoffs=(5, 10), rankings=None, *, user_fairness=None):
 
     Missing positions are misses. IDCG includes targets outside the candidate
     set. All mapped catalog groups, including unexposed groups, enter fairness.
+    ``entropy`` remains in nats for compatibility; ``entropy_bits`` is base two.
     """
     inputs.validate()
     cutoffs = list(cutoffs)
@@ -58,6 +59,7 @@ def evaluate(inputs, cutoffs=(5, 10), rankings=None, *, user_fairness=None):
                 "exposure_counts": counts, "exposure_shares": shares,
                 "gini": sum((2 * i - count - 1) * v for i, v in enumerate(values, 1)) / (count * total) if total else None,
                 "entropy": -sum(p * math.log(p) for p in shares.values() if p) if total else None,
+                "entropy_bits": -sum(p * math.log2(p) for p in shares.values() if p) if total else None,
                 "min_max_ratio": values[0] / values[-1] if total else None,
                 "exposed_group_fraction": sum(v > 0 for v in values) / count,
                 "candidate_group_coverage": sum(len({inputs.item_groups[name][i] for i in r.candidate_ids}) / count for r in inputs.requests) / n,

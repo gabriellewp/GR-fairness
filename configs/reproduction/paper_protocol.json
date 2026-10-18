@@ -1,0 +1,3162 @@
+{
+  "cohort": "historical comparison; later joint-fairness-selected extensions excluded",
+  "metadata_text_mode": "complete_metadata",
+  "source_commit": "69ffef5ee2068e781dac6295699e9cfef54f595b",
+  "seed": 42,
+  "case_manifest": "complete_metadata_manifest.json",
+  "classic_recipes": "experiments_config_paper_classics.json",
+  "fairdiverse_protocol": {
+    "optimizer": "fresh Adam",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "updates": 100,
+    "accumulation": 16,
+    "fairdual_updates": 50,
+    "fairdual_accumulation": 4,
+    "zero_step_eligible": false,
+    "validation": "one recorded call at the update cap; HR@5"
+  },
+  "continuation_protocol": {
+    "optimizer": "resume Adam",
+    "max_updates": 32,
+    "accumulation": 16,
+    "validation_updates": [
+      0,
+      8,
+      16,
+      24,
+      32
+    ],
+    "selection": "maximum validation Recall@5; earlier ties; update zero eligible",
+    "rw_target": "history",
+    "rw_strength": 1,
+    "sprint": {
+      "scope": "encoder self-attention and FFN plus shared SID embedding",
+      "attention_weight": 1,
+      "ffn_weight": 0.001,
+      "embedding_weight": 0.1,
+      "temperature": 4,
+      "iterations": 1
+    }
+  },
+  "reranking_protocol": {
+    "selection_cutoff": 5,
+    "max_relative_recall_loss": 0.05,
+    "rr_fit_cutoffs": [
+      1,
+      5,
+      10,
+      20
+    ],
+    "beam_width": 100,
+    "sports_rvq_saved_candidate_beam_width": 300
+  },
+  "evaluation_protocols": {
+    "native_and_candidate": "generated eligible candidates; absent targets are misses",
+    "historical_fairdiverse": "float32 probability + 1; target-first full catalog; NumPy descending quicksort; not freshly harmonized",
+    "entropy": "bits in paper tables; artifact API entropy is nats and entropy_bits is bits"
+  },
+  "environment": {
+    "paper_reported": {
+      "python": "3.10.14",
+      "torch": "2.6.0+cu124",
+      "transformers": "4.47.0",
+      "lightning": "2.5.0"
+    },
+    "release_integration": {
+      "transformers": "4.57.6",
+      "definition": "setup.py"
+    },
+    "limitation": "The paper-reported environment is historical provenance, not a tested lockfile for the current release"
+  },
+  "native_generator_settings": [
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rkmeans",
+      "monitor": "val/recall@5",
+      "max_steps": 320000,
+      "accumulation": 16
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rvq",
+      "monitor": "val/recall@5",
+      "max_steps": 320000,
+      "accumulation": 16
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rqvae",
+      "monitor": "val/recall@5",
+      "max_steps": 320000,
+      "accumulation": 16
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rkmeans",
+      "monitor": "val/recall@5",
+      "max_steps": 320000,
+      "accumulation": 16
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rvq",
+      "monitor": "val/recall@5",
+      "max_steps": 320000,
+      "accumulation": 16
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rqvae",
+      "monitor": "val/recall@5",
+      "max_steps": 320000,
+      "accumulation": 16
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rkmeans",
+      "monitor": "val/recall@5",
+      "max_steps": 320000,
+      "accumulation": 16
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rvq",
+      "monitor": "val/recall@5",
+      "max_steps": 320000,
+      "accumulation": 16
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rqvae",
+      "monitor": "val/recall@5",
+      "max_steps": 320000,
+      "accumulation": 16
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rkmeans",
+      "monitor": "val/ndcg@10",
+      "max_steps": 10000,
+      "accumulation": 16
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rvq",
+      "monitor": "val/ndcg@10",
+      "max_steps": 10000,
+      "accumulation": 16
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rqvae",
+      "monitor": "val/ndcg@10",
+      "max_steps": 10000,
+      "accumulation": 16
+    }
+  ],
+  "matched_continuations": [
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rkmeans",
+      "method": "GRID: ordinary continuation",
+      "selected_update": 24,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 258605,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "ordinary",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rkmeans/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003700.ckpt",
+            "sha256": "ea74affef0478aa047d0d6877ae3f00f877b68102ff7b0a8d7ded4bf6f111af4"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rkmeans/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "d55f5883aca29fc4e6568fccd94c8b990e3b85b4e588602e788a6ce0488ebcce"
+          },
+          "seed": 42,
+          "plan_sha256": "b7cfe9497a425380371572a000a9ed5e10cb06099b0daf9e5a9da28dfe29b05a",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rkmeans",
+      "method": "GRID + IFairLRS RW (training)",
+      "selected_update": 24,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 258605,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "rw",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rkmeans/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003700.ckpt",
+            "sha256": "ea74affef0478aa047d0d6877ae3f00f877b68102ff7b0a8d7ded4bf6f111af4"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rkmeans/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "d55f5883aca29fc4e6568fccd94c8b990e3b85b4e588602e788a6ce0488ebcce"
+          },
+          "seed": 42,
+          "plan_sha256": "b7cfe9497a425380371572a000a9ed5e10cb06099b0daf9e5a9da28dfe29b05a",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": {
+          "history_counts": {
+            "4": 1560434,
+            "3": 276705,
+            "1": 120124,
+            "2": 162724,
+            "0": 75853
+          },
+          "target_counts": {
+            "3": 39424,
+            "1": 17776,
+            "4": 167628,
+            "2": 22357,
+            "0": 11420
+          },
+          "history_shares": {
+            "0": 0.03454395584377733,
+            "1": 0.054705260856893034,
+            "2": 0.07410558146313029,
+            "3": 0.12601327965607695,
+            "4": 0.7106319221801224
+          },
+          "target_shares": {
+            "0": 0.044160012374084026,
+            "1": 0.06873803677423097,
+            "2": 0.08645231144022737,
+            "3": 0.1524487152220568,
+            "4": 0.6482009241894008
+          },
+          "weights": {
+            "0": 0.7822451577040311,
+            "1": 0.7958513717313694,
+            "2": 0.8571845012422422,
+            "3": 0.8265945663925471,
+            "4": 1.0963142687104217
+          },
+          "zero_target_policy": "zero_weight_unused_group",
+          "reduction": "mean(weight * per_example_loss)"
+        },
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rkmeans",
+      "method": "GRID + SPRINT (training)",
+      "selected_update": 8,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 258605,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "sprint",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rkmeans/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003700.ckpt",
+            "sha256": "ea74affef0478aa047d0d6877ae3f00f877b68102ff7b0a8d7ded4bf6f111af4"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rkmeans/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "d55f5883aca29fc4e6568fccd94c8b990e3b85b4e588602e788a6ce0488ebcce"
+          },
+          "seed": 42,
+          "plan_sha256": "b7cfe9497a425380371572a000a9ed5e10cb06099b0daf9e5a9da28dfe29b05a",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": {
+          "variant": "sprint_grid_encoder_adaptation",
+          "scope": "encoder_self_attention_and_ffn_plus_sid_embedding",
+          "attention_weight": 1.0,
+          "ffn_weight": 0.001,
+          "embedding_weight": 0.1,
+          "temperature": 4.0,
+          "spectral_norm_iterations": 1,
+          "shared_embedding_policy": "encoder_table_once",
+          "ffn_policy": "product_of_all_linear_spectral_norms_per_encoder_block",
+          "attention_maps": "native_post_dropout_maps_with_expanded_valid_token_mask"
+        }
+      }
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rvq",
+      "method": "GRID: ordinary continuation",
+      "selected_update": 24,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 258605,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "ordinary",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rvq/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=004400.ckpt",
+            "sha256": "9a469da5627c9aa1f1a7d5f5f724fcb216fc63cb40e4e244c113b8aada603fe3"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rvq/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "f61ffc1e989963710ddc6e6e1c2e0df086c6ee9b4cd0d956096c8ddb0b89c01c"
+          },
+          "seed": 42,
+          "plan_sha256": "b7cfe9497a425380371572a000a9ed5e10cb06099b0daf9e5a9da28dfe29b05a",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rvq",
+      "method": "GRID + IFairLRS RW (training)",
+      "selected_update": 24,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 258605,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "rw",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rvq/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=004400.ckpt",
+            "sha256": "9a469da5627c9aa1f1a7d5f5f724fcb216fc63cb40e4e244c113b8aada603fe3"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rvq/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "f61ffc1e989963710ddc6e6e1c2e0df086c6ee9b4cd0d956096c8ddb0b89c01c"
+          },
+          "seed": 42,
+          "plan_sha256": "b7cfe9497a425380371572a000a9ed5e10cb06099b0daf9e5a9da28dfe29b05a",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": {
+          "history_counts": {
+            "4": 1560434,
+            "3": 276705,
+            "1": 120124,
+            "2": 162724,
+            "0": 75853
+          },
+          "target_counts": {
+            "3": 39424,
+            "1": 17776,
+            "4": 167628,
+            "2": 22357,
+            "0": 11420
+          },
+          "history_shares": {
+            "0": 0.03454395584377733,
+            "1": 0.054705260856893034,
+            "2": 0.07410558146313029,
+            "3": 0.12601327965607695,
+            "4": 0.7106319221801224
+          },
+          "target_shares": {
+            "0": 0.044160012374084026,
+            "1": 0.06873803677423097,
+            "2": 0.08645231144022737,
+            "3": 0.1524487152220568,
+            "4": 0.6482009241894008
+          },
+          "weights": {
+            "0": 0.7822451577040311,
+            "1": 0.7958513717313694,
+            "2": 0.8571845012422422,
+            "3": 0.8265945663925471,
+            "4": 1.0963142687104217
+          },
+          "zero_target_policy": "zero_weight_unused_group",
+          "reduction": "mean(weight * per_example_loss)"
+        },
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rvq",
+      "method": "GRID + SPRINT (training)",
+      "selected_update": 16,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 258605,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "sprint",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rvq/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=004400.ckpt",
+            "sha256": "9a469da5627c9aa1f1a7d5f5f724fcb216fc63cb40e4e244c113b8aada603fe3"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rvq/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "f61ffc1e989963710ddc6e6e1c2e0df086c6ee9b4cd0d956096c8ddb0b89c01c"
+          },
+          "seed": 42,
+          "plan_sha256": "b7cfe9497a425380371572a000a9ed5e10cb06099b0daf9e5a9da28dfe29b05a",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": {
+          "variant": "sprint_grid_encoder_adaptation",
+          "scope": "encoder_self_attention_and_ffn_plus_sid_embedding",
+          "attention_weight": 1.0,
+          "ffn_weight": 0.001,
+          "embedding_weight": 0.1,
+          "temperature": 4.0,
+          "spectral_norm_iterations": 1,
+          "shared_embedding_policy": "encoder_table_once",
+          "ffn_policy": "product_of_all_linear_spectral_norms_per_encoder_block",
+          "attention_maps": "native_post_dropout_maps_with_expanded_valid_token_mask"
+        }
+      }
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rqvae",
+      "method": "GRID: ordinary continuation",
+      "selected_update": 16,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 258605,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "ordinary",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rqvae/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003800.ckpt",
+            "sha256": "af63bdb40122531c19671bc310dd59e54686b169fb731a9f12e9f8889cb82942"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rqvae/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "83b7eeab7e6a3964596c8056c0589f0b0400e730c30dd363e8a375fc99dff5ac"
+          },
+          "seed": 42,
+          "plan_sha256": "b7cfe9497a425380371572a000a9ed5e10cb06099b0daf9e5a9da28dfe29b05a",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rqvae",
+      "method": "GRID + IFairLRS RW (training)",
+      "selected_update": 16,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 258605,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "rw",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rqvae/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003800.ckpt",
+            "sha256": "af63bdb40122531c19671bc310dd59e54686b169fb731a9f12e9f8889cb82942"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rqvae/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "83b7eeab7e6a3964596c8056c0589f0b0400e730c30dd363e8a375fc99dff5ac"
+          },
+          "seed": 42,
+          "plan_sha256": "b7cfe9497a425380371572a000a9ed5e10cb06099b0daf9e5a9da28dfe29b05a",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": {
+          "history_counts": {
+            "4": 1560434,
+            "3": 276705,
+            "1": 120124,
+            "2": 162724,
+            "0": 75853
+          },
+          "target_counts": {
+            "3": 39424,
+            "1": 17776,
+            "4": 167628,
+            "2": 22357,
+            "0": 11420
+          },
+          "history_shares": {
+            "0": 0.03454395584377733,
+            "1": 0.054705260856893034,
+            "2": 0.07410558146313029,
+            "3": 0.12601327965607695,
+            "4": 0.7106319221801224
+          },
+          "target_shares": {
+            "0": 0.044160012374084026,
+            "1": 0.06873803677423097,
+            "2": 0.08645231144022737,
+            "3": 0.1524487152220568,
+            "4": 0.6482009241894008
+          },
+          "weights": {
+            "0": 0.7822451577040311,
+            "1": 0.7958513717313694,
+            "2": 0.8571845012422422,
+            "3": 0.8265945663925471,
+            "4": 1.0963142687104217
+          },
+          "zero_target_policy": "zero_weight_unused_group",
+          "reduction": "mean(weight * per_example_loss)"
+        },
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rqvae",
+      "method": "GRID + SPRINT (training)",
+      "selected_update": 32,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 258605,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "sprint",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rqvae/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003800.ckpt",
+            "sha256": "af63bdb40122531c19671bc310dd59e54686b169fb731a9f12e9f8889cb82942"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/beauty_5core/temporal_loo/complete_metadata/rqvae/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "83b7eeab7e6a3964596c8056c0589f0b0400e730c30dd363e8a375fc99dff5ac"
+          },
+          "seed": 42,
+          "plan_sha256": "b7cfe9497a425380371572a000a9ed5e10cb06099b0daf9e5a9da28dfe29b05a",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": {
+          "variant": "sprint_grid_encoder_adaptation",
+          "scope": "encoder_self_attention_and_ffn_plus_sid_embedding",
+          "attention_weight": 1.0,
+          "ffn_weight": 0.001,
+          "embedding_weight": 0.1,
+          "temperature": 4.0,
+          "spectral_norm_iterations": 1,
+          "shared_embedding_policy": "encoder_table_once",
+          "ffn_policy": "product_of_all_linear_spectral_norms_per_encoder_block",
+          "attention_maps": "native_post_dropout_maps_with_expanded_valid_token_mask"
+        }
+      }
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rkmeans",
+      "method": "GRID: ordinary continuation",
+      "selected_update": 32,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 256326,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "ordinary",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rkmeans/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003600-v1.ckpt",
+            "sha256": "2f11584181eda46e7715e3403606ecaf47fca966b6d2f5b11d5baae1fb54abf4"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rkmeans/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "0b1e0dfe462205aaaed6859b6ea7d24698d44bdc4dcda0be2cbbb74a0cc9f4b6"
+          },
+          "seed": 42,
+          "plan_sha256": "f1d1ceaf23e3c11131cf841ab86d2ab0f28bf9094fbd01442fab55116fe37f8c",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rkmeans",
+      "method": "GRID + IFairLRS RW (training)",
+      "selected_update": 32,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 256326,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "rw",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rkmeans/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003600-v1.ckpt",
+            "sha256": "2f11584181eda46e7715e3403606ecaf47fca966b6d2f5b11d5baae1fb54abf4"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rkmeans/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "0b1e0dfe462205aaaed6859b6ea7d24698d44bdc4dcda0be2cbbb74a0cc9f4b6"
+          },
+          "seed": 42,
+          "plan_sha256": "f1d1ceaf23e3c11131cf841ab86d2ab0f28bf9094fbd01442fab55116fe37f8c",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": {
+          "history_counts": {
+            "3": 271409,
+            "4": 1013592,
+            "2": 168906,
+            "0": 70380,
+            "1": 120479
+          },
+          "target_counts": {
+            "4": 151428,
+            "2": 26917,
+            "3": 44246,
+            "0": 13085,
+            "1": 20650
+          },
+          "history_shares": {
+            "0": 0.042790281413891094,
+            "1": 0.07324993342518024,
+            "2": 0.10269302745800922,
+            "3": 0.16501374663629964,
+            "4": 0.6162530110666198
+          },
+          "target_shares": {
+            "0": 0.05104827446298854,
+            "1": 0.08056147249986345,
+            "2": 0.10501080655103268,
+            "3": 0.17261612165757667,
+            "4": 0.5907633248285387
+          },
+          "weights": {
+            "0": 0.8382316907678294,
+            "1": 0.909242732936695,
+            "2": 0.977928185020681,
+            "3": 0.955957908518197,
+            "4": 1.0431470356516785
+          },
+          "zero_target_policy": "zero_weight_unused_group",
+          "reduction": "mean(weight * per_example_loss)"
+        },
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rkmeans",
+      "method": "GRID + SPRINT (training)",
+      "selected_update": 32,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 256326,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "sprint",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rkmeans/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003600-v1.ckpt",
+            "sha256": "2f11584181eda46e7715e3403606ecaf47fca966b6d2f5b11d5baae1fb54abf4"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rkmeans/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "0b1e0dfe462205aaaed6859b6ea7d24698d44bdc4dcda0be2cbbb74a0cc9f4b6"
+          },
+          "seed": 42,
+          "plan_sha256": "f1d1ceaf23e3c11131cf841ab86d2ab0f28bf9094fbd01442fab55116fe37f8c",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": {
+          "variant": "sprint_grid_encoder_adaptation",
+          "scope": "encoder_self_attention_and_ffn_plus_sid_embedding",
+          "attention_weight": 1.0,
+          "ffn_weight": 0.001,
+          "embedding_weight": 0.1,
+          "temperature": 4.0,
+          "spectral_norm_iterations": 1,
+          "shared_embedding_policy": "encoder_table_once",
+          "ffn_policy": "product_of_all_linear_spectral_norms_per_encoder_block",
+          "attention_maps": "native_post_dropout_maps_with_expanded_valid_token_mask"
+        }
+      }
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rvq",
+      "method": "GRID: ordinary continuation",
+      "selected_update": 32,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 256326,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "ordinary",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rvq/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003500.ckpt",
+            "sha256": "de28388f347f47deedcbce919ac4cb348b494dc19399a3a1b528a9e229a70417"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rvq/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "f1f15c0959f7e8cd2cc86d35a116f2465ee8f14d31b150a9f3101e4819c66d14"
+          },
+          "seed": 42,
+          "plan_sha256": "f1d1ceaf23e3c11131cf841ab86d2ab0f28bf9094fbd01442fab55116fe37f8c",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rvq",
+      "method": "GRID + IFairLRS RW (training)",
+      "selected_update": 16,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 256326,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "rw",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rvq/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003500.ckpt",
+            "sha256": "de28388f347f47deedcbce919ac4cb348b494dc19399a3a1b528a9e229a70417"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rvq/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "f1f15c0959f7e8cd2cc86d35a116f2465ee8f14d31b150a9f3101e4819c66d14"
+          },
+          "seed": 42,
+          "plan_sha256": "f1d1ceaf23e3c11131cf841ab86d2ab0f28bf9094fbd01442fab55116fe37f8c",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": {
+          "history_counts": {
+            "3": 271409,
+            "4": 1013592,
+            "2": 168906,
+            "0": 70380,
+            "1": 120479
+          },
+          "target_counts": {
+            "4": 151428,
+            "2": 26917,
+            "3": 44246,
+            "0": 13085,
+            "1": 20650
+          },
+          "history_shares": {
+            "0": 0.042790281413891094,
+            "1": 0.07324993342518024,
+            "2": 0.10269302745800922,
+            "3": 0.16501374663629964,
+            "4": 0.6162530110666198
+          },
+          "target_shares": {
+            "0": 0.05104827446298854,
+            "1": 0.08056147249986345,
+            "2": 0.10501080655103268,
+            "3": 0.17261612165757667,
+            "4": 0.5907633248285387
+          },
+          "weights": {
+            "0": 0.8382316907678294,
+            "1": 0.909242732936695,
+            "2": 0.977928185020681,
+            "3": 0.955957908518197,
+            "4": 1.0431470356516785
+          },
+          "zero_target_policy": "zero_weight_unused_group",
+          "reduction": "mean(weight * per_example_loss)"
+        },
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rvq",
+      "method": "GRID + SPRINT (training)",
+      "selected_update": 8,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 256326,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "sprint",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rvq/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003500.ckpt",
+            "sha256": "de28388f347f47deedcbce919ac4cb348b494dc19399a3a1b528a9e229a70417"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rvq/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "f1f15c0959f7e8cd2cc86d35a116f2465ee8f14d31b150a9f3101e4819c66d14"
+          },
+          "seed": 42,
+          "plan_sha256": "f1d1ceaf23e3c11131cf841ab86d2ab0f28bf9094fbd01442fab55116fe37f8c",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": {
+          "variant": "sprint_grid_encoder_adaptation",
+          "scope": "encoder_self_attention_and_ffn_plus_sid_embedding",
+          "attention_weight": 1.0,
+          "ffn_weight": 0.001,
+          "embedding_weight": 0.1,
+          "temperature": 4.0,
+          "spectral_norm_iterations": 1,
+          "shared_embedding_policy": "encoder_table_once",
+          "ffn_policy": "product_of_all_linear_spectral_norms_per_encoder_block",
+          "attention_maps": "native_post_dropout_maps_with_expanded_valid_token_mask"
+        }
+      }
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rqvae",
+      "method": "GRID: ordinary continuation",
+      "selected_update": 24,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 256326,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "ordinary",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rqvae/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003600.ckpt",
+            "sha256": "39ecb2eba5a25dca6d37ca32ea018ee41c30810c2cb3da79c784a014e50dd588"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rqvae/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "c2ee21eb88eac5e512de3fdd56b6459298f237324393f2677079ef261c50a4eb"
+          },
+          "seed": 42,
+          "plan_sha256": "f1d1ceaf23e3c11131cf841ab86d2ab0f28bf9094fbd01442fab55116fe37f8c",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rqvae",
+      "method": "GRID + IFairLRS RW (training)",
+      "selected_update": 24,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 256326,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "rw",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rqvae/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003600.ckpt",
+            "sha256": "39ecb2eba5a25dca6d37ca32ea018ee41c30810c2cb3da79c784a014e50dd588"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rqvae/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "c2ee21eb88eac5e512de3fdd56b6459298f237324393f2677079ef261c50a4eb"
+          },
+          "seed": 42,
+          "plan_sha256": "f1d1ceaf23e3c11131cf841ab86d2ab0f28bf9094fbd01442fab55116fe37f8c",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": {
+          "history_counts": {
+            "3": 271409,
+            "4": 1013592,
+            "2": 168906,
+            "0": 70380,
+            "1": 120479
+          },
+          "target_counts": {
+            "4": 151428,
+            "2": 26917,
+            "3": 44246,
+            "0": 13085,
+            "1": 20650
+          },
+          "history_shares": {
+            "0": 0.042790281413891094,
+            "1": 0.07324993342518024,
+            "2": 0.10269302745800922,
+            "3": 0.16501374663629964,
+            "4": 0.6162530110666198
+          },
+          "target_shares": {
+            "0": 0.05104827446298854,
+            "1": 0.08056147249986345,
+            "2": 0.10501080655103268,
+            "3": 0.17261612165757667,
+            "4": 0.5907633248285387
+          },
+          "weights": {
+            "0": 0.8382316907678294,
+            "1": 0.909242732936695,
+            "2": 0.977928185020681,
+            "3": 0.955957908518197,
+            "4": 1.0431470356516785
+          },
+          "zero_target_policy": "zero_weight_unused_group",
+          "reduction": "mean(weight * per_example_loss)"
+        },
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rqvae",
+      "method": "GRID + SPRINT (training)",
+      "selected_update": 8,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 256326,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "sprint",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rqvae/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=003600.ckpt",
+            "sha256": "39ecb2eba5a25dca6d37ca32ea018ee41c30810c2cb3da79c784a014e50dd588"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/sports_5core/temporal_loo/complete_metadata/rqvae/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "c2ee21eb88eac5e512de3fdd56b6459298f237324393f2677079ef261c50a4eb"
+          },
+          "seed": 42,
+          "plan_sha256": "f1d1ceaf23e3c11131cf841ab86d2ab0f28bf9094fbd01442fab55116fe37f8c",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": {
+          "variant": "sprint_grid_encoder_adaptation",
+          "scope": "encoder_self_attention_and_ffn_plus_sid_embedding",
+          "attention_weight": 1.0,
+          "ffn_weight": 0.001,
+          "embedding_weight": 0.1,
+          "temperature": 4.0,
+          "spectral_norm_iterations": 1,
+          "shared_embedding_policy": "encoder_table_once",
+          "ffn_policy": "product_of_all_linear_spectral_norms_per_encoder_block",
+          "attention_maps": "native_post_dropout_maps_with_expanded_valid_token_mask"
+        }
+      }
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rkmeans",
+      "method": "GRID: ordinary continuation",
+      "selected_update": 32,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 255110,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "ordinary",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rkmeans/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=006300.ckpt",
+            "sha256": "0f28e25d8c2900ba285caf1d691ead8a8e45e3ccdc3c6117781499449fd1caa1"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rkmeans/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "17e91085fca2ad581cd02821712fd519a7ec1b627e16280b2f2b75e1d5e4348a"
+          },
+          "seed": 42,
+          "plan_sha256": "4f58755f0acd793ebd083785f3d46cfc2499652ea1a797b26fae6ea354139080",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rkmeans",
+      "method": "GRID + IFairLRS RW (training)",
+      "selected_update": 32,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 255110,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "rw",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rkmeans/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=006300.ckpt",
+            "sha256": "0f28e25d8c2900ba285caf1d691ead8a8e45e3ccdc3c6117781499449fd1caa1"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rkmeans/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "17e91085fca2ad581cd02821712fd519a7ec1b627e16280b2f2b75e1d5e4348a"
+          },
+          "seed": 42,
+          "plan_sha256": "4f58755f0acd793ebd083785f3d46cfc2499652ea1a797b26fae6ea354139080",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": {
+          "history_counts": {
+            "4": 1333658,
+            "1": 146957,
+            "2": 203217,
+            "3": 320071,
+            "0": 85227
+          },
+          "target_counts": {
+            "4": 149700,
+            "1": 20546,
+            "2": 26381,
+            "3": 45495,
+            "0": 12988
+          },
+          "history_shares": {
+            "0": 0.04079545073786696,
+            "1": 0.0703436358675621,
+            "2": 0.09727350619635924,
+            "3": 0.15320779463221532,
+            "4": 0.6383796125659964
+          },
+          "target_shares": {
+            "0": 0.05091137156520716,
+            "1": 0.08053780722041472,
+            "2": 0.10341029359883971,
+            "3": 0.17833483595311828,
+            "4": 0.5868056916624201
+          },
+          "weights": {
+            "0": 0.8013033136539298,
+            "1": 0.8734237781647896,
+            "2": 0.9406559328969033,
+            "3": 0.8591018900675776,
+            "4": 1.0878892649412915
+          },
+          "zero_target_policy": "zero_weight_unused_group",
+          "reduction": "mean(weight * per_example_loss)"
+        },
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rkmeans",
+      "method": "GRID + SPRINT (training)",
+      "selected_update": 32,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 255110,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "sprint",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rkmeans/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=006300.ckpt",
+            "sha256": "0f28e25d8c2900ba285caf1d691ead8a8e45e3ccdc3c6117781499449fd1caa1"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rkmeans/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "17e91085fca2ad581cd02821712fd519a7ec1b627e16280b2f2b75e1d5e4348a"
+          },
+          "seed": 42,
+          "plan_sha256": "4f58755f0acd793ebd083785f3d46cfc2499652ea1a797b26fae6ea354139080",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": {
+          "variant": "sprint_grid_encoder_adaptation",
+          "scope": "encoder_self_attention_and_ffn_plus_sid_embedding",
+          "attention_weight": 1.0,
+          "ffn_weight": 0.001,
+          "embedding_weight": 0.1,
+          "temperature": 4.0,
+          "spectral_norm_iterations": 1,
+          "shared_embedding_policy": "encoder_table_once",
+          "ffn_policy": "product_of_all_linear_spectral_norms_per_encoder_block",
+          "attention_maps": "native_post_dropout_maps_with_expanded_valid_token_mask"
+        }
+      }
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rvq",
+      "method": "GRID: ordinary continuation",
+      "selected_update": 32,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 255110,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "ordinary",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rvq/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=007400.ckpt",
+            "sha256": "b5ca580b9fd302474cbb4a5bb7a95ef18f6e39e4b9e7a1b36e99fdd0c0a13902"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rvq/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "3889b049e71663c6101a12f2ce7c7baf1df1d7139693e4cd8027f7449d10ad61"
+          },
+          "seed": 42,
+          "plan_sha256": "4f58755f0acd793ebd083785f3d46cfc2499652ea1a797b26fae6ea354139080",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rvq",
+      "method": "GRID + IFairLRS RW (training)",
+      "selected_update": 16,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 255110,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "rw",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rvq/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=007400.ckpt",
+            "sha256": "b5ca580b9fd302474cbb4a5bb7a95ef18f6e39e4b9e7a1b36e99fdd0c0a13902"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rvq/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "3889b049e71663c6101a12f2ce7c7baf1df1d7139693e4cd8027f7449d10ad61"
+          },
+          "seed": 42,
+          "plan_sha256": "4f58755f0acd793ebd083785f3d46cfc2499652ea1a797b26fae6ea354139080",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": {
+          "history_counts": {
+            "4": 1333658,
+            "1": 146957,
+            "2": 203217,
+            "3": 320071,
+            "0": 85227
+          },
+          "target_counts": {
+            "4": 149700,
+            "1": 20546,
+            "2": 26381,
+            "3": 45495,
+            "0": 12988
+          },
+          "history_shares": {
+            "0": 0.04079545073786696,
+            "1": 0.0703436358675621,
+            "2": 0.09727350619635924,
+            "3": 0.15320779463221532,
+            "4": 0.6383796125659964
+          },
+          "target_shares": {
+            "0": 0.05091137156520716,
+            "1": 0.08053780722041472,
+            "2": 0.10341029359883971,
+            "3": 0.17833483595311828,
+            "4": 0.5868056916624201
+          },
+          "weights": {
+            "0": 0.8013033136539298,
+            "1": 0.8734237781647896,
+            "2": 0.9406559328969033,
+            "3": 0.8591018900675776,
+            "4": 1.0878892649412915
+          },
+          "zero_target_policy": "zero_weight_unused_group",
+          "reduction": "mean(weight * per_example_loss)"
+        },
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rvq",
+      "method": "GRID + SPRINT (training)",
+      "selected_update": 24,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 255110,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "sprint",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rvq/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=007400.ckpt",
+            "sha256": "b5ca580b9fd302474cbb4a5bb7a95ef18f6e39e4b9e7a1b36e99fdd0c0a13902"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rvq/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "3889b049e71663c6101a12f2ce7c7baf1df1d7139693e4cd8027f7449d10ad61"
+          },
+          "seed": 42,
+          "plan_sha256": "4f58755f0acd793ebd083785f3d46cfc2499652ea1a797b26fae6ea354139080",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": {
+          "variant": "sprint_grid_encoder_adaptation",
+          "scope": "encoder_self_attention_and_ffn_plus_sid_embedding",
+          "attention_weight": 1.0,
+          "ffn_weight": 0.001,
+          "embedding_weight": 0.1,
+          "temperature": 4.0,
+          "spectral_norm_iterations": 1,
+          "shared_embedding_policy": "encoder_table_once",
+          "ffn_policy": "product_of_all_linear_spectral_norms_per_encoder_block",
+          "attention_maps": "native_post_dropout_maps_with_expanded_valid_token_mask"
+        }
+      }
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rqvae",
+      "method": "GRID: ordinary continuation",
+      "selected_update": 32,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 255110,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "ordinary",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rqvae/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=005100.ckpt",
+            "sha256": "8bc7f03ea767810b3762694e615da0b7003465bf05ceae249d0512a1581e2463"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rqvae/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "777bdf161e3b538f58944dd60b37c568de49ec85412b52ddf68f7ed0cb1ea4c6"
+          },
+          "seed": 42,
+          "plan_sha256": "4f58755f0acd793ebd083785f3d46cfc2499652ea1a797b26fae6ea354139080",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rqvae",
+      "method": "GRID + IFairLRS RW (training)",
+      "selected_update": 32,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 255110,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "rw",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rqvae/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=005100.ckpt",
+            "sha256": "8bc7f03ea767810b3762694e615da0b7003465bf05ceae249d0512a1581e2463"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rqvae/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "777bdf161e3b538f58944dd60b37c568de49ec85412b52ddf68f7ed0cb1ea4c6"
+          },
+          "seed": 42,
+          "plan_sha256": "4f58755f0acd793ebd083785f3d46cfc2499652ea1a797b26fae6ea354139080",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": {
+          "history_counts": {
+            "4": 1333658,
+            "1": 146957,
+            "2": 203217,
+            "3": 320071,
+            "0": 85227
+          },
+          "target_counts": {
+            "4": 149700,
+            "1": 20546,
+            "2": 26381,
+            "3": 45495,
+            "0": 12988
+          },
+          "history_shares": {
+            "0": 0.04079545073786696,
+            "1": 0.0703436358675621,
+            "2": 0.09727350619635924,
+            "3": 0.15320779463221532,
+            "4": 0.6383796125659964
+          },
+          "target_shares": {
+            "0": 0.05091137156520716,
+            "1": 0.08053780722041472,
+            "2": 0.10341029359883971,
+            "3": 0.17833483595311828,
+            "4": 0.5868056916624201
+          },
+          "weights": {
+            "0": 0.8013033136539298,
+            "1": 0.8734237781647896,
+            "2": 0.9406559328969033,
+            "3": 0.8591018900675776,
+            "4": 1.0878892649412915
+          },
+          "zero_target_policy": "zero_weight_unused_group",
+          "reduction": "mean(weight * per_example_loss)"
+        },
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rqvae",
+      "method": "GRID + SPRINT (training)",
+      "selected_update": 32,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 255110,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "sprint",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rqvae/step3_training_suffix4/checkpoints/checkpoint_epoch=000_step=005100.ckpt",
+            "sha256": "8bc7f03ea767810b3762694e615da0b7003465bf05ceae249d0512a1581e2463"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/toys_5core/temporal_loo/complete_metadata/rqvae/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "777bdf161e3b538f58944dd60b37c568de49ec85412b52ddf68f7ed0cb1ea4c6"
+          },
+          "seed": 42,
+          "plan_sha256": "4f58755f0acd793ebd083785f3d46cfc2499652ea1a797b26fae6ea354139080",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/recall@5"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": {
+          "variant": "sprint_grid_encoder_adaptation",
+          "scope": "encoder_self_attention_and_ffn_plus_sid_embedding",
+          "attention_weight": 1.0,
+          "ffn_weight": 0.001,
+          "embedding_weight": 0.1,
+          "temperature": 4.0,
+          "spectral_norm_iterations": 1,
+          "shared_embedding_policy": "encoder_table_once",
+          "ffn_policy": "product_of_all_linear_spectral_norms_per_encoder_block",
+          "attention_maps": "native_post_dropout_maps_with_expanded_valid_token_mask"
+        }
+      }
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rkmeans",
+      "method": "GRID: ordinary continuation",
+      "selected_update": 16,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 260281,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "ordinary",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rkmeans/step3_training_suffix4_continue10k_ndcg/checkpoints/checkpoint_epoch=000_step=010000.ckpt",
+            "sha256": "71e0e8ed5cfbaafdbc4cde335db25e237d2d60e94191e55eafcf0d853f73916e"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rkmeans/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "21a6eee1b9c7f0cef113826b393ec9e2f5826ec6bbade975a0df9c94e9c1e142"
+          },
+          "seed": 42,
+          "plan_sha256": "d52bddb23d594ff6b746956ad66cae5e888abca1b3c5ec2759ee89c3b5e68270",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/ndcg@10"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rkmeans",
+      "method": "GRID + IFairLRS RW (training)",
+      "selected_update": 16,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 260281,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "rw",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rkmeans/step3_training_suffix4_continue10k_ndcg/checkpoints/checkpoint_epoch=000_step=010000.ckpt",
+            "sha256": "71e0e8ed5cfbaafdbc4cde335db25e237d2d60e94191e55eafcf0d853f73916e"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rkmeans/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "21a6eee1b9c7f0cef113826b393ec9e2f5826ec6bbade975a0df9c94e9c1e142"
+          },
+          "seed": 42,
+          "plan_sha256": "d52bddb23d594ff6b746956ad66cae5e888abca1b3c5ec2759ee89c3b5e68270",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/ndcg@10"
+        },
+        "group": "popularity",
+        "rw_statistics": {
+          "history_counts": {
+            "4": 1361214,
+            "3": 283181,
+            "0": 37747,
+            "1": 78241,
+            "2": 145203
+          },
+          "target_counts": {
+            "4": 195571,
+            "3": 31754,
+            "0": 5740,
+            "1": 10046,
+            "2": 17170
+          },
+          "history_shares": {
+            "0": 0.019808604807130197,
+            "1": 0.041058760927084895,
+            "2": 0.07619860767239053,
+            "3": 0.1486057307305994,
+            "4": 0.714328295862795
+          },
+          "target_shares": {
+            "0": 0.02205308877712933,
+            "1": 0.03859674736150545,
+            "2": 0.06596716625493217,
+            "3": 0.12199891655556878,
+            "4": 0.7513840810508643
+          },
+          "weights": {
+            "0": 0.8982236006628319,
+            "1": 1.0637881099803488,
+            "2": 1.155098998461123,
+            "3": 1.2180905775742,
+            "4": 0.9506832975004685
+          },
+          "zero_target_policy": "zero_weight_unused_group",
+          "reduction": "mean(weight * per_example_loss)"
+        },
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rkmeans",
+      "method": "GRID + SPRINT (training)",
+      "selected_update": 16,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 260281,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "sprint",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rkmeans/step3_training_suffix4_continue10k_ndcg/checkpoints/checkpoint_epoch=000_step=010000.ckpt",
+            "sha256": "71e0e8ed5cfbaafdbc4cde335db25e237d2d60e94191e55eafcf0d853f73916e"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rkmeans/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "21a6eee1b9c7f0cef113826b393ec9e2f5826ec6bbade975a0df9c94e9c1e142"
+          },
+          "seed": 42,
+          "plan_sha256": "d52bddb23d594ff6b746956ad66cae5e888abca1b3c5ec2759ee89c3b5e68270",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/ndcg@10"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": {
+          "variant": "sprint_grid_encoder_adaptation",
+          "scope": "encoder_self_attention_and_ffn_plus_sid_embedding",
+          "attention_weight": 1.0,
+          "ffn_weight": 0.001,
+          "embedding_weight": 0.1,
+          "temperature": 4.0,
+          "spectral_norm_iterations": 1,
+          "shared_embedding_policy": "encoder_table_once",
+          "ffn_policy": "product_of_all_linear_spectral_norms_per_encoder_block",
+          "attention_maps": "native_post_dropout_maps_with_expanded_valid_token_mask"
+        }
+      }
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rvq",
+      "method": "GRID: ordinary continuation",
+      "selected_update": 8,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 260281,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "ordinary",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rvq/step3_training_suffix4_resume10k/checkpoints/checkpoint_epoch=000_step=008000.ckpt",
+            "sha256": "4f17b1cdd41b1129d248ec9cda490506894a65c59d62a51117b86dfdc0ec09fe"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rvq/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "867562b66abe8eeb4cadb1a16c9bb01ac1901bb5618984f0572d8f981e793048"
+          },
+          "seed": 42,
+          "plan_sha256": "d52bddb23d594ff6b746956ad66cae5e888abca1b3c5ec2759ee89c3b5e68270",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/ndcg@10"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rvq",
+      "method": "GRID + IFairLRS RW (training)",
+      "selected_update": 8,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 260281,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "rw",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rvq/step3_training_suffix4_resume10k/checkpoints/checkpoint_epoch=000_step=008000.ckpt",
+            "sha256": "4f17b1cdd41b1129d248ec9cda490506894a65c59d62a51117b86dfdc0ec09fe"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rvq/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "867562b66abe8eeb4cadb1a16c9bb01ac1901bb5618984f0572d8f981e793048"
+          },
+          "seed": 42,
+          "plan_sha256": "d52bddb23d594ff6b746956ad66cae5e888abca1b3c5ec2759ee89c3b5e68270",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/ndcg@10"
+        },
+        "group": "popularity",
+        "rw_statistics": {
+          "history_counts": {
+            "4": 1361214,
+            "3": 283181,
+            "0": 37747,
+            "1": 78241,
+            "2": 145203
+          },
+          "target_counts": {
+            "4": 195571,
+            "3": 31754,
+            "0": 5740,
+            "1": 10046,
+            "2": 17170
+          },
+          "history_shares": {
+            "0": 0.019808604807130197,
+            "1": 0.041058760927084895,
+            "2": 0.07619860767239053,
+            "3": 0.1486057307305994,
+            "4": 0.714328295862795
+          },
+          "target_shares": {
+            "0": 0.02205308877712933,
+            "1": 0.03859674736150545,
+            "2": 0.06596716625493217,
+            "3": 0.12199891655556878,
+            "4": 0.7513840810508643
+          },
+          "weights": {
+            "0": 0.8982236006628319,
+            "1": 1.0637881099803488,
+            "2": 1.155098998461123,
+            "3": 1.2180905775742,
+            "4": 0.9506832975004685
+          },
+          "zero_target_policy": "zero_weight_unused_group",
+          "reduction": "mean(weight * per_example_loss)"
+        },
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rvq",
+      "method": "GRID + SPRINT (training)",
+      "selected_update": 0,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 260281,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "sprint",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rvq/step3_training_suffix4_resume10k/checkpoints/checkpoint_epoch=000_step=008000.ckpt",
+            "sha256": "4f17b1cdd41b1129d248ec9cda490506894a65c59d62a51117b86dfdc0ec09fe"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rvq/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "867562b66abe8eeb4cadb1a16c9bb01ac1901bb5618984f0572d8f981e793048"
+          },
+          "seed": 42,
+          "plan_sha256": "d52bddb23d594ff6b746956ad66cae5e888abca1b3c5ec2759ee89c3b5e68270",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/ndcg@10"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": {
+          "variant": "sprint_grid_encoder_adaptation",
+          "scope": "encoder_self_attention_and_ffn_plus_sid_embedding",
+          "attention_weight": 1.0,
+          "ffn_weight": 0.001,
+          "embedding_weight": 0.1,
+          "temperature": 4.0,
+          "spectral_norm_iterations": 1,
+          "shared_embedding_policy": "encoder_table_once",
+          "ffn_policy": "product_of_all_linear_spectral_norms_per_encoder_block",
+          "attention_maps": "native_post_dropout_maps_with_expanded_valid_token_mask"
+        }
+      }
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rqvae",
+      "method": "GRID: ordinary continuation",
+      "selected_update": 0,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 260281,
+      "control_improvement_required": true,
+      "run": {
+        "mode": "ordinary",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rqvae/step3_training_suffix4_resume10k/checkpoints/checkpoint_epoch=000_step=008000.ckpt",
+            "sha256": "512705d880eb5b53c9c70998e00a206b89ec39562d677c38942a8d372f14106d"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rqvae/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "7d5430de580a493a1891cda682b6b79978700e1c6ece50e6d122276009891a60"
+          },
+          "seed": 42,
+          "plan_sha256": "d52bddb23d594ff6b746956ad66cae5e888abca1b3c5ec2759ee89c3b5e68270",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/ndcg@10"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rqvae",
+      "method": "GRID + IFairLRS RW (training)",
+      "selected_update": 8,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 260281,
+      "control_improvement_required": false,
+      "run": {
+        "mode": "rw",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rqvae/step3_training_suffix4_resume10k/checkpoints/checkpoint_epoch=000_step=008000.ckpt",
+            "sha256": "512705d880eb5b53c9c70998e00a206b89ec39562d677c38942a8d372f14106d"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rqvae/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "7d5430de580a493a1891cda682b6b79978700e1c6ece50e6d122276009891a60"
+          },
+          "seed": 42,
+          "plan_sha256": "d52bddb23d594ff6b746956ad66cae5e888abca1b3c5ec2759ee89c3b5e68270",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/ndcg@10"
+        },
+        "group": "popularity",
+        "rw_statistics": {
+          "history_counts": {
+            "4": 1361214,
+            "3": 283181,
+            "0": 37747,
+            "1": 78241,
+            "2": 145203
+          },
+          "target_counts": {
+            "4": 195571,
+            "3": 31754,
+            "0": 5740,
+            "1": 10046,
+            "2": 17170
+          },
+          "history_shares": {
+            "0": 0.019808604807130197,
+            "1": 0.041058760927084895,
+            "2": 0.07619860767239053,
+            "3": 0.1486057307305994,
+            "4": 0.714328295862795
+          },
+          "target_shares": {
+            "0": 0.02205308877712933,
+            "1": 0.03859674736150545,
+            "2": 0.06596716625493217,
+            "3": 0.12199891655556878,
+            "4": 0.7513840810508643
+          },
+          "weights": {
+            "0": 0.8982236006628319,
+            "1": 1.0637881099803488,
+            "2": 1.155098998461123,
+            "3": 1.2180905775742,
+            "4": 0.9506832975004685
+          },
+          "zero_target_policy": "zero_weight_unused_group",
+          "reduction": "mean(weight * per_example_loss)"
+        },
+        "sprint_settings": null
+      }
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rqvae",
+      "method": "GRID + SPRINT (training)",
+      "selected_update": 0,
+      "selection_metric": "validation/recall@5",
+      "selection_policy": "maximum, earlier update wins ties; step zero eligible",
+      "training_examples": 260281,
+      "control_improvement_required": false,
+      "run": {
+        "mode": "sprint",
+        "identity": {
+          "checkpoint": {
+            "path": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rqvae/step3_training_suffix4_resume10k/checkpoints/checkpoint_epoch=000_step=008000.ckpt",
+            "sha256": "512705d880eb5b53c9c70998e00a206b89ec39562d677c38942a8d372f14106d"
+          },
+          "sid_mapping": {
+            "path": "GRID/outputs/pet_supplies_5core/temporal_loo/complete_metadata/rqvae/step2b_sid_inference/pickle/merged_predictions_tensor_suffix4.pt",
+            "sha256": "7d5430de580a493a1891cda682b6b79978700e1c6ece50e6d122276009891a60"
+          },
+          "seed": 42,
+          "plan_sha256": "d52bddb23d594ff6b746956ad66cae5e888abca1b3c5ec2759ee89c3b5e68270",
+          "max_updates": 32,
+          "validation_interval": 8,
+          "validation_requests": null,
+          "learning_rate": 0.001,
+          "optimizer_state": "require",
+          "generation_beam_width": 100,
+          "train_users": null
+        },
+        "native_schedule": {
+          "users_per_batch": 32,
+          "cap": 512,
+          "accumulation": 16,
+          "history_length": 39,
+          "model_history_length": 40,
+          "native_learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "native_collator": "src.data.loading.components.collate_functions.collate_with_sid_causal_duplicate",
+          "native_checkpoint_metric": "val/ndcg@10"
+        },
+        "group": "popularity",
+        "rw_statistics": null,
+        "sprint_settings": {
+          "variant": "sprint_grid_encoder_adaptation",
+          "scope": "encoder_self_attention_and_ffn_plus_sid_embedding",
+          "attention_weight": 1.0,
+          "ffn_weight": 0.001,
+          "embedding_weight": 0.1,
+          "temperature": 4.0,
+          "spectral_norm_iterations": 1,
+          "shared_embedding_policy": "encoder_table_once",
+          "ffn_policy": "product_of_all_linear_spectral_norms_per_encoder_block",
+          "attention_maps": "native_post_dropout_maps_with_expanded_valid_token_mask"
+        }
+      }
+    }
+  ],
+  "selected_rerankers": [
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rkmeans",
+      "method": "GRID + RR",
+      "parameters": {
+        "alpha": 0.02,
+        "floor": 0.01
+      },
+      "backend": {
+        "group": "popularity",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": [
+        1,
+        5,
+        10,
+        20
+      ]
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rkmeans",
+      "method": "GRID + CPFair",
+      "parameters": {
+        "lambda": 1
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "legacy_dense",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rkmeans",
+      "method": "GRID + P-MMF",
+      "parameters": {
+        "lambda": 30
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": 0.5,
+        "gamma": 0.2,
+        "provider_weights": "all catalog brands have weight 1.0, without normalization",
+        "matrix_mode": "legacy_dense",
+        "order_seed": null,
+        "projection": "unchanged CVXPY default solver",
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rvq",
+      "method": "GRID + RR",
+      "parameters": {
+        "alpha": 0.02,
+        "floor": 0.001
+      },
+      "backend": {
+        "group": "popularity",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": [
+        1,
+        5,
+        10,
+        20
+      ]
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rvq",
+      "method": "GRID + CPFair",
+      "parameters": {
+        "lambda": 1
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rvq",
+      "method": "GRID + P-MMF",
+      "parameters": {
+        "lambda": 30
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": 0.5,
+        "gamma": 0.2,
+        "provider_weights": "all catalog brands have weight 1.0, without normalization",
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": "exact_sorted_l1",
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rqvae",
+      "method": "GRID + RR",
+      "parameters": {
+        "alpha": 0.02,
+        "floor": 0.001
+      },
+      "backend": {
+        "group": "popularity",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": [
+        1,
+        5,
+        10,
+        20
+      ]
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rqvae",
+      "method": "GRID + CPFair",
+      "parameters": {
+        "lambda": 1
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-beauty",
+      "tokenizer": "rqvae",
+      "method": "GRID + P-MMF",
+      "parameters": {
+        "lambda": 30
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": 0.5,
+        "gamma": 0.2,
+        "provider_weights": "all catalog brands have weight 1.0, without normalization",
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": "exact_sorted_l1",
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rkmeans",
+      "method": "GRID + RR",
+      "parameters": {
+        "alpha": 0.02,
+        "floor": 0.001
+      },
+      "backend": {
+        "group": "popularity",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": [
+        1,
+        5,
+        10,
+        20
+      ]
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rkmeans",
+      "method": "GRID + CPFair",
+      "parameters": {
+        "lambda": 1
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rkmeans",
+      "method": "GRID + P-MMF",
+      "parameters": {
+        "lambda": 30
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": 0.5,
+        "gamma": 0.2,
+        "provider_weights": "all catalog brands have weight 1.0, without normalization",
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": "unchanged CVXPY default solver",
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rvq",
+      "method": "GRID + RR",
+      "parameters": {
+        "alpha": 0.02,
+        "floor": 0.001
+      },
+      "backend": {
+        "group": "popularity",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": [
+        1,
+        5,
+        10,
+        20
+      ]
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rvq",
+      "method": "GRID + CPFair",
+      "parameters": {
+        "lambda": 1
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rvq",
+      "method": "GRID + P-MMF",
+      "parameters": {
+        "lambda": 30
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": 0.5,
+        "gamma": 0.2,
+        "provider_weights": "all catalog brands have weight 1.0, without normalization",
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": "exact_sorted_l1",
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rqvae",
+      "method": "GRID + RR",
+      "parameters": {
+        "alpha": 0.02,
+        "floor": 0.001
+      },
+      "backend": {
+        "group": "popularity",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": [
+        1,
+        5,
+        10,
+        20
+      ]
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rqvae",
+      "method": "GRID + CPFair",
+      "parameters": {
+        "lambda": 1
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-sports",
+      "tokenizer": "rqvae",
+      "method": "GRID + P-MMF",
+      "parameters": {
+        "lambda": 30
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": 0.5,
+        "gamma": 0.2,
+        "provider_weights": "all catalog brands have weight 1.0, without normalization",
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": "exact_sorted_l1",
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rkmeans",
+      "method": "GRID + RR",
+      "parameters": {
+        "alpha": 0.02,
+        "floor": 0.01
+      },
+      "backend": {
+        "group": "popularity",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": [
+        1,
+        5,
+        10,
+        20
+      ]
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rkmeans",
+      "method": "GRID + CPFair",
+      "parameters": {
+        "lambda": 1
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rkmeans",
+      "method": "GRID + P-MMF",
+      "parameters": {
+        "lambda": 30
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": 0.5,
+        "gamma": 0.2,
+        "provider_weights": "all catalog brands have weight 1.0, without normalization",
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": "unchanged CVXPY default solver",
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rvq",
+      "method": "GRID + RR",
+      "parameters": {
+        "alpha": 0.02,
+        "floor": 0.01
+      },
+      "backend": {
+        "group": "popularity",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": [
+        1,
+        5,
+        10,
+        20
+      ]
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rvq",
+      "method": "GRID + CPFair",
+      "parameters": {
+        "lambda": 1
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rvq",
+      "method": "GRID + P-MMF",
+      "parameters": {
+        "lambda": 30
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": 0.5,
+        "gamma": 0.2,
+        "provider_weights": "all catalog brands have weight 1.0, without normalization",
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": "exact_sorted_l1",
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rqvae",
+      "method": "GRID + RR",
+      "parameters": {
+        "alpha": 0.02,
+        "floor": 0.01
+      },
+      "backend": {
+        "group": "popularity",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": [
+        1,
+        5,
+        10,
+        20
+      ]
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rqvae",
+      "method": "GRID + CPFair",
+      "parameters": {
+        "lambda": 1
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-toys",
+      "tokenizer": "rqvae",
+      "method": "GRID + P-MMF",
+      "parameters": {
+        "lambda": 30
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": 0.5,
+        "gamma": 0.2,
+        "provider_weights": "all catalog brands have weight 1.0, without normalization",
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": "exact_sorted_l1",
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rkmeans",
+      "method": "GRID + RR",
+      "parameters": {
+        "alpha": 0.02,
+        "floor": 1e-06
+      },
+      "backend": {
+        "group": "popularity",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": [
+        1,
+        5,
+        10,
+        20
+      ]
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rkmeans",
+      "method": "GRID + CPFair",
+      "parameters": {
+        "lambda": 1
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rkmeans",
+      "method": "GRID + P-MMF",
+      "parameters": {
+        "lambda": 30
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": 0.5,
+        "gamma": 0.2,
+        "provider_weights": "all catalog brands have weight 1.0, without normalization",
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": "exact_sorted_l1",
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rvq",
+      "method": "GRID + RR",
+      "parameters": {
+        "alpha": 0.02,
+        "floor": 1e-06
+      },
+      "backend": {
+        "group": "popularity",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": [
+        1,
+        5,
+        10,
+        20
+      ]
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rvq",
+      "method": "GRID + CPFair",
+      "parameters": {
+        "lambda": 1
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rvq",
+      "method": "GRID + P-MMF",
+      "parameters": {
+        "lambda": 30
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": 0.5,
+        "gamma": 0.2,
+        "provider_weights": "all catalog brands have weight 1.0, without normalization",
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": "exact_sorted_l1",
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rqvae",
+      "method": "GRID + RR",
+      "parameters": {
+        "alpha": 0.1,
+        "floor": 0.001
+      },
+      "backend": {
+        "group": "popularity",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": [
+        1,
+        5,
+        10,
+        20
+      ]
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rqvae",
+      "method": "GRID + CPFair",
+      "parameters": {
+        "lambda": 1
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": null,
+        "gamma": null,
+        "provider_weights": null,
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": null,
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    },
+    {
+      "dataset": "amazon-pet-supplies",
+      "tokenizer": "rqvae",
+      "method": "GRID + P-MMF",
+      "parameters": {
+        "lambda": 30
+      },
+      "backend": {
+        "group": "brand",
+        "learning_rate": 0.5,
+        "gamma": 0.2,
+        "provider_weights": "all catalog brands have weight 1.0, without normalization",
+        "matrix_mode": "lookup",
+        "order_seed": null,
+        "projection": "exact_sorted_l1",
+        "cutoff_state_reset": true
+      },
+      "rr_fit_cutoffs": null
+    }
+  ]
+}

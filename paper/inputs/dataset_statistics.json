@@ -1,0 +1,38 @@
+{
+  "amazon-beauty": {
+    "item_num": 12101,
+    "user_num": 22363,
+    "group_num": 216,
+    "activity_boundaries": [
+      3,
+      5
+    ]
+  },
+  "amazon-sports": {
+    "item_num": 18357,
+    "user_num": 35598,
+    "group_num": 255,
+    "activity_boundaries": [
+      3,
+      5
+    ]
+  },
+  "amazon-toys": {
+    "item_num": 11924,
+    "user_num": 19412,
+    "group_num": 166,
+    "activity_boundaries": [
+      3,
+      5
+    ]
+  },
+  "amazon-pet-supplies": {
+    "item_num": 114625,
+    "user_num": 594800,
+    "group_num": 2046,
+    "activity_boundaries": [
+      3,
+      6
+    ]
+  }
+}

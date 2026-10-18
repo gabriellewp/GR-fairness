@@ -75,12 +75,15 @@ def test_missed_targets_short_lists_and_zero_exposure_groups(inputs):
     assert metrics["short_list_rate"] == 1
     assert metrics["groups"]["brand"]["exposure_counts"] == {"a": 1, "b": 1, "c": 0}
     assert metrics["groups"]["brand"]["gini"] == pytest.approx(1 / 3)
+    assert metrics["groups"]["brand"]["entropy"] == pytest.approx(math.log(2))
+    assert metrics["groups"]["brand"]["entropy_bits"] == pytest.approx(1.0)
     assert metrics["groups"]["brand"]["candidate_group_coverage"] == pytest.approx(1 / 3)
 
 
 def test_empty_exposure_is_undefined_not_perfect_fairness(inputs):
     result = evaluate(inputs, [1], {"r0": [], "r1": []})
     assert result["at_k"]["1"]["groups"]["brand"]["gini"] is None
+    assert result["at_k"]["1"]["groups"]["brand"]["entropy_bits"] is None
 
 
 @pytest.mark.parametrize("ranking", [[0, 0], [1]])

@@ -1,0 +1,76 @@
+{
+  "checked_on": "2026-10-14",
+  "paper_title": "Closing the Performance Gap in Generative Recommenders with Collaborative Tokenization and Efficient Modeling",
+  "authors": "Simon Lepage, Jeremie Mary, David Picard",
+  "paper_url": "https://arxiv.org/html/2508.14910v1",
+  "pdf_url": "https://arxiv.org/pdf/2508.14910v1",
+  "table": 11,
+  "pdf_page": 13,
+  "dataset": "amazon-pet-supplies",
+  "dataset_release": "Amazon Reviews 2023, 5-core",
+  "users": 594800,
+  "items": 114625,
+  "split": "test; last interaction per user; penultimate interaction used for validation",
+  "published_model": "TIGER",
+  "tokenizer": "rqvae",
+  "tokenizer_details": "Four quantization levels, with distance-based deduplication; Section 4.4.3",
+  "original_units": "percentage points; divide table values by 100 to obtain metric fractions",
+  "table_values_percent": {
+    "recall@5": 1.41,
+    "ndcg@5": 0.9,
+    "recall@10": 2.31,
+    "ndcg@10": 1.19
+  },
+  "metrics": {
+    "recall@5": 0.0141,
+    "ndcg@5": 0.009,
+    "recall@10": 0.0231,
+    "ndcg@10": 0.0119
+  },
+  "comparison_kind": "contextual cross-model comparison: local GRID versus published TIGER; not a matched GRID reproduction",
+  "comparability": {
+    "dataset_counts": "User and item counts match the local processed dataset",
+    "split_strategy": "Both use temporal leave-one-out; exact per-user split identities are not established",
+    "training_and_tokenizer": "Training, architecture and quantizer settings are not matched",
+    "seed_count": "Not established for the Table 11 TIGER row"
+  },
+  "excluded_validation_references": [
+    {
+      "model": "TIGER",
+      "tokenizer": "PCA + residual K-means",
+      "table": 6,
+      "metric": "validation recall@10",
+      "value": 0.0269,
+      "reason": "Validation-only, uses PCA, and does not provide the four test metrics for our RKMeans comparison"
+    },
+    {
+      "model": "MARIUS",
+      "tokenizer": "PCA + residual K-means",
+      "table": 6,
+      "metric": "validation recall@10",
+      "value": 0.0497,
+      "reason": "Validation-only with a different generative architecture; not a GRID test comparator"
+    }
+  ],
+  "remaining_gaps": {
+    "rkmeans": "No verified published Pet Supplies test counterpart with the four requested metrics found in the sources searched",
+    "rvq": "No verified published Pet Supplies test counterpart with the four requested metrics found in the sources searched"
+  },
+  "search_scope": {
+    "sources": [
+      "arXiv",
+      "OpenReview",
+      "GitHub",
+      "SciSpace"
+    ],
+    "queries": [
+      "Pet Supplies RK-Means RQ-VAE",
+      "Pet Supplies RVQ recommendation",
+      "Pet Supplies residual k-means",
+      "Pet Supplies R-VQ RQ-VAE recommendation",
+      "Pet Supplies RVQ Recall",
+      "Pet Supplies RK-Means NDCG"
+    ],
+    "limitation": "Search results do not establish that no such paper exists"
+  }
+}

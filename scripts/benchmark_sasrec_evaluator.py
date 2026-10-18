@@ -23,6 +23,8 @@ def main():
     parser.add_argument("--requests", type=int, default=128)
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--config", type=Path, default=ROOT / "configs/reproduction/experiments_config_paper_classics.json")
+    parser.add_argument("--data-dir", type=Path, default=ROOT / "recommendation/processed_dataset/amazon-pet-supplies")
     args = parser.parse_args()
     if args.requests < 1:
         parser.error("--requests must be positive")
@@ -32,11 +34,15 @@ def main():
     import torch
     from additional_baselines.ifairlrs_grid import original_module
     module = importlib.import_module("fairdiverse.recommendation.evaluator")
-    config = json.loads((ROOT / "experiments_config_rq2_pet_sasrec_fast_cuda.json").read_text())[0]["config"]
+    entries = json.loads(args.config.read_text())
+    matches = [e['config'] for e in entries if e.get('dataset') == 'amazon-pet-supplies' and e['config'].get('model') == 'SASRec']
+    if len(matches) != 1:
+        raise ValueError('Expected exactly one Pet Supplies SASRec configuration')
+    config = dict(matches[0])
     config["device"] = args.device
     model = original_module("sasrec").SASRec(config).to(args.device).eval()
     model.load_state_dict(torch.load(args.checkpoint, map_location=args.device, weights_only=True), strict=True)
-    data = ROOT / "recommendation/processed_dataset/amazon-pet-supplies"
+    data = args.data_dir
     with (data / "amazon-pet-supplies.valid.ranking").open() as stream:
         rows = list(itertools.islice(csv.DictReader(stream, delimiter="\t"), args.requests))
     catalog = torch.arange(config["item_num"])

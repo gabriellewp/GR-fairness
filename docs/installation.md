@@ -49,6 +49,18 @@ activate a named Conda environment. Activate your environment before submission,
 or export `FAIRDIVERSE_PYTHON=/absolute/path/to/python` and `GRID_PYTHON`.
 Set `HF_HOME`, `TORCH_HOME` and `WANDB_CACHE_DIR` for your storage policy.
 
+## Historical and release environments
+
+The paper reports a historical native-training environment of Python 3.10.14,
+PyTorch 2.6.0+cu124, Transformers 4.47.0 and Lightning 2.5.0. The default release
+installation pins Transformers 4.57.6 for the current integration. These are
+distinct environments; installing the release extras does not recreate the
+paper's reported environment. GRID's original dependency snapshot remains in
+`GRID/requirements_core.txt`. The reported versions in
+`configs/reproduction/paper_protocol.json` record provenance, rather than a
+tested lockfile for current code. Freeze the environment of any fresh runs and
+verify loading and generation parity before comparing them with historical results.
+
 ## Existing optional upstream components
 
 The original search/LLM modules remain in source. Their datasets and external

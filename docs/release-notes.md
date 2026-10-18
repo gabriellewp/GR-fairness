@@ -25,6 +25,15 @@ Slurm launchers use explicit roots/interpreters and inherit authentication from
 the environment. No launcher installs packages or activates a personal environment.
 This snapshot has independent Git history and includes no imported research commits.
 
+The paper reproduction workflow restores selected source programs from
+FairDiverse's `generative-fairness-baselines` commit `69ffef5`. Small sanitized
+aggregate inputs support table/figure regeneration; archive audits take explicit
+external-workspace and output paths. Exact classic recipes and historical
+continuation/reranker settings are preserved separately from generic new-run
+defaults. Native checkpoint/data contents and historical ranking behavior are
+unchanged. The artifact evaluator now additionally exposes `entropy_bits` while
+retaining the existing natural-log `entropy` field.
+
 Validation results and hardware limits are recorded in `release-validation.json`.
 Full GPU training, real Slurm scheduling, online services and dataset/model downloads
 must be verified in the execution environment; CPU source checks do not certify those.

@@ -1,0 +1,565 @@
+dataset,tokenizer,method,k,recall,ndcg,brand_gini,brand_entropy_bits,status,display_method
+amazon-beauty,,SASRec,5,0.05562759915932567,0.032539962984071746,0.7695305655340087,5.278884074822274,verified,SASRec
+amazon-beauty,,SASRec,10,0.08375441577605867,0.041633362624149,0.775453129425092,5.289429976655091,verified,SASRec
+amazon-beauty,,SASRec,20,0.11858874033000939,0.05039885609086511,0.7753968194819154,5.301156809229436,verified,SASRec
+amazon-beauty,,GRU4Rec,5,0.039619013549166034,0.027183091457433427,0.750154314086926,5.304813865160323,verified,GRU4Rec
+amazon-beauty,,GRU4Rec,10,0.05916022000626034,0.03347346029931007,0.7492129029266265,5.3039904858868425,verified,GRU4Rec
+amazon-beauty,,GRU4Rec,20,0.08523006752224657,0.04001488827061098,0.7478756866914762,5.294823374829622,verified,GRU4Rec
+amazon-beauty,rkmeans,GRID: original (fresh evaluation),5,0.04033448106246926,0.026465324537020402,0.8732977835412661,4.783654369822301,verified,GRID: original (fresh evaluation)
+amazon-beauty,rkmeans,GRID: original (fresh evaluation),10,0.06179850646156598,0.0333515582823272,0.859445454711072,4.907716326175509,verified,GRID: original (fresh evaluation)
+amazon-beauty,rkmeans,GRID: original (fresh evaluation),20,0.08827080445378527,0.03996205602570472,0.8417656852174806,5.034967740539796,verified,GRID: original (fresh evaluation)
+amazon-beauty,rkmeans,GRID: ordinary continuation,5,0.042570317041541836,0.02822227194821832,0.8434359582047728,5.0864357711166175,verified,GRID: standard fine-tuning
+amazon-beauty,rkmeans,GRID: ordinary continuation,10,0.06385547556231275,0.03508158781086862,0.8310068217839983,5.161516487133552,verified,GRID: standard fine-tuning
+amazon-beauty,rkmeans,GRID: ordinary continuation,20,0.09394982784062961,0.04261768703199732,0.8164409507437053,5.223701290488107,verified,GRID: standard fine-tuning
+amazon-beauty,rkmeans,GRID + IFairLRS RW (training),5,0.04230201672405312,0.02827070814595245,0.8486482715331707,5.052957407766044,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-beauty,rkmeans,GRID + IFairLRS RW (training),10,0.06394490900147565,0.03521879122022028,0.8355179935111071,5.139792253811546,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-beauty,rkmeans,GRID + IFairLRS RW (training),20,0.0936815275231409,0.042672934462094435,0.820795572547909,5.207577799869727,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-beauty,rkmeans,GRID + SPRINT (training),5,0.04198899968698296,0.027499641928626202,0.8664084276110838,4.771258081573571,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-beauty,rkmeans,GRID + SPRINT (training),10,0.06273755757277646,0.03418579744191621,0.8517808433573313,4.908490854382956,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-beauty,rkmeans,GRID + SPRINT (training),20,0.09269775969234897,0.04170159425686151,0.8364069453346384,5.010569205919418,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-beauty,rkmeans,GRID + APR (training),5,0.0098,0.006,0.9531,3.6637,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-beauty,rkmeans,GRID + APR (training),10,0.0181,0.0087,0.9427,3.9891,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-beauty,rkmeans,GRID + APR (training),20,0.0285,0.0113,0.927,4.3396,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-beauty,rkmeans,GRID + FairDual (training),5,0.0389,0.0263,0.8598,4.7848,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-beauty,rkmeans,GRID + FairDual (training),10,0.0586,0.0327,0.845,4.8908,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-beauty,rkmeans,GRID + FairDual (training),20,0.0872,0.0399,0.828,4.99,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-beauty,rkmeans,GRID + IPS (training),5,0.0426,0.0282,0.8371,5.1306,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-beauty,rkmeans,GRID + IPS (training),10,0.0629,0.0347,0.8242,5.2137,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-beauty,rkmeans,GRID + IPS (training),20,0.0917,0.042,0.8095,5.2804,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-beauty,rkmeans,GRID + Minmax-SGD (training),5,0.0298,0.0195,0.8554,5.2669,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-beauty,rkmeans,GRID + Minmax-SGD (training),10,0.0482,0.0254,0.8251,5.523,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-beauty,rkmeans,GRID + Minmax-SGD (training),20,0.0766,0.0325,0.7887,5.7437,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-beauty,rkmeans,GRID + SDRO (training),5,0.0068,0.0047,0.9923,1.0066,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-beauty,rkmeans,GRID + SDRO (training),10,0.011,0.006,0.9886,1.4893,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-beauty,rkmeans,GRID + SDRO (training),20,0.0181,0.0078,0.9795,2.2374,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-beauty,rkmeans,GRID + FOCF (training),5,0.0429,0.0282,0.8416,5.0539,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-beauty,rkmeans,GRID + FOCF (training),10,0.0631,0.0346,0.8288,5.1429,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-beauty,rkmeans,GRID + FOCF (training),20,0.092,0.0419,0.8146,5.2108,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-beauty,rkmeans,GRID + Reg (training),5,0.0426,0.028,0.8414,5.0638,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-beauty,rkmeans,GRID + Reg (training),10,0.0635,0.0348,0.8292,5.1448,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-beauty,rkmeans,GRID + Reg (training),20,0.0931,0.0422,0.815,5.2114,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-beauty,rkmeans,GRID: saved reranking reference,5,0.04033448106246926,0.026465324537020468,0.8732977835412661,4.783654369822301,verified,GRID: saved reranking reference
+amazon-beauty,rkmeans,GRID: saved reranking reference,10,0.06179850646156598,0.03335155828232705,0.8594442953887125,4.907723710611501,verified,GRID: saved reranking reference
+amazon-beauty,rkmeans,GRID: saved reranking reference,20,0.08827080445378527,0.0399620560257049,0.841764795023526,5.034973832901357,verified,GRID: saved reranking reference
+amazon-beauty,rkmeans,GRID + RR,5,0.03984259714707329,0.025994656322096053,0.8624091795144426,4.873216853569657,verified,GRID + RR
+amazon-beauty,rkmeans,GRID + RR,10,0.060770021911192594,0.03268236591078309,0.8474703586115293,4.984311110801784,verified,GRID + RR
+amazon-beauty,rkmeans,GRID + RR,20,0.08625855207261995,0.0390714654810898,0.8297193943037524,5.083614714926756,verified,GRID + RR
+amazon-beauty,rkmeans,GRID + CPFair,5,0.0402003309037249,0.026258565420522906,0.8520770502201884,5.1334766691463525,verified,GRID + CPFair
+amazon-beauty,rkmeans,GRID + CPFair,10,0.0610383222286813,0.032952475330133214,0.837989378951012,5.227967447471734,verified,GRID + CPFair
+amazon-beauty,rkmeans,GRID + CPFair,20,0.08804722085587802,0.03972913920949014,0.8197939801358395,5.333393915223523,verified,GRID + CPFair
+amazon-beauty,rkmeans,GRID + P-MMF,5,0.040513347940795065,0.026532560036644816,0.8552713973643634,4.948806506536537,verified,GRID + P-MMF
+amazon-beauty,rkmeans,GRID + P-MMF,10,0.06206680677905469,0.033429004029594034,0.8381778930475439,5.082866357665715,verified,GRID + P-MMF
+amazon-beauty,rkmeans,GRID + P-MMF,20,0.0878683539775522,0.03986984343424121,0.8175977474366555,5.216123354475636,verified,GRID + P-MMF
+amazon-beauty,rvq,GRID: original (fresh evaluation),5,0.03899297947502571,0.025632534971747577,0.8479640229148345,5.099079243741252,verified,GRID: original (fresh evaluation)
+amazon-beauty,rvq,GRID: original (fresh evaluation),10,0.06036757143495953,0.032541478690572126,0.836658559691024,5.168536130046165,verified,GRID: original (fresh evaluation)
+amazon-beauty,rvq,GRID: original (fresh evaluation),20,0.08988060635871753,0.03995566925877921,0.8258859914110774,5.209630088540526,verified,GRID: original (fresh evaluation)
+amazon-beauty,rvq,GRID: ordinary continuation,5,0.04341993471358941,0.028639924153987143,0.8674308671234396,4.818213492424559,verified,GRID: standard fine-tuning
+amazon-beauty,rvq,GRID: ordinary continuation,10,0.06604659482180388,0.03589541391815932,0.8537272627902239,4.9360597587557935,verified,GRID: standard fine-tuning
+amazon-beauty,rvq,GRID: ordinary continuation,20,0.09497831239100299,0.04317711388481481,0.8346037022131464,5.068426581627247,verified,GRID: standard fine-tuning
+amazon-beauty,rvq,GRID + IFairLRS RW (training),5,0.042659750480704736,0.02794534223593652,0.8704095803087442,4.799654453744277,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-beauty,rvq,GRID + IFairLRS RW (training),10,0.06506282699101194,0.035142031821878396,0.8572770664507015,4.91646183676223,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-beauty,rvq,GRID + IFairLRS RW (training),20,0.0951571792693288,0.04271462009472471,0.8389867688195283,5.047257014363627,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-beauty,rvq,GRID + SPRINT (training),5,0.04207843312614586,0.027593107987834348,0.8713685883262863,4.838866400740033,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-beauty,rvq,GRID + SPRINT (training),10,0.06340830836649823,0.03449225621027067,0.8572838981717487,4.948767816910161,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-beauty,rvq,GRID + SPRINT (training),20,0.09260832625318606,0.04183834089088255,0.8386592188485942,5.069833268990055,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-beauty,rvq,GRID + APR (training),5,0.0054,0.0036,0.9626,3.415,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-beauty,rvq,GRID + APR (training),10,0.0094,0.0048,0.954,3.7282,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-beauty,rvq,GRID + APR (training),20,0.0173,0.0068,0.9417,4.0697,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-beauty,rvq,GRID + FairDual (training),5,0.0398,0.0259,0.8802,4.6721,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-beauty,rvq,GRID + FairDual (training),10,0.0601,0.0325,0.8655,4.7875,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-beauty,rvq,GRID + FairDual (training),20,0.0913,0.0403,0.8456,4.9302,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-beauty,rvq,GRID + IPS (training),5,0.0428,0.028,0.8407,5.1144,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-beauty,rvq,GRID + IPS (training),10,0.0642,0.0349,0.8281,5.1966,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-beauty,rvq,GRID + IPS (training),20,0.0941,0.0424,0.8151,5.2533,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-beauty,rvq,GRID + Minmax-SGD (training),5,0.033,0.0206,0.8709,5.0464,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-beauty,rvq,GRID + Minmax-SGD (training),10,0.0526,0.0269,0.8449,5.2782,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-beauty,rvq,GRID + Minmax-SGD (training),20,0.0794,0.0337,0.8165,5.4676,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-beauty,rvq,GRID + SDRO (training),5,0.0042,0.0026,0.9752,2.792,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-beauty,rvq,GRID + SDRO (training),10,0.0081,0.0039,0.9692,3.0634,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-beauty,rvq,GRID + SDRO (training),20,0.015,0.0056,0.9549,3.4698,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-beauty,rvq,GRID + FOCF (training),5,0.0427,0.0275,0.8466,5.0287,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-beauty,rvq,GRID + FOCF (training),10,0.064,0.0344,0.8339,5.1179,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-beauty,rvq,GRID + FOCF (training),20,0.0939,0.0419,0.8206,5.1822,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-beauty,rvq,GRID + Reg (training),5,0.0435,0.0277,0.8468,5.0251,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-beauty,rvq,GRID + Reg (training),10,0.0639,0.0343,0.8337,5.118,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-beauty,rvq,GRID + Reg (training),20,0.0946,0.042,0.8203,5.1839,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-beauty,rvq,GRID: saved reranking reference,5,0.03899297947502571,0.02563253497174764,0.8479640229148345,5.099079243741252,verified,GRID: saved reranking reference
+amazon-beauty,rvq,GRID: saved reranking reference,10,0.06036757143495953,0.032541478690572015,0.836658559691024,5.168536130046165,verified,GRID: saved reranking reference
+amazon-beauty,rvq,GRID: saved reranking reference,20,0.08988060635871753,0.03995566925877935,0.825889448675971,5.209603488930348,verified,GRID: saved reranking reference
+amazon-beauty,rvq,GRID + RR,5,0.038143361802978136,0.024974583113815948,0.8313799165619136,5.196844419887336,verified,GRID + RR
+amazon-beauty,rvq,GRID + RR,10,0.05875776953002728,0.031626794835529305,0.8168727776204412,5.266594217364215,verified,GRID + RR
+amazon-beauty,rvq,GRID + RR,20,0.08643741895094575,0.03857136318787027,0.8044465395055655,5.292154163765883,verified,GRID + RR
+amazon-beauty,rvq,GRID + CPFair,5,0.03903769619460716,0.02546498527710044,0.8284339956376355,5.37999120807072,verified,GRID + CPFair
+amazon-beauty,rvq,GRID + CPFair,10,0.06023342127621518,0.03227224014031014,0.8164707825922779,5.442762879487188,verified,GRID + CPFair
+amazon-beauty,rvq,GRID + CPFair,20,0.08943343916290301,0.03957640694670836,0.805756863602412,5.47240029960133,verified,GRID + CPFair
+amazon-beauty,rvq,GRID + P-MMF,5,0.03885882931628136,0.02558063860624643,0.8287910669243674,5.2576666384871045,verified,GRID + P-MMF
+amazon-beauty,rvq,GRID + P-MMF,10,0.060501721593703886,0.032579076259256275,0.8153859052899879,5.333687904253784,verified,GRID + P-MMF
+amazon-beauty,rvq,GRID + P-MMF,20,0.08965702276081026,0.03990318482219368,0.8030610664772003,5.374923893887863,verified,GRID + P-MMF
+amazon-beauty,rqvae,GRID: original (fresh evaluation),5,0.039663730268747484,0.0265984352173159,0.876014986725759,4.841854229138959,verified,GRID: original (fresh evaluation)
+amazon-beauty,rqvae,GRID: original (fresh evaluation),10,0.06108303894826275,0.03349386631714891,0.8606294540751009,4.94892017462303,verified,GRID: original (fresh evaluation)
+amazon-beauty,rqvae,GRID: original (fresh evaluation),20,0.08737647006215624,0.04014313936801087,0.840674824983728,5.076388712044472,verified,GRID: original (fresh evaluation)
+amazon-beauty,rqvae,GRID: ordinary continuation,5,0.04221258328489022,0.027662195646199268,0.861554924552957,4.992668752264584,verified,GRID: standard fine-tuning
+amazon-beauty,rqvae,GRID: ordinary continuation,10,0.06327415820775388,0.03442514309127664,0.8482657779632694,5.082812624843329,verified,GRID: standard fine-tuning
+amazon-beauty,rqvae,GRID: ordinary continuation,20,0.09095380762867236,0.04138454463866129,0.8323064842555743,5.168085112508991,verified,GRID: standard fine-tuning
+amazon-beauty,rqvae,GRID + IFairLRS RW (training),5,0.04154183249116845,0.027306967355173305,0.8670752035852872,4.946433720572006,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-beauty,rqvae,GRID + IFairLRS RW (training),10,0.06246925725528775,0.03405344313582649,0.8543762348853348,5.038628603576479,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-beauty,rqvae,GRID + IFairLRS RW (training),20,0.09117739122657961,0.04128860688664258,0.837941370584017,5.135631969877279,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-beauty,rqvae,GRID + SPRINT (training),5,0.040558064660376515,0.02669645585107309,0.8694369088491075,4.92985957111775,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-beauty,rqvae,GRID + SPRINT (training),10,0.06000983767830792,0.03293520615601041,0.857842525931557,5.022060650892168,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-beauty,rqvae,GRID + SPRINT (training),20,0.08679515270759737,0.039667826001470195,0.8418489701077011,5.122574329162676,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-beauty,rqvae,GRID + APR (training),5,0.0123,0.0074,0.9629,3.4038,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-beauty,rqvae,GRID + APR (training),10,0.023,0.0109,0.949,3.8405,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-beauty,rqvae,GRID + APR (training),20,0.0356,0.0141,0.9344,4.1752,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-beauty,rqvae,GRID + FairDual (training),5,0.0382,0.0254,0.8792,4.7188,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-beauty,rqvae,GRID + FairDual (training),10,0.0596,0.0323,0.8612,4.8425,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-beauty,rqvae,GRID + FairDual (training),20,0.0859,0.0389,0.8425,4.9413,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-beauty,rqvae,GRID + IPS (training),5,0.0405,0.0268,0.8499,5.0675,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-beauty,rqvae,GRID + IPS (training),10,0.0616,0.0335,0.8359,5.1546,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-beauty,rqvae,GRID + IPS (training),20,0.0893,0.0405,0.8184,5.2523,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-beauty,rqvae,GRID + Minmax-SGD (training),5,0.0303,0.0192,0.8791,5.0906,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-beauty,rqvae,GRID + Minmax-SGD (training),10,0.0486,0.025,0.86,5.253,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-beauty,rqvae,GRID + Minmax-SGD (training),20,0.0755,0.0318,0.8325,5.4279,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-beauty,rqvae,GRID + SDRO (training),5,0.0095,0.0059,0.9942,0.5637,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-beauty,rqvae,GRID + SDRO (training),10,0.0164,0.0082,0.9921,1.0179,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-beauty,rqvae,GRID + SDRO (training),20,0.0309,0.0118,0.9849,1.6814,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-beauty,rqvae,GRID + FOCF (training),5,0.04,0.0266,0.8559,4.9897,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-beauty,rqvae,GRID + FOCF (training),10,0.0619,0.0337,0.8417,5.0862,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-beauty,rqvae,GRID + FOCF (training),20,0.0893,0.0406,0.8246,5.1885,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-beauty,rqvae,GRID + Reg (training),5,0.0399,0.0265,0.8539,5.0106,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-beauty,rqvae,GRID + Reg (training),10,0.0623,0.0337,0.8402,5.1004,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-beauty,rqvae,GRID + Reg (training),20,0.0899,0.0406,0.8236,5.1946,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-beauty,rqvae,GRID: saved reranking reference,5,0.039663730268747484,0.026598435217315964,0.876014986725759,4.841854229138959,verified,GRID: saved reranking reference
+amazon-beauty,rqvae,GRID: saved reranking reference,10,0.06108303894826275,0.03349386631714875,0.8606294126707309,4.948923376234301,verified,GRID: saved reranking reference
+amazon-beauty,rqvae,GRID: saved reranking reference,20,0.08737647006215624,0.040143139368011,0.840674824983728,5.076388712044472,verified,GRID: saved reranking reference
+amazon-beauty,rqvae,GRID + RR,5,0.03894826275544426,0.026062836272085218,0.8569497649059873,4.989970837589976,verified,GRID + RR
+amazon-beauty,rqvae,GRID + RR,10,0.05884720296919018,0.03244838038048738,0.8398867756098449,5.063033346169792,verified,GRID + RR
+amazon-beauty,rqvae,GRID + RR,20,0.08514063408308367,0.03907932315082904,0.8184361859288076,5.143959035703686,verified,GRID + RR
+amazon-beauty,rqvae,GRID + CPFair,5,0.0400214640253991,0.0266149387978414,0.8574380052368247,5.148131981600309,verified,GRID + CPFair
+amazon-beauty,rqvae,GRID + CPFair,10,0.060546438313285336,0.03326074112442823,0.8402236001596552,5.260682355421166,verified,GRID + CPFair
+amazon-beauty,rqvae,GRID + CPFair,20,0.08737647006215624,0.04009395611203323,0.8193162565149776,5.375240764776509,verified,GRID + CPFair
+amazon-beauty,rqvae,GRID + P-MMF,5,0.03979788042749184,0.026650331582817176,0.859252841581912,4.997127195315233,verified,GRID + P-MMF
+amazon-beauty,rqvae,GRID + P-MMF,10,0.06099360550909985,0.03346694416934532,0.8409194005972166,5.11648420321901,verified,GRID + P-MMF
+amazon-beauty,rqvae,GRID + P-MMF,20,0.0876000536600635,0.04019508084444502,0.8185399038756146,5.246748710563373,verified,GRID + P-MMF
+amazon-sports,,SASRec,5,0.02856902073150177,0.01730776357538941,0.8369110844517592,4.86471097496648,verified,SASRec
+amazon-sports,,SASRec,10,0.04430024158660599,0.02237026610825754,0.8306811464402605,5.000051694292392,verified,SASRec
+amazon-sports,,SASRec,20,0.0657059385358728,0.027775977405970705,0.8165849370255434,5.13586432795251,verified,SASRec
+amazon-sports,,GRU4Rec,5,0.022529355581774258,0.014608563301851932,0.8525437318025136,4.645189972421423,verified,GRU4Rec
+amazon-sports,,GRU4Rec,10,0.036181807966739706,0.01898321665384853,0.8327530187309488,4.839035477318047,verified,GRU4Rec
+amazon-sports,,GRU4Rec,20,0.05489072419798865,0.02369086292041873,0.8148325363068425,4.9792627950845,verified,GRU4Rec
+amazon-sports,rkmeans,GRID: original (fresh evaluation),5,0.020534861509073542,0.012892615891117901,0.9183714881536637,4.263773643512029,verified,GRID: original (fresh evaluation)
+amazon-sports,rkmeans,GRID: original (fresh evaluation),10,0.03297938086409349,0.016891522226187502,0.8901725036326121,4.6420370787800636,verified,GRID: original (fresh evaluation)
+amazon-sports,rkmeans,GRID: original (fresh evaluation),20,0.05351424237316703,0.02206400611629856,0.8608899376369459,4.963353506171083,verified,GRID: original (fresh evaluation)
+amazon-sports,rkmeans,GRID: ordinary continuation,5,0.021265239620203383,0.013467367328176345,0.8981139940666417,4.570188275916609,verified,GRID: standard fine-tuning
+amazon-sports,rkmeans,GRID: ordinary continuation,10,0.034608685881229284,0.01774860768803951,0.875617841495832,4.813420010415179,verified,GRID: standard fine-tuning
+amazon-sports,rkmeans,GRID: ordinary continuation,20,0.054946907129614024,0.022869815112984988,0.8518851576812533,5.029906409938141,verified,GRID: standard fine-tuning
+amazon-sports,rkmeans,GRID + IFairLRS RW (training),5,0.02137760548345413,0.013570868469138086,0.8997562542068347,4.538852322056826,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-sports,rkmeans,GRID + IFairLRS RW (training),10,0.034355862688915106,0.017733395305794777,0.8770063310452559,4.797192561790819,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-sports,rkmeans,GRID + IFairLRS RW (training),20,0.054694083937299846,0.022863609932605736,0.8529942748491047,5.020031316607142,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-sports,rkmeans,GRID + SPRINT (training),5,0.020085398056070566,0.01276220748345602,0.9094883717855927,4.435242235741827,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-sports,rkmeans,GRID + SPRINT (training),10,0.03252991741109051,0.016761637286112775,0.8887990402633327,4.695332330574544,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-sports,rkmeans,GRID + SPRINT (training),20,0.053345693578290915,0.02197286549187222,0.8628871747586613,4.958651585641002,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-sports,rkmeans,GRID + APR (training),5,0.0052,0.0038,0.9843,2.3377,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-sports,rkmeans,GRID + APR (training),10,0.0082,0.0048,0.9817,2.5923,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-sports,rkmeans,GRID + APR (training),20,0.0163,0.0068,0.973,3.0888,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-sports,rkmeans,GRID + FairDual (training),5,0.0179,0.0115,0.9164,4.2596,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-sports,rkmeans,GRID + FairDual (training),10,0.0303,0.0155,0.8952,4.5557,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-sports,rkmeans,GRID + FairDual (training),20,0.0483,0.02,0.8736,4.8043,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-sports,rkmeans,GRID + IPS (training),5,0.0212,0.0138,0.9021,4.4595,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-sports,rkmeans,GRID + IPS (training),10,0.0339,0.0179,0.8777,4.7717,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-sports,rkmeans,GRID + IPS (training),20,0.0553,0.0232,0.8534,5.0263,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-sports,rkmeans,GRID + Minmax-SGD (training),5,0.0123,0.0074,0.939,4.1077,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-sports,rkmeans,GRID + Minmax-SGD (training),10,0.0219,0.0104,0.9074,4.6703,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-sports,rkmeans,GRID + Minmax-SGD (training),20,0.0375,0.0143,0.8656,5.1545,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-sports,rkmeans,GRID + SDRO (training),5,0.0066,0.0044,0.9928,1.1422,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-sports,rkmeans,GRID + SDRO (training),10,0.0106,0.0057,0.9919,1.2761,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-sports,rkmeans,GRID + SDRO (training),20,0.0157,0.007,0.9886,1.8096,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-sports,rkmeans,GRID + FOCF (training),5,0.021,0.0135,0.9082,4.3406,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-sports,rkmeans,GRID + FOCF (training),10,0.0344,0.0178,0.8835,4.6756,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-sports,rkmeans,GRID + FOCF (training),20,0.0548,0.0229,0.8587,4.9452,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-sports,rkmeans,GRID + Reg (training),5,0.0215,0.0138,0.9077,4.3505,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-sports,rkmeans,GRID + Reg (training),10,0.0343,0.0179,0.8833,4.6797,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-sports,rkmeans,GRID + Reg (training),20,0.0542,0.0229,0.8586,4.9456,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-sports,rkmeans,GRID: saved reranking reference,5,0.020534861509073542,0.012892615891117966,0.9183714881536637,4.263773643512031,verified,GRID: saved reranking reference
+amazon-sports,rkmeans,GRID: saved reranking reference,10,0.03297938086409349,0.01689152222618748,0.8901721290797346,4.6420447864450844,verified,GRID: saved reranking reference
+amazon-sports,rkmeans,GRID: saved reranking reference,20,0.05351424237316703,0.02206400611629868,0.8608899376369459,4.96335350617109,verified,GRID: saved reranking reference
+amazon-sports,rkmeans,GRID + RR,5,0.019439294342378784,0.012347526489499336,0.9149637179440572,4.249537872137474,verified,GRID + RR
+amazon-sports,rkmeans,GRID + RR,10,0.03149053317602112,0.01620359403849545,0.8874671081984117,4.575961970246041,verified,GRID + RR
+amazon-sports,rkmeans,GRID + RR,20,0.050367998202146186,0.02095715019436341,0.8574306333578996,4.890494355994978,verified,GRID + RR
+amazon-sports,rkmeans,GRID + CPFair,5,0.01974830046631833,0.012403447772932527,0.8943090215467051,4.7853594595144395,verified,GRID + CPFair
+amazon-sports,rkmeans,GRID + CPFair,10,0.032754649137592,0.016589624226670773,0.8671147641032929,5.060403359164598,verified,GRID + CPFair
+amazon-sports,rkmeans,GRID + CPFair,20,0.052840047193662566,0.02164752702455754,0.838307142172561,5.308577341113906,verified,GRID + CPFair
+amazon-sports,rkmeans,GRID + P-MMF,5,0.020450587111635485,0.012861245177289525,0.9074055052663236,4.398951298160101,verified,GRID + P-MMF
+amazon-sports,rkmeans,GRID + P-MMF,10,0.033063655261531544,0.01691588299024596,0.8763254820440453,4.779659175421594,verified,GRID + P-MMF
+amazon-sports,rkmeans,GRID + P-MMF,20,0.053345693578290915,0.022024763008515642,0.8433972166314697,5.108551647517593,verified,GRID + P-MMF
+amazon-sports,rvq,GRID: original (fresh evaluation),5,0.02000112365863251,0.01273854205075813,0.9197285593264217,4.219827660678493,verified,GRID: original (fresh evaluation)
+amazon-sports,rvq,GRID: original (fresh evaluation),10,0.03331647845384572,0.017015058971495415,0.8966853832942807,4.551181243107606,verified,GRID: original (fresh evaluation)
+amazon-sports,rvq,GRID: original (fresh evaluation),20,0.05368279116804315,0.02214878105057307,0.8699686314829659,4.858740485099992,verified,GRID: original (fresh evaluation)
+amazon-sports,rvq,GRID: ordinary continuation,5,0.022051800662958594,0.013776867812218428,0.9038007643081953,4.571665273572357,verified,GRID: standard fine-tuning
+amazon-sports,rvq,GRID: ordinary continuation,10,0.03522669812910838,0.01802243967060101,0.8843237062227554,4.773999597453737,verified,GRID: standard fine-tuning
+amazon-sports,rvq,GRID: ordinary continuation,20,0.055368279116804316,0.023090907653262167,0.8626064802310576,4.941797568635735,verified,GRID: standard fine-tuning
+amazon-sports,rvq,GRID + IFairLRS RW (training),5,0.01983257486375639,0.012608356074676207,0.9078959492106298,4.455941755655431,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-sports,rvq,GRID + IFairLRS RW (training),10,0.033681667509410644,0.017057800959249657,0.8872584161480762,4.671040613058022,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-sports,rvq,GRID + IFairLRS RW (training),20,0.05278386426203719,0.02183937389555221,0.8645979145802871,4.884755051610665,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-sports,rvq,GRID + SPRINT (training),5,0.019467385808191472,0.01220283152038523,0.9151528891797182,4.250312693064187,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-sports,rvq,GRID + SPRINT (training),10,0.0329512893982808,0.016550094328302963,0.8921529850211898,4.5470373341012635,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-sports,rvq,GRID + SPRINT (training),20,0.05185684589021855,0.021303966878231835,0.864729170728913,4.840865005890069,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-sports,rvq,GRID + APR (training),5,0.0058,0.0041,0.9762,2.93,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-sports,rvq,GRID + APR (training),10,0.0101,0.0055,0.9625,3.5635,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-sports,rvq,GRID + APR (training),20,0.0169,0.0072,0.9541,3.9219,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-sports,rvq,GRID + FairDual (training),5,0.0183,0.0113,0.9172,4.2272,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-sports,rvq,GRID + FairDual (training),10,0.0297,0.015,0.8942,4.5293,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-sports,rvq,GRID + FairDual (training),20,0.0476,0.0195,0.87,4.7784,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-sports,rvq,GRID + IPS (training),5,0.0211,0.0133,0.8993,4.566,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-sports,rvq,GRID + IPS (training),10,0.0346,0.0177,0.878,4.8124,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-sports,rvq,GRID + IPS (training),20,0.0553,0.0229,0.856,5.0099,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-sports,rvq,GRID + Minmax-SGD (training),5,0.0128,0.0078,0.9355,4.2235,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-sports,rvq,GRID + Minmax-SGD (training),10,0.0217,0.0106,0.9071,4.6731,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-sports,rvq,GRID + Minmax-SGD (training),20,0.0356,0.0141,0.8714,5.0889,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-sports,rvq,GRID + SDRO (training),5,0.0053,0.0039,0.9889,1.8773,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-sports,rvq,GRID + SDRO (training),10,0.011,0.0057,0.9881,1.9377,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-sports,rvq,GRID + SDRO (training),20,0.0146,0.0066,0.9874,2.0223,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-sports,rvq,GRID + FOCF (training),5,0.0207,0.0131,0.9026,4.486,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-sports,rvq,GRID + FOCF (training),10,0.0349,0.0177,0.8818,4.7319,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-sports,rvq,GRID + FOCF (training),20,0.0554,0.0229,0.8603,4.9311,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-sports,rvq,GRID + Reg (training),5,0.0208,0.0131,0.9035,4.4867,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-sports,rvq,GRID + Reg (training),10,0.0346,0.0175,0.8829,4.7294,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-sports,rvq,GRID + Reg (training),20,0.0549,0.0226,0.8612,4.9335,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-sports,rvq,GRID: saved reranking reference,5,0.02000112365863251,0.012738542050758197,0.9197285593264217,4.219827660678493,verified,GRID: saved reranking reference
+amazon-sports,rvq,GRID: saved reranking reference,10,0.03331647845384572,0.017015058971495373,0.8966857137821138,4.55117876004907,verified,GRID: saved reranking reference
+amazon-sports,rvq,GRID: saved reranking reference,20,0.05368279116804315,0.02214878105057323,0.8699613439397895,4.8587186002471,verified,GRID: saved reranking reference
+amazon-sports,rvq,GRID + RR,5,0.01932692847912804,0.012421968302020941,0.9156127960482469,4.240019397226764,verified,GRID + RR
+amazon-sports,rvq,GRID + RR,10,0.032108545423900216,0.016513912543886698,0.8929474777719392,4.534669553101299,verified,GRID + RR
+amazon-sports,rvq,GRID + RR,20,0.05222203494578347,0.021549116064652814,0.8637028958445562,4.835249125054628,verified,GRID + RR
+amazon-sports,rvq,GRID + CPFair,5,0.019242654081689983,0.012380782305645138,0.8966789277652744,4.746815814276153,verified,GRID + CPFair
+amazon-sports,rvq,GRID + CPFair,10,0.03289510646665543,0.016735057360640064,0.874059943883166,4.987693161934809,verified,GRID + CPFair
+amazon-sports,rvq,GRID + CPFair,20,0.05281195572784988,0.021764298492525973,0.847722090577902,5.223011774577596,verified,GRID + CPFair
+amazon-sports,rvq,GRID + P-MMF,5,0.019944940727007136,0.012714345379143309,0.9099651115010867,4.34640978812593,verified,GRID + P-MMF
+amazon-sports,rvq,GRID + P-MMF,10,0.0335693016461599,0.017088546760640342,0.8843264162229868,4.681129001965692,verified,GRID + P-MMF
+amazon-sports,rvq,GRID + P-MMF,20,0.05362660823641777,0.022136728069776273,0.8545500132745947,4.994831400607671,verified,GRID + P-MMF
+amazon-sports,rqvae,GRID: original (fresh evaluation),5,0.0153660317995393,0.009577325686513777,0.943150760838073,3.9704394753299055,verified,GRID: original (fresh evaluation)
+amazon-sports,rqvae,GRID: original (fresh evaluation),10,0.02677116691948986,0.013273572215617249,0.9208010364098446,4.344388144371591,verified,GRID: original (fresh evaluation)
+amazon-sports,rqvae,GRID: original (fresh evaluation),20,0.04480588797123434,0.017789849579321292,0.8940769640065701,4.68731634526272,verified,GRID: original (fresh evaluation)
+amazon-sports,rqvae,GRID: ordinary continuation,5,0.01660205629529749,0.010664543652424223,0.9413828712562614,3.8696960535509333,verified,GRID: standard fine-tuning
+amazon-sports,rqvae,GRID: ordinary continuation,10,0.027108264509242093,0.014044167512710294,0.9182679793643397,4.286858004973748,verified,GRID: standard fine-tuning
+amazon-sports,rqvae,GRID: ordinary continuation,20,0.04550817461655149,0.018659519209493783,0.8964301585570461,4.598306654996756,verified,GRID: standard fine-tuning
+amazon-sports,rqvae,GRID + IFairLRS RW (training),5,0.016714422158548233,0.0106549234087882,0.941653386563907,3.8687502301493395,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-sports,rqvae,GRID + IFairLRS RW (training),10,0.027670093825495814,0.014155962269558163,0.918237640581262,4.290046738926125,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-sports,rqvae,GRID + IFairLRS RW (training),20,0.045339625821675375,0.01857800915300064,0.8963351983863381,4.605858347066727,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-sports,rqvae,GRID + SPRINT (training),5,0.016714422158548233,0.010640400599182812,0.9402466981511409,3.9527201173963467,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-sports,rqvae,GRID + SPRINT (training),10,0.028147648744311478,0.014304060205843377,0.915106136167597,4.417511261131442,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-sports,rqvae,GRID + SPRINT (training),20,0.045817180740491036,0.018732930624463507,0.8892074130624215,4.752708595040865,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-sports,rqvae,GRID + APR (training),5,0.008,0.0051,0.9866,2.0069,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-sports,rqvae,GRID + APR (training),10,0.0156,0.0076,0.978,2.7627,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-sports,rqvae,GRID + APR (training),20,0.0246,0.0099,0.9602,3.6076,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-sports,rqvae,GRID + FairDual (training),5,0.0142,0.0092,0.9435,3.9354,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-sports,rqvae,GRID + FairDual (training),10,0.0238,0.0122,0.9256,4.2303,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-sports,rqvae,GRID + FairDual (training),20,0.0389,0.016,0.9057,4.5017,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-sports,rqvae,GRID + IPS (training),5,0.0167,0.0106,0.937,3.9948,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-sports,rqvae,GRID + IPS (training),10,0.0275,0.014,0.9141,4.4586,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-sports,rqvae,GRID + IPS (training),20,0.0454,0.0185,0.8899,4.7891,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-sports,rqvae,GRID + Minmax-SGD (training),5,0.0104,0.0063,0.9601,3.6087,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-sports,rqvae,GRID + Minmax-SGD (training),10,0.0198,0.0093,0.9236,4.4609,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-sports,rqvae,GRID + Minmax-SGD (training),20,0.0343,0.0129,0.8894,4.95,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-sports,rqvae,GRID + SDRO (training),5,0.0072,0.0047,0.9924,0.9977,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-sports,rqvae,GRID + SDRO (training),10,0.0117,0.0061,0.9925,0.9951,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-sports,rqvae,GRID + SDRO (training),20,0.0183,0.0078,0.9914,1.3581,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-sports,rqvae,GRID + FOCF (training),5,0.0165,0.0106,0.9419,3.8468,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-sports,rqvae,GRID + FOCF (training),10,0.0278,0.0142,0.9193,4.3362,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-sports,rqvae,GRID + FOCF (training),20,0.0454,0.0186,0.8949,4.6917,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-sports,rqvae,GRID + Reg (training),5,0.017,0.0107,0.9407,3.8884,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-sports,rqvae,GRID + Reg (training),10,0.0273,0.014,0.9182,4.3593,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-sports,rqvae,GRID + Reg (training),20,0.0453,0.0185,0.8943,4.6996,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-sports,rqvae,GRID: saved reranking reference,5,0.0153660317995393,0.009577325686513793,0.943150760838073,3.9704394753299055,verified,GRID: saved reranking reference
+amazon-sports,rqvae,GRID: saved reranking reference,10,0.02677116691948986,0.013273572215617204,0.9208010364098446,4.344388144371591,verified,GRID: saved reranking reference
+amazon-sports,rqvae,GRID: saved reranking reference,20,0.04480588797123434,0.017789849579321358,0.8940768648602202,4.687321704492327,verified,GRID: saved reranking reference
+amazon-sports,rqvae,GRID + RR,5,0.014663745154222148,0.009202116911722532,0.9431244540065591,3.944492272552017,verified,GRID + RR
+amazon-sports,rqvae,GRID + RR,10,0.025282319231417494,0.01262581903041768,0.9208869852789703,4.300419023186084,verified,GRID + RR
+amazon-sports,rqvae,GRID + RR,20,0.042137198719029156,0.016827752471718863,0.8928392650391243,4.626821364183285,verified,GRID + RR
+amazon-sports,rqvae,GRID + CPFair,5,0.01500084274397438,0.00939634280787855,0.9243893631389294,4.478253236746525,verified,GRID + CPFair
+amazon-sports,rqvae,GRID + CPFair,10,0.025956514410921963,0.012944755972053471,0.9014236093898204,4.771663618971829,verified,GRID + CPFair
+amazon-sports,rqvae,GRID + CPFair,20,0.04393505253104107,0.017450649237902686,0.8737243665374459,5.049582626206237,verified,GRID + CPFair
+amazon-sports,rqvae,GRID + P-MMF,5,0.015225574470475869,0.009523705698169365,0.9376680117521473,4.071538669601985,verified,GRID + P-MMF
+amazon-sports,rqvae,GRID + P-MMF,10,0.026799258385302546,0.013282530540585223,0.9133135481283923,4.449962488566298,verified,GRID + P-MMF
+amazon-sports,rqvae,GRID + P-MMF,20,0.044665430642170906,0.01775730859303334,0.8827905841813101,4.809817222899108,verified,GRID + P-MMF
+amazon-toys,,SASRec,5,0.058108386565011334,0.03213873544384613,0.7722432280119861,5.230983941140667,verified,SASRec
+amazon-toys,,SASRec,10,0.08587471667010096,0.0411108124534962,0.7763922576769059,5.2170394945379615,verified,SASRec
+amazon-toys,,SASRec,20,0.11910158664743457,0.04949774326499882,0.7768178421495585,5.21022468075403,verified,SASRec
+amazon-toys,,GRU4Rec,5,0.0368328868740985,0.0258991843749381,0.7648437558186589,5.2163817299214355,verified,GRU4Rec
+amazon-toys,,GRU4Rec,10,0.05481145683082629,0.03167365020437391,0.7597925392068997,5.237118214502575,verified,GRU4Rec
+amazon-toys,,GRU4Rec,20,0.07876571193076448,0.03770201911249838,0.7561966079856206,5.248335787963764,verified,GRU4Rec
+amazon-toys,rkmeans,GRID: original (fresh evaluation),5,0.03162991963733773,0.020502522562318045,0.8175259869066209,5.003730701718989,verified,GRID: original (fresh evaluation)
+amazon-toys,rkmeans,GRID: original (fresh evaluation),10,0.04929940243148568,0.026170578092009747,0.8084436033853113,5.056456653949945,verified,GRID: original (fresh evaluation)
+amazon-toys,rkmeans,GRID: original (fresh evaluation),20,0.07588089841335256,0.0328753097405092,0.8007366887703297,5.097972419868,verified,GRID: original (fresh evaluation)
+amazon-toys,rkmeans,GRID: ordinary continuation,5,0.0353389655882959,0.023515300759566607,0.7964627518936244,5.14793368331248,verified,GRID: standard fine-tuning
+amazon-toys,rkmeans,GRID: ordinary continuation,10,0.05501751493921286,0.02983059554848411,0.788567188597787,5.18664812436526,verified,GRID: standard fine-tuning
+amazon-toys,rkmeans,GRID: ordinary continuation,20,0.08226869977333608,0.03666930791634415,0.7812514740602633,5.219624326778105,verified,GRID: standard fine-tuning
+amazon-toys,rkmeans,GRID + IFairLRS RW (training),5,0.03523593653410262,0.023781357258073923,0.8016592642980742,5.118248382052541,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-toys,rkmeans,GRID + IFairLRS RW (training),10,0.05496600041211622,0.030097944671057367,0.7937497982864903,5.1591992434065475,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-toys,rkmeans,GRID + IFairLRS RW (training),20,0.08273233051720585,0.03707332828925322,0.7859533849388901,5.197500271279927,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-toys,rkmeans,GRID + SPRINT (training),5,0.03451473315474964,0.023156262697887085,0.8021217778594286,5.085925016291695,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-toys,rkmeans,GRID + SPRINT (training),10,0.054553884195343086,0.029619825150995656,0.7934396560070904,5.142291607110655,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-toys,rkmeans,GRID + SPRINT (training),20,0.08293838862559241,0.03672226749652186,0.7862440696228143,5.178575168878183,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-toys,rkmeans,GRID + APR (training),5,0.0106,0.0065,0.9611,3.0456,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-toys,rkmeans,GRID + APR (training),10,0.0174,0.0087,0.9479,3.4981,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-toys,rkmeans,GRID + APR (training),20,0.0277,0.0112,0.9416,3.6824,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-toys,rkmeans,GRID + FairDual (training),5,0.031,0.0208,0.8211,5.0268,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-toys,rkmeans,GRID + FairDual (training),10,0.05,0.0269,0.8113,5.0773,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-toys,rkmeans,GRID + FairDual (training),20,0.078,0.0339,0.803,5.1191,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-toys,rkmeans,GRID + IPS (training),5,0.0371,0.0249,0.7764,5.3207,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-toys,rkmeans,GRID + IPS (training),10,0.0573,0.0314,0.7724,5.3253,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-toys,rkmeans,GRID + IPS (training),20,0.0846,0.0383,0.7678,5.3302,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-toys,rkmeans,GRID + Minmax-SGD (training),5,0.0285,0.0187,0.7799,5.4332,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-toys,rkmeans,GRID + Minmax-SGD (training),10,0.0464,0.0244,0.7615,5.5194,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-toys,rkmeans,GRID + Minmax-SGD (training),20,0.0727,0.0311,0.7478,5.5705,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-toys,rkmeans,GRID + SDRO (training),5,0.0075,0.0046,0.9749,2.3295,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-toys,rkmeans,GRID + SDRO (training),10,0.0131,0.0064,0.9672,2.7004,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-toys,rkmeans,GRID + SDRO (training),20,0.0232,0.0089,0.9585,3.0217,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-toys,rkmeans,GRID + FOCF (training),5,0.0367,0.0245,0.7838,5.2553,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-toys,rkmeans,GRID + FOCF (training),10,0.0573,0.0312,0.7792,5.2688,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-toys,rkmeans,GRID + FOCF (training),20,0.0856,0.0383,0.7738,5.2796,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-toys,rkmeans,GRID + Reg (training),5,0.0365,0.0246,0.7843,5.2501,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-toys,rkmeans,GRID + Reg (training),10,0.0574,0.0314,0.7795,5.2657,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-toys,rkmeans,GRID + Reg (training),20,0.0848,0.0382,0.7737,5.2792,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-toys,rkmeans,GRID: saved reranking reference,5,0.03162991963733773,0.020502522562318107,0.8175259869066209,5.003730701718988,verified,GRID: saved reranking reference
+amazon-toys,rkmeans,GRID: saved reranking reference,10,0.04929940243148568,0.026170578092009733,0.8084436033853113,5.056456653949945,verified,GRID: saved reranking reference
+amazon-toys,rkmeans,GRID: saved reranking reference,20,0.07588089841335256,0.03287530974050926,0.8007366887703297,5.097972419867999,verified,GRID: saved reranking reference
+amazon-toys,rkmeans,GRID + RR,5,0.031063259839274677,0.01998188089530934,0.8060517776856447,5.084975683648337,verified,GRID + RR
+amazon-toys,rkmeans,GRID + RR,10,0.047599423037296515,0.025302936673629168,0.7975679557297809,5.1279803941759035,verified,GRID + RR
+amazon-toys,rkmeans,GRID + RR,20,0.07289305584174738,0.031662024366704455,0.7889893904900459,5.167128190298888,verified,GRID + RR
+amazon-toys,rkmeans,GRID + CPFair,5,0.031372347001854525,0.020407736739007594,0.8008946149320132,5.176517516622893,verified,GRID + CPFair
+amazon-toys,rkmeans,GRID + CPFair,10,0.049093344323099114,0.02609939392540588,0.7926737032614282,5.215990289345286,verified,GRID + CPFair
+amazon-toys,rkmeans,GRID + CPFair,20,0.07577786935915928,0.0328629287678308,0.7858773234293035,5.244117752284002,verified,GRID + CPFair
+amazon-toys,rkmeans,GRID + P-MMF,5,0.03116628889346796,0.020315079423604155,0.7812205343111577,5.234447008559589,verified,GRID + P-MMF
+amazon-toys,rkmeans,GRID + P-MMF,10,0.04878425716051927,0.026021178559723045,0.7722925702397474,5.277978982815314,verified,GRID + P-MMF
+amazon-toys,rkmeans,GRID + P-MMF,20,0.07536575314238615,0.032757539543473366,0.7657042656511064,5.307925318664448,verified,GRID + P-MMF
+amazon-toys,rvq,GRID: original (fresh evaluation),5,0.03739954667216155,0.02371648970257336,0.8145018979689622,5.030944986842152,verified,GRID: original (fresh evaluation)
+amazon-toys,rvq,GRID: original (fresh evaluation),10,0.059035648052750876,0.030668471261324506,0.8040446351654299,5.087097215206051,verified,GRID: original (fresh evaluation)
+amazon-toys,rvq,GRID: original (fresh evaluation),20,0.09071708221718525,0.03861154052056933,0.7943950332547995,5.131057065997945,verified,GRID: original (fresh evaluation)
+amazon-toys,rvq,GRID: ordinary continuation,5,0.037914691943127965,0.024259810815995906,0.7935834001573986,5.177188816046128,verified,GRID: standard fine-tuning
+amazon-toys,rvq,GRID: ordinary continuation,10,0.060529569338553475,0.03156699104838682,0.7884425606816303,5.2014005270377615,verified,GRID: standard fine-tuning
+amazon-toys,rvq,GRID: ordinary continuation,20,0.09257160519266433,0.039619960528755375,0.7837761203478658,5.21004375768073,verified,GRID: standard fine-tuning
+amazon-toys,rvq,GRID + IFairLRS RW (training),5,0.03786317741603132,0.023684147328003627,0.8007835173374314,5.135718678676669,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-toys,rvq,GRID + IFairLRS RW (training),10,0.05965382237791057,0.030757138636974463,0.7943989433936033,5.16083821303342,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-toys,rvq,GRID + IFairLRS RW (training),20,0.09169585823202143,0.03877907280244097,0.7884059729542526,5.179768607067134,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-toys,rvq,GRID + SPRINT (training),5,0.037914691943127965,0.024486574118262047,0.8031833495117913,5.110479862874996,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-toys,rvq,GRID + SPRINT (training),10,0.05996290954049042,0.03157923144157495,0.7979883266840285,5.132642876792779,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-toys,rvq,GRID + SPRINT (training),20,0.08984133525654235,0.0391042950020011,0.7919087745997383,5.153415055615545,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-toys,rvq,GRID + APR (training),5,0.0123,0.0074,0.9538,3.1722,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-toys,rvq,GRID + APR (training),10,0.0199,0.0098,0.9339,3.7263,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-toys,rvq,GRID + APR (training),20,0.0339,0.0133,0.9189,4.0593,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-toys,rvq,GRID + FairDual (training),5,0.0333,0.0218,0.8073,5.1156,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-toys,rvq,GRID + FairDual (training),10,0.0564,0.0292,0.7986,5.1498,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-toys,rvq,GRID + FairDual (training),20,0.0868,0.0368,0.7913,5.1689,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-toys,rvq,GRID + IPS (training),5,0.0396,0.0253,0.7787,5.2664,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-toys,rvq,GRID + IPS (training),10,0.0631,0.0329,0.7767,5.263,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-toys,rvq,GRID + IPS (training),20,0.0942,0.0407,0.7746,5.2545,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-toys,rvq,GRID + Minmax-SGD (training),5,0.0324,0.0213,0.7795,5.4118,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-toys,rvq,GRID + Minmax-SGD (training),10,0.0524,0.0278,0.7663,5.4766,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-toys,rvq,GRID + Minmax-SGD (training),20,0.0818,0.0352,0.7529,5.5329,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-toys,rvq,GRID + SDRO (training),5,0.01,0.0067,0.9618,3.0611,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-toys,rvq,GRID + SDRO (training),10,0.0169,0.009,0.9515,3.3654,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-toys,rvq,GRID + SDRO (training),20,0.0287,0.0119,0.9395,3.6494,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-toys,rvq,GRID + FOCF (training),5,0.0387,0.025,0.7825,5.2288,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-toys,rvq,GRID + FOCF (training),10,0.0624,0.0326,0.7812,5.2227,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-toys,rvq,GRID + FOCF (training),20,0.0939,0.0405,0.7792,5.2155,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-toys,rvq,GRID + Reg (training),5,0.0384,0.025,0.7829,5.2236,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-toys,rvq,GRID + Reg (training),10,0.0624,0.0327,0.7813,5.2217,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-toys,rvq,GRID + Reg (training),20,0.0944,0.0407,0.779,5.216,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-toys,rvq,GRID: saved reranking reference,5,0.03739954667216155,0.02371648970257349,0.8145018979689622,5.030944986842152,verified,GRID: saved reranking reference
+amazon-toys,rvq,GRID: saved reranking reference,10,0.059035648052750876,0.03066847126132442,0.8040446351654299,5.087097215206051,verified,GRID: saved reranking reference
+amazon-toys,rvq,GRID: saved reranking reference,20,0.09071708221718525,0.03861154052056943,0.7943950332547995,5.131057065997945,verified,GRID: saved reranking reference
+amazon-toys,rvq,GRID + RR,5,0.03611168349474552,0.02301042993960545,0.8037142594693631,5.08538525883005,verified,GRID + RR
+amazon-toys,rvq,GRID + RR,10,0.05738718318565836,0.02983704108641012,0.792969632496605,5.140130595481866,verified,GRID + RR
+amazon-toys,rvq,GRID + RR,20,0.08669894910364723,0.03721504487561105,0.7822016067567199,5.187394155073479,verified,GRID + RR
+amazon-toys,rvq,GRID + CPFair,5,0.03724500309087163,0.023748529024690605,0.7971771280464947,5.206272101015625,verified,GRID + CPFair
+amazon-toys,rvq,GRID + CPFair,10,0.05882958994436431,0.03070298044436065,0.7881347768986516,5.245434592405825,verified,GRID + CPFair
+amazon-toys,rvq,GRID + CPFair,20,0.0904079950546054,0.03864347215159596,0.7785054704703835,5.285012056635383,verified,GRID + CPFair
+amazon-toys,rvq,GRID + P-MMF,5,0.03672985781990521,0.02344258762183864,0.776842792559068,5.2668847698384065,verified,GRID + P-MMF
+amazon-toys,rvq,GRID + P-MMF,10,0.05893261899855759,0.030639178339674642,0.7675608057616826,5.307723531298638,verified,GRID + P-MMF
+amazon-toys,rvq,GRID + P-MMF,20,0.09061405316299197,0.038588815270264074,0.7584832323317585,5.343358504086121,verified,GRID + P-MMF
+amazon-toys,rqvae,GRID: original (fresh evaluation),5,0.02843601895734597,0.018897259737834564,0.8571400375869851,4.729313429717911,verified,GRID: original (fresh evaluation)
+amazon-toys,rqvae,GRID: original (fresh evaluation),10,0.04394189161343499,0.023843758079003727,0.8415882363163761,4.8471477973574615,verified,GRID: original (fresh evaluation)
+amazon-toys,rqvae,GRID: original (fresh evaluation),20,0.06789614671337317,0.029847386051495013,0.823796018609778,4.961709481862002,verified,GRID: original (fresh evaluation)
+amazon-toys,rqvae,GRID: ordinary continuation,5,0.03178446321862765,0.020618676785549503,0.8315664884967441,4.958298658090447,verified,GRID: standard fine-tuning
+amazon-toys,rqvae,GRID: ordinary continuation,10,0.049608489594065525,0.02630741629168873,0.820038840712117,5.013081675392908,verified,GRID: standard fine-tuning
+amazon-toys,rqvae,GRID: ordinary continuation,20,0.07572635483206264,0.03285640390457062,0.8088853559715888,5.068751920434451,verified,GRID: standard fine-tuning
+amazon-toys,rqvae,GRID + IFairLRS RW (training),5,0.03178446321862765,0.020726755217829424,0.8362040372493477,4.924175962311241,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-toys,rqvae,GRID + IFairLRS RW (training),10,0.049093344323099114,0.0262983870719118,0.8238191380812763,4.9902854505939995,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-toys,rqvae,GRID + IFairLRS RW (training),20,0.07495363692561302,0.032777698327298675,0.8120327073801077,5.050012511519254,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-toys,rqvae,GRID + SPRINT (training),5,0.03044508551411498,0.01974321444318426,0.8374086082636749,4.903799337967626,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-toys,rqvae,GRID + SPRINT (training),10,0.047960024726973007,0.025419291910144564,0.8269585450807971,4.960160814700507,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-toys,rqvae,GRID + SPRINT (training),20,0.07438697712754996,0.03206024571898867,0.814032122721258,5.029679499471827,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-toys,rqvae,GRID + APR (training),5,0.0088,0.0058,0.9653,2.8667,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-toys,rqvae,GRID + APR (training),10,0.0141,0.0075,0.9525,3.3887,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-toys,rqvae,GRID + APR (training),20,0.0233,0.0099,0.9481,3.5241,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-toys,rqvae,GRID + FairDual (training),5,0.0273,0.0174,0.842,4.8988,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-toys,rqvae,GRID + FairDual (training),10,0.0444,0.0229,0.8287,4.9726,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-toys,rqvae,GRID + FairDual (training),20,0.0679,0.0288,0.8151,5.041,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-toys,rqvae,GRID + IPS (training),5,0.0325,0.0216,0.8152,5.0784,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-toys,rqvae,GRID + IPS (training),10,0.0515,0.0277,0.8053,5.1221,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-toys,rqvae,GRID + IPS (training),20,0.0771,0.0342,0.7952,5.1647,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-toys,rqvae,GRID + Minmax-SGD (training),5,0.025,0.0155,0.8063,5.365,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-toys,rqvae,GRID + Minmax-SGD (training),10,0.0399,0.0203,0.7852,5.479,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-toys,rqvae,GRID + Minmax-SGD (training),20,0.0624,0.0259,0.7653,5.5496,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-toys,rqvae,GRID + SDRO (training),5,0.0058,0.0035,0.989,1.1403,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-toys,rqvae,GRID + SDRO (training),10,0.0092,0.0046,0.984,1.7411,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-toys,rqvae,GRID + SDRO (training),20,0.0193,0.0071,0.9758,2.3548,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-toys,rqvae,GRID + FOCF (training),5,0.0333,0.0221,0.8206,5.0276,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-toys,rqvae,GRID + FOCF (training),10,0.0513,0.0279,0.8113,5.0717,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-toys,rqvae,GRID + FOCF (training),20,0.0764,0.0342,0.8011,5.1158,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-toys,rqvae,GRID + Reg (training),5,0.0329,0.0217,0.8209,5.0223,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-toys,rqvae,GRID + Reg (training),10,0.0508,0.0276,0.8117,5.0673,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-toys,rqvae,GRID + Reg (training),20,0.0758,0.0338,0.8011,5.1157,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-toys,rqvae,GRID: saved reranking reference,5,0.02843601895734597,0.01889725973783462,0.8571400375869851,4.729313429717911,verified,GRID: saved reranking reference
+amazon-toys,rqvae,GRID: saved reranking reference,10,0.04394189161343499,0.02384375807900369,0.8415882363163761,4.8471477973574615,verified,GRID: saved reranking reference
+amazon-toys,rqvae,GRID: saved reranking reference,20,0.06789614671337317,0.029847386051494996,0.823796018609778,4.961709481862002,verified,GRID: saved reranking reference
+amazon-toys,rqvae,GRID + RR,5,0.027045126725736657,0.01783535400215214,0.8427795252719098,4.837612634817485,verified,GRID + RR
+amazon-toys,rqvae,GRID + RR,10,0.04224191221924583,0.02271645443512015,0.8276567841528901,4.942759562534545,verified,GRID + RR
+amazon-toys,rqvae,GRID + RR,20,0.06537193488563775,0.028530164914264945,0.8100434708129861,5.045799452355527,verified,GRID + RR
+amazon-toys,rqvae,GRID + CPFair,5,0.028075417267669482,0.018794932695760956,0.8411704100556356,4.918072863936759,verified,GRID + CPFair
+amazon-toys,rqvae,GRID + CPFair,10,0.04373583350504842,0.023808556299176643,0.8257216999049154,5.020181929404288,verified,GRID + CPFair
+amazon-toys,rqvae,GRID + CPFair,20,0.06784463218627652,0.029864033257815198,0.8086535716325016,5.119145116620491,verified,GRID + CPFair
+amazon-toys,rqvae,GRID + P-MMF,5,0.028332989903152687,0.01885514509919316,0.8246637901285753,4.969368258799397,verified,GRID + P-MMF
+amazon-toys,rqvae,GRID + P-MMF,10,0.04373583350504842,0.023786963552902014,0.8075073423717537,5.078429452826433,verified,GRID + P-MMF
+amazon-toys,rqvae,GRID + P-MMF,20,0.0683082629301463,0.029941017156136562,0.7890388258163501,5.183318472775555,verified,GRID + P-MMF
+amazon-pet-supplies,,SASRec,5,0.016156691324815065,0.01025137792623036,0.9716398723771547,6.073581312280695,verified,SASRec
+amazon-pet-supplies,,SASRec,10,0.027237726967047748,0.013807747483297437,0.9616404119179517,6.483710512234809,verified,SASRec
+amazon-pet-supplies,,SASRec,20,0.04403160726294553,0.018018999617212036,0.9500474385041819,6.832812680266523,verified,SASRec
+amazon-pet-supplies,,GRU4Rec,5,0.016000336247478143,0.010165406219895359,0.980009531613508,5.597689088502471,verified,GRU4Rec
+amazon-pet-supplies,,GRU4Rec,10,0.02672158708809684,0.013600644903028283,0.9727768679155483,6.016730093082233,verified,GRU4Rec
+amazon-pet-supplies,,GRU4Rec,20,0.04339441829186281,0.017791406827318303,0.9634166854018634,6.405036300253197,verified,GRU4Rec
+amazon-pet-supplies,rkmeans,GRID: original (fresh evaluation),5,0.014771351714862139,0.009357765972656824,0.9749411129758658,6.002186961199227,verified,GRID: original (fresh evaluation)
+amazon-pet-supplies,rkmeans,GRID: original (fresh evaluation),10,0.025223604572965703,0.012709742078657276,0.9678191736332017,6.319372620358045,verified,GRID: original (fresh evaluation)
+amazon-pet-supplies,rkmeans,GRID: original (fresh evaluation),20,0.0406186953597848,0.016570703791702644,0.958070777382476,6.633746229435683,verified,GRID: original (fresh evaluation)
+amazon-pet-supplies,rkmeans,GRID: ordinary continuation,5,0.015667451244115668,0.009908942148377451,0.976633289091974,5.8997884124187845,verified,GRID: standard fine-tuning
+amazon-pet-supplies,rkmeans,GRID: ordinary continuation,10,0.02602723604572966,0.01322932561549596,0.9692087130497548,6.239730495285615,verified,GRID: standard fine-tuning
+amazon-pet-supplies,rkmeans,GRID: ordinary continuation,20,0.04215534633490249,0.017274682846643442,0.9592198662438428,6.580270776251689,verified,GRID: standard fine-tuning
+amazon-pet-supplies,rkmeans,GRID + IFairLRS RW (training),5,0.015573301950235372,0.009853504375028755,0.9764926482430658,5.904597996112736,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-pet-supplies,rkmeans,GRID + IFairLRS RW (training),10,0.026008742434431742,0.01319516725193671,0.9689530076893191,6.246804082999498,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-pet-supplies,rkmeans,GRID + IFairLRS RW (training),20,0.04198722259583053,0.017203827778605588,0.958821087581457,6.5884213539560195,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-pet-supplies,rkmeans,GRID + SPRINT (training),5,0.014779757901815736,0.009264858152807249,0.9800689261313922,5.694076227833601,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-pet-supplies,rkmeans,GRID + SPRINT (training),10,0.02481338264963013,0.012477212937708534,0.9738887806410855,6.035702246865113,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-pet-supplies,rkmeans,GRID + SPRINT (training),20,0.04027908540685945,0.01635767520178861,0.9654158315534896,6.37608030022944,verified,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-pet-supplies,rkmeans,GRID + APR (training),5,0.0073,0.0045,0.9971,2.9383,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-pet-supplies,rkmeans,GRID + APR (training),10,0.0122,0.0061,0.9953,3.665,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-pet-supplies,rkmeans,GRID + APR (training),20,0.0199,0.008,0.9926,4.3432,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-pet-supplies,rkmeans,GRID + FairDual (training),5,0.0131,0.0081,0.9813,5.5398,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-pet-supplies,rkmeans,GRID + FairDual (training),10,0.0228,0.0112,0.9751,5.9189,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-pet-supplies,rkmeans,GRID + FairDual (training),20,0.0379,0.015,0.9661,6.3014,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-pet-supplies,rkmeans,GRID + IPS (training),5,0.0156,0.0099,0.9759,5.92,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-pet-supplies,rkmeans,GRID + IPS (training),10,0.0262,0.0133,0.9686,6.2623,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-pet-supplies,rkmeans,GRID + IPS (training),20,0.0426,0.0174,0.9589,6.5977,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-pet-supplies,rkmeans,GRID + Minmax-SGD (training),5,0.0122,0.0076,0.9875,5.0382,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-pet-supplies,rkmeans,GRID + Minmax-SGD (training),10,0.021,0.0104,0.9812,5.6027,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-pet-supplies,rkmeans,GRID + Minmax-SGD (training),20,0.0348,0.0139,0.9747,6.0247,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-pet-supplies,rkmeans,GRID + SDRO (training),5,0.004,0.0029,0.9995,0.1155,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-pet-supplies,rkmeans,GRID + SDRO (training),10,0.006,0.0036,0.9994,0.5162,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-pet-supplies,rkmeans,GRID + SDRO (training),20,0.0074,0.0039,0.9988,1.1911,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-pet-supplies,rkmeans,GRID + FOCF (training),5,0.0156,0.0099,0.9764,5.8751,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-pet-supplies,rkmeans,GRID + FOCF (training),10,0.026,0.0132,0.9693,6.2103,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-pet-supplies,rkmeans,GRID + FOCF (training),20,0.0426,0.0174,0.9598,6.5376,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-pet-supplies,rkmeans,GRID + Reg (training),5,0.0156,0.0099,0.9762,5.8805,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-pet-supplies,rkmeans,GRID + Reg (training),10,0.026,0.0132,0.9691,6.2124,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-pet-supplies,rkmeans,GRID + Reg (training),20,0.0426,0.0174,0.9597,6.5369,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-pet-supplies,rkmeans,GRID: saved reranking reference,5,0.014771351714862139,0.00935776597265641,0.9749411136332411,6.002186809999656,verified,GRID: saved reranking reference
+amazon-pet-supplies,rkmeans,GRID: saved reranking reference,10,0.025223604572965703,0.012709742078657622,0.9678191475025325,6.319373633352736,verified,GRID: saved reranking reference
+amazon-pet-supplies,rkmeans,GRID: saved reranking reference,20,0.0406186953597848,0.01657070379170334,0.9580707490331652,6.633747001329471,verified,GRID: saved reranking reference
+amazon-pet-supplies,rkmeans,GRID + RR,5,0.014268661735036988,0.009053356483417678,0.973902996053776,6.015530599413483,verified,GRID + RR
+amazon-pet-supplies,rkmeans,GRID + RR,10,0.024340954942837927,0.012281748231248054,0.9660947667336532,6.343404492875961,verified,GRID + RR
+amazon-pet-supplies,rkmeans,GRID + RR,20,0.03964189643577673,0.016118881334513665,0.9560083700313108,6.65846396917636,verified,GRID + RR
+amazon-pet-supplies,rkmeans,GRID + CPFair,5,0.014759583053127101,0.009354923675189525,0.9733888138385394,6.111377613305211,verified,GRID + CPFair
+amazon-pet-supplies,rkmeans,GRID + CPFair,10,0.025176529926025554,0.012695055250856695,0.9660032282058716,6.426645584477563,verified,GRID + CPFair
+amazon-pet-supplies,rkmeans,GRID + CPFair,20,0.04051277740416947,0.016543762853319738,0.9559183700083026,6.7425987297340555,verified,GRID + CPFair
+amazon-pet-supplies,rkmeans,GRID + P-MMF,5,0.014776395427034298,0.009359717146869095,0.974904537927598,6.0038144760239325,verified,GRID + P-MMF
+amazon-pet-supplies,rkmeans,GRID + P-MMF,10,0.025226967047747142,0.012710714051846319,0.9677614052975247,6.321357934374735,verified,GRID + P-MMF
+amazon-pet-supplies,rkmeans,GRID + P-MMF,20,0.04062205783456624,0.01657146932717307,0.9579803130881455,6.636161932689619,verified,GRID + P-MMF
+amazon-pet-supplies,rvq,GRID: original (fresh evaluation),5,0.015689307330195024,0.009915079739629754,0.9759141083262501,5.942381576973634,verified,GRID: original (fresh evaluation)
+amazon-pet-supplies,rvq,GRID: original (fresh evaluation),10,0.026265971755211837,0.013304219216349228,0.9685741484853087,6.275337268683076,verified,GRID: original (fresh evaluation)
+amazon-pet-supplies,rvq,GRID: original (fresh evaluation),20,0.04269166106254203,0.01742720347148851,0.9587697561006073,6.603004156330053,verified,GRID: original (fresh evaluation)
+amazon-pet-supplies,rvq,GRID: ordinary continuation,5,0.01596503026227303,0.010062541256073226,0.9753139647554794,5.886395184789099,verified,GRID: standard fine-tuning
+amazon-pet-supplies,rvq,GRID: ordinary continuation,10,0.026462676529926024,0.01342957870632162,0.9674858144978868,6.232897391821499,verified,GRID: standard fine-tuning
+amazon-pet-supplies,rvq,GRID: ordinary continuation,20,0.042286482851378614,0.017403233627046048,0.9565724524569731,6.583252831127011,verified,GRID: standard fine-tuning
+amazon-pet-supplies,rvq,GRID + IFairLRS RW (training),5,0.015872562205783456,0.010011126363181213,0.974860779410479,5.9092777516560435,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-pet-supplies,rvq,GRID + IFairLRS RW (training),10,0.02633658372562206,0.013371474670017171,0.9669175163242727,6.25316830613746,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-pet-supplies,rvq,GRID + IFairLRS RW (training),20,0.042061197041022194,0.017320908006787625,0.9557389648869544,6.604097913011571,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-pet-supplies,rvq,GRID + SPRINT (training),5,0.015689307330195024,0.009915079739629754,0.9759141083262501,5.942381576973634,verified; corrected validation-selected update-zero source,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-pet-supplies,rvq,GRID + SPRINT (training),10,0.026265971755211837,0.013304219216349228,0.9685741484853087,6.275337268683076,verified; corrected validation-selected update-zero source,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-pet-supplies,rvq,GRID + SPRINT (training),20,0.04269166106254203,0.01742720347148851,0.9587697561006073,6.603004156330053,verified; corrected validation-selected update-zero source,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-pet-supplies,rvq,GRID + APR (training),5,0.0058,0.0036,0.9968,3.0494,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-pet-supplies,rvq,GRID + APR (training),10,0.0118,0.0055,0.9951,3.6642,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-pet-supplies,rvq,GRID + APR (training),20,0.0178,0.007,0.9937,4.0935,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-pet-supplies,rvq,GRID + FairDual (training),5,0.0136,0.0085,0.9799,5.7454,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-pet-supplies,rvq,GRID + FairDual (training),10,0.0231,0.0116,0.9749,6.0025,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-pet-supplies,rvq,GRID + FairDual (training),20,0.0376,0.0152,0.9676,6.3079,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-pet-supplies,rvq,GRID + IPS (training),5,0.0157,0.01,0.9736,6.0963,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-pet-supplies,rvq,GRID + IPS (training),10,0.0258,0.0132,0.9646,6.4618,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-pet-supplies,rvq,GRID + IPS (training),20,0.0416,0.0172,0.9535,6.7967,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-pet-supplies,rvq,GRID + Minmax-SGD (training),5,0.0122,0.0076,0.9856,5.2923,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-pet-supplies,rvq,GRID + Minmax-SGD (training),10,0.0209,0.0103,0.981,5.6629,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-pet-supplies,rvq,GRID + Minmax-SGD (training),20,0.035,0.0139,0.975,6.0326,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-pet-supplies,rvq,GRID + SDRO (training),5,0.0039,0.0029,0.9993,0.7851,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-pet-supplies,rvq,GRID + SDRO (training),10,0.007,0.0039,0.9994,0.6087,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-pet-supplies,rvq,GRID + SDRO (training),20,0.008,0.0042,0.9987,1.6,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-pet-supplies,rvq,GRID + FOCF (training),5,0.0155,0.0099,0.9739,6.0638,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-pet-supplies,rvq,GRID + FOCF (training),10,0.0256,0.0131,0.965,6.4141,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-pet-supplies,rvq,GRID + FOCF (training),20,0.0415,0.0171,0.9537,6.7486,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-pet-supplies,rvq,GRID + Reg (training),5,0.0157,0.01,0.974,6.0512,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-pet-supplies,rvq,GRID + Reg (training),10,0.0256,0.0131,0.9651,6.4072,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-pet-supplies,rvq,GRID + Reg (training),20,0.0415,0.0171,0.954,6.7342,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-pet-supplies,rvq,GRID: saved reranking reference,5,0.015689307330195024,0.009915079739629365,0.9759141083262501,5.942381576973634,verified,GRID: saved reranking reference
+amazon-pet-supplies,rvq,GRID: saved reranking reference,10,0.026265971755211837,0.013304219216349677,0.9685741576885631,6.275336798113852,verified,GRID: saved reranking reference
+amazon-pet-supplies,rvq,GRID: saved reranking reference,20,0.04269166106254203,0.017427203471489152,0.9587696850219004,6.603006478380473,verified,GRID: saved reranking reference
+amazon-pet-supplies,rvq,GRID + RR,5,0.01492098184263618,0.009450224332540932,0.9746093698334408,5.950981046768909,verified,GRID + RR
+amazon-pet-supplies,rvq,GRID + RR,10,0.025060524546065905,0.012696819877190926,0.966445903927226,6.300391687860291,verified,GRID + RR
+amazon-pet-supplies,rvq,GRID + RR,20,0.04132985877605918,0.01677789408896941,0.9566279045306965,6.623495116685958,verified,GRID + RR
+amazon-pet-supplies,rvq,GRID + CPFair,5,0.01565568258238063,0.009889771226074578,0.9742098772614532,6.0694316980208765,verified,GRID + CPFair
+amazon-pet-supplies,rvq,GRID + CPFair,10,0.02620880968392737,0.013268835342053023,0.9666876024272927,6.389438655188738,verified,GRID + CPFair
+amazon-pet-supplies,rvq,GRID + CPFair,20,0.042568930733019504,0.017374315001621867,0.956626787814365,6.711716963276141,verified,GRID + CPFair
+amazon-pet-supplies,rvq,GRID + P-MMF,5,0.015692669804976463,0.009916380522437821,0.9758693575010797,5.944375076697367,verified,GRID + P-MMF
+amazon-pet-supplies,rvq,GRID + P-MMF,10,0.026265971755211837,0.013304219216349677,0.9685169223199301,6.277305374005366,verified,GRID + P-MMF
+amazon-pet-supplies,rvq,GRID + P-MMF,20,0.04269334229993275,0.017427580005255516,0.9586820081632867,6.605316589507498,verified,GRID + P-MMF
+amazon-pet-supplies,rqvae,GRID: original (fresh evaluation),5,0.013527236045729658,0.008529477825177436,0.9817376530123239,5.569510846864499,verified,GRID: original (fresh evaluation)
+amazon-pet-supplies,rqvae,GRID: original (fresh evaluation),10,0.023219569603227977,0.011630833870863088,0.9758273522039493,5.927825808199943,verified,GRID: original (fresh evaluation)
+amazon-pet-supplies,rqvae,GRID: original (fresh evaluation),20,0.03807834566240753,0.015358723039938316,0.9668673474116832,6.323223620807548,verified,GRID: original (fresh evaluation)
+amazon-pet-supplies,rqvae,GRID: ordinary continuation,5,0.013527236045729658,0.008529477825177436,0.9817376530123239,5.569510846864499,verified,GRID: standard fine-tuning
+amazon-pet-supplies,rqvae,GRID: ordinary continuation,10,0.023219569603227977,0.011630833870863088,0.9758273522039493,5.927825808199943,verified,GRID: standard fine-tuning
+amazon-pet-supplies,rqvae,GRID: ordinary continuation,20,0.03807834566240753,0.015358723039938316,0.9668673474116832,6.323223620807548,verified,GRID: standard fine-tuning
+amazon-pet-supplies,rqvae,GRID + IFairLRS RW (training),5,0.013824815063887021,0.00873046852177552,0.9806440131843195,5.6109227839434865,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-pet-supplies,rqvae,GRID + IFairLRS RW (training),10,0.023581035642232684,0.011858062209972032,0.9740916921892636,5.986006963068491,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-pet-supplies,rqvae,GRID + IFairLRS RW (training),20,0.03878446536650975,0.01567398148903736,0.9645468075060429,6.368646228522184,verified,GRID + IFairLRS RW (fairness-aware fine-tuning)
+amazon-pet-supplies,rqvae,GRID + SPRINT (training),5,0.013527236045729658,0.008529477825177436,0.9817376530123239,5.569510846864499,verified; validation selected original checkpoint,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-pet-supplies,rqvae,GRID + SPRINT (training),10,0.023219569603227977,0.011630833870863088,0.9758273522039493,5.927825808199943,verified; validation selected original checkpoint,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-pet-supplies,rqvae,GRID + SPRINT (training),20,0.03807834566240753,0.015358723039938316,0.9668673474116832,6.323223620807548,verified; validation selected original checkpoint,GRID + SPRINT (fairness-aware fine-tuning)
+amazon-pet-supplies,rqvae,GRID + APR (training),5,0.0065,0.0042,0.9968,3.0485,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-pet-supplies,rqvae,GRID + APR (training),10,0.0117,0.0058,0.9949,3.7382,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-pet-supplies,rqvae,GRID + APR (training),20,0.02,0.0079,0.9926,4.2971,recorded FairDiverse evaluation; config/source checked,GRID + APR (training)
+amazon-pet-supplies,rqvae,GRID + FairDual (training),5,0.0115,0.0072,0.9847,5.3585,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-pet-supplies,rqvae,GRID + FairDual (training),10,0.0203,0.01,0.9793,5.76,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-pet-supplies,rqvae,GRID + FairDual (training),20,0.034,0.0134,0.9717,6.1669,recorded FairDiverse evaluation; config/source checked,GRID + FairDual (training)
+amazon-pet-supplies,rqvae,GRID + IPS (training),5,0.0139,0.0086,0.9825,5.5409,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-pet-supplies,rqvae,GRID + IPS (training),10,0.0235,0.0117,0.9766,5.9226,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-pet-supplies,rqvae,GRID + IPS (training),20,0.0384,0.0155,0.9681,6.3122,recorded FairDiverse evaluation; config/source checked,GRID + IPS (training)
+amazon-pet-supplies,rqvae,GRID + Minmax-SGD (training),5,0.0119,0.0074,0.9886,4.9663,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-pet-supplies,rqvae,GRID + Minmax-SGD (training),10,0.0207,0.0102,0.9842,5.4159,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-pet-supplies,rqvae,GRID + Minmax-SGD (training),20,0.0343,0.0136,0.979,5.7978,recorded FairDiverse evaluation; config/source checked,GRID + Minmax-SGD (training)
+amazon-pet-supplies,rqvae,GRID + SDRO (training),5,0.0053,0.0035,0.9994,0.494,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-pet-supplies,rqvae,GRID + SDRO (training),10,0.006,0.0038,0.9983,1.9588,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-pet-supplies,rqvae,GRID + SDRO (training),20,0.0071,0.004,0.9963,3.0988,recorded FairDiverse evaluation; config/source checked,GRID + SDRO (training)
+amazon-pet-supplies,rqvae,GRID + FOCF (training),5,0.0139,0.0087,0.9829,5.5095,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-pet-supplies,rqvae,GRID + FOCF (training),10,0.0235,0.0118,0.977,5.8858,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-pet-supplies,rqvae,GRID + FOCF (training),20,0.0385,0.0155,0.9687,6.2592,recorded FairDiverse evaluation; config/source checked,GRID + FOCF (training)
+amazon-pet-supplies,rqvae,GRID + Reg (training),5,0.014,0.0087,0.9829,5.5028,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-pet-supplies,rqvae,GRID + Reg (training),10,0.0236,0.0118,0.977,5.8786,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-pet-supplies,rqvae,GRID + Reg (training),20,0.0384,0.0155,0.9688,6.2509,recorded FairDiverse evaluation; config/source checked,GRID + Reg (training)
+amazon-pet-supplies,rqvae,GRID: saved reranking reference,5,0.013527236045729658,0.008529477825177436,0.9817376543270745,5.569510748837534,verified,GRID: saved reranking reference
+amazon-pet-supplies,rqvae,GRID: saved reranking reference,10,0.023219569603227977,0.011630833870863088,0.975827355490826,5.927825698287383,verified,GRID: saved reranking reference
+amazon-pet-supplies,rqvae,GRID: saved reranking reference,20,0.03807834566240753,0.015358723039938316,0.9668673497946688,6.323223629425717,verified,GRID: saved reranking reference
+amazon-pet-supplies,rqvae,GRID + RR,5,0.01304472091459314,0.008095803404558179,0.9815382007374437,5.568147314709494,verified,GRID + RR
+amazon-pet-supplies,rqvae,GRID + RR,10,0.022725285810356422,0.011192852241724097,0.9757995207405201,5.914499753877138,verified,GRID + RR
+amazon-pet-supplies,rqvae,GRID + RR,20,0.03752017484868864,0.014903908547941304,0.9668880666493119,6.3071123096570485,verified,GRID + RR
+amazon-pet-supplies,rqvae,GRID + CPFair,5,0.013579354404841964,0.008546578362264001,0.9801043458425284,5.717423493507481,verified,GRID + CPFair
+amazon-pet-supplies,rqvae,GRID + CPFair,10,0.023138870208473435,0.011593376407326921,0.973905235074129,6.07098905012743,verified,GRID + CPFair
+amazon-pet-supplies,rqvae,GRID + CPFair,20,0.03794552790854069,0.015311276466316547,0.9648105522380014,6.449998966384987,verified,GRID + CPFair
+amazon-pet-supplies,rqvae,GRID + P-MMF,5,0.013527236045729658,0.008529477825177436,0.9817185053125786,5.570790483063699,verified,GRID + P-MMF
+amazon-pet-supplies,rqvae,GRID + P-MMF,10,0.023219569603227977,0.011630833870863087,0.9757942188441896,5.929486487480559,verified,GRID + P-MMF
+amazon-pet-supplies,rqvae,GRID + P-MMF,20,0.03808507061197041,0.015360254110877767,0.9668164963900234,6.325074197472821,verified,GRID + P-MMF

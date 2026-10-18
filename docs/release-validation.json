@@ -63,5 +63,41 @@
     },
     "broader_test_attempt": "A broader run in a shared dependency environment timed out after test progress; focused checks were rerun in the lightweight runtime.",
     "pmmf_solver_check": "The optional PMMF check requires CVXPY, absent from the lightweight runtime; its retry in the shared scientific environment timed out. Reranking code was not changed."
+  },
+  "paper_alignment_update": {
+    "source_branch": "generative-fairness-baselines",
+    "source_commit": "69ffef5ee2068e781dac6295699e9cfef54f595b",
+    "restored_programs": 12,
+    "frozen_comparison_rows": 564,
+    "exact_classic_configurations": 8,
+    "matched_continuation_records": 36,
+    "selected_reranker_records": 36,
+    "aggregate_reproduction": {
+      "status": "passed",
+      "outputs": 42,
+      "training_rows_match_original": 156,
+      "popularity_rows_match_original": 156,
+      "combined_rows_match_original": 156,
+      "reranking_summary_matches_original": true,
+      "main_figures_visually_inspected": true
+    },
+    "archived_training_audit": {
+      "status": "passed",
+      "fairdiverse_runs": 84,
+      "continuation_runs": 36,
+      "fairdiverse_validation_calls_per_run": 1
+    },
+    "regressions": {
+      "passed": 99,
+      "skipped": 1,
+      "dependency_blocked": 6,
+      "dependency_blocked_reason": "Six optional PMMF backend checks require CVXPY, absent from the local test environments; all failed while loading that dependency."
+    },
+    "credential_and_personal_metadata_scan": "passed; includes CSV and TeX inputs",
+    "limits": [
+      "No training, GPU inference or dataset conversion rerun",
+      "The paper-reported historical environment is recorded separately; it is not a newly validated lockfile",
+      "Full archive audits other than the training-protocol audit require external artifacts and were not all rerun"
+    ]
   }
 }

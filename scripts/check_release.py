@@ -24,7 +24,7 @@ def check(root):
                 or relative.parts[:2] == ("GRID", "data")
                 or any(part in SKIP or part.endswith(".egg-info") for part in relative.parts)):
             continue
-        if path.suffix not in {".py", ".json", ".sh", ".md", ".yaml", ".yml", ".toml", ".txt", ".example"}:
+        if path.suffix not in {".py", ".json", ".sh", ".md", ".yaml", ".yml", ".toml", ".txt", ".example", ".csv", ".tex"}:
             continue
         source = path.read_text(encoding="utf-8")
         for name, pattern in PATTERNS.items():

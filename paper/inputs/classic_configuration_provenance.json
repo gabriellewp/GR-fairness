@@ -1,0 +1,66 @@
+[
+  {
+    "dataset": "amazon-beauty",
+    "model": "SASRec",
+    "exp_id": 0,
+    "saved_config_sha256": "40d56eca2595517327ba5a1fdac76326fe4cad47852e6abdc2ea7448a3132db9",
+    "source_report": "output/rq2_classic_evaluation/356042/case_0/test_full/results.json",
+    "embedding_size": 100
+  },
+  {
+    "dataset": "amazon-beauty",
+    "model": "GRU4Rec",
+    "exp_id": 1,
+    "saved_config_sha256": "897318fe44bb46291f231a86cb3516561e2d2fc9cabe38139319c7ea9f89f18a",
+    "source_report": "output/rq2_classic_evaluation/356042/case_1/test_full/results.json",
+    "embedding_size": 64
+  },
+  {
+    "dataset": "amazon-sports",
+    "model": "SASRec",
+    "exp_id": 2,
+    "saved_config_sha256": "a11d9da0b22049393799f6c48c217f6188227a4add7b4edbae21ca3dfffe145f",
+    "source_report": "output/rq2_classic_evaluation/356042/case_2/test_full/results.json",
+    "embedding_size": 100
+  },
+  {
+    "dataset": "amazon-sports",
+    "model": "GRU4Rec",
+    "exp_id": 3,
+    "saved_config_sha256": "e4257a19d6b8629c0d39ac29b62c67dc323ab1da136ebf77366ed06bbd80dea1",
+    "source_report": "output/rq2_classic_evaluation/356042/case_3/test_full/results.json",
+    "embedding_size": 64
+  },
+  {
+    "dataset": "amazon-toys",
+    "model": "SASRec",
+    "exp_id": 4,
+    "saved_config_sha256": "8f67a05fe13c10bfc300045097c4973943072cae0f4140445e2d0df0c7edf947",
+    "source_report": "output/rq2_classic_evaluation/356042/case_4/test_full/results.json",
+    "embedding_size": 100
+  },
+  {
+    "dataset": "amazon-toys",
+    "model": "GRU4Rec",
+    "exp_id": 5,
+    "saved_config_sha256": "b7aa5041571ccd12362c73f6955a00bbe12590d58d5817fd492e99163bceecec",
+    "source_report": "output/rq2_classic_evaluation/356042/case_5/test_full/results.json",
+    "embedding_size": 64
+  },
+  {
+    "dataset": "amazon-pet-supplies",
+    "model": "SASRec",
+    "exp_id": 6,
+    "saved_config_sha256": "b0cead664d7ba573a3f70af0eabbd73dc92d07697940c946f6dde6df95f7f633",
+    "source_report": "output/rq2_classic_evaluation/pet_sasrec_358819/test_full/results.json",
+    "embedding_size": 100
+  },
+  {
+    "dataset": "amazon-pet-supplies",
+    "model": "GRU4Rec",
+    "exp_id": 7,
+    "saved_config_sha256": "90c4f6750cd6be37882c76e9c7636d50569a25200d1d4774fcd88f33f17f041a",
+    "source_report": "output/rq2_classic_evaluation/356042/case_6/test_full/results.json",
+    "embedding_size": 64
+  }
+]

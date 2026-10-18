@@ -11,12 +11,15 @@ BEGIN = "% BEGIN GRID LOCAL/PUBLISHED COMPARISON"
 END = "% END GRID LOCAL/PUBLISHED COMPARISON"
 
 
-def write_baseline_comparison(rows):
+def write_baseline_comparison(rows, *, dataset_statistics_path=None):
     paper_rows = list(csv.DictReader(PAPER_CSV.open()))
     published = {(r["dataset"], r["tokenizer"]): r for r in paper_rows}
     pet_path = OUT / "pet_published_reference.json"
     pet_reference = json.loads(pet_path.read_text())
-    stats = json.loads((ROOT / "recommendation/processed_dataset/amazon-pet-supplies/dataset_stats.json").read_text())
+    stats_path = (Path(dataset_statistics_path) if dataset_statistics_path else
+                  ROOT / "recommendation/processed_dataset/amazon-pet-supplies/dataset_stats.json")
+    stats = json.loads(stats_path.read_text())
+    stats = stats.get("amazon-pet-supplies", stats)
     assert stats["user_num"] == pet_reference["users"] and stats["item_num"] == pet_reference["items"]
     assert pet_reference["table"] == 11 and pet_reference["published_model"] == "TIGER"
     for metric, value in pet_reference["metrics"].items():
@@ -77,8 +80,8 @@ def write_baseline_comparison(rows):
     (OUT / "baseline_comparison.tex").write_text(rendered)
     (OUT / "baseline_comparison_provenance.json").write_text(json.dumps(dict(
         published_source="https://arxiv.org/html/2507.22224v1#S3.T1",
-        published_reference_csv=str(PAPER_CSV.relative_to(ROOT)),
-        additional_published_references=[dict(path=str(pet_path.relative_to(ROOT)),
+        published_reference_csv=str(PAPER_CSV),
+        additional_published_references=[dict(path=str(pet_path),
             sha256=hashlib.sha256(pet_path.read_bytes()).hexdigest(),
             source=pet_reference["pdf_url"] + "#page=13", table=11)],
         published_reference_sha256=hashlib.sha256(PAPER_CSV.read_bytes()).hexdigest(), rows=audit), indent=2) + "\n")

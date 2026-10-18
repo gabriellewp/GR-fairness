@@ -492,9 +492,17 @@ def run_case(index):
 
 
 def main():
+    global OLD, FD, OUT
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--case', type=int, required=True, choices=range(12))
-    run_case(parser.parse_args().case)
+    parser.add_argument('--source-manifest', type=Path, default=OLD)
+    parser.add_argument('--fairdiverse-manifest', type=Path, default=FD)
+    parser.add_argument('--output-dir', type=Path, default=OUT)
+    args = parser.parse_args()
+    OLD, FD, OUT = args.source_manifest.resolve(), args.fairdiverse_manifest.resolve(), args.output_dir.resolve()
+    if OUT == OLD.parent or OUT == FD.parent:
+        raise ValueError('Use a separate output directory for recovered popularity metrics')
+    run_case(args.case)
 
 
 if __name__ == '__main__':

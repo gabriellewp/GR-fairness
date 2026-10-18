@@ -15,8 +15,9 @@ import yaml
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from scripts.experiment_labels import method_label
 
-ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "docs/experiment_parameters_20261014"
+from scripts.paper.archive_paths import optional_source_root, optional_output_root
+ROOT = optional_source_root(Path(__file__).resolve().parents[1])
+OUT = optional_output_root(ROOT / "docs/experiment_parameters_20261014")
 SOURCES = {}
 RECORDS = []
 WEIGHTS = []
